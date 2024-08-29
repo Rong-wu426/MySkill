@@ -1,0 +1,111 @@
+<div class="content">
+  <h1>Python 筆記</h1>
+
+  <h3 id="print-output">列印輸出</h3>
+  <pre><code>print("Hello, World!")</code></pre>
+
+  <h3 id="print-output">註譯</h3>
+  <pre><code>
+    # 這是單行註解
+
+    """"
+    這是多行註解
+    """"
+  </code></pre>
+
+  <h3 id="variable-definition">變數定義</h3>
+  <pre><code>
+    #可以賦予變數
+    x = 10
+    y = "Hello"
+    #也可以一次賦予多個變數
+    zx, zy = 5, 6
+  </code></pre>
+
+  <h3 id="data-types">資料類型</h3>
+  <pre><code>
+    # 數字
+    num = 10
+    # 字串
+    text = "Hello"
+    # 列表
+    my_list = [1, 2, 3]
+    # 元組
+    my_tuple = (1, 2, 3)
+    # 字典
+    my_dict = {"name": "Alice", "age": 25}
+    # 集合
+    my_set = {1, 2, 3}
+  </code></pre>
+
+  <h4 id="Transform-type">類型轉換</h4>
+  <pre><code>
+    int()   #轉為整數
+    float() #轉為浮點數
+    str()   #轉為字串
+  </code></pre>
+
+  <h3 id="conditionals">條件語句</h3>
+  <pre><code>
+    if x > 10:
+    print("x is greater than 10")
+    elif x == 10:
+    print("x is 10")
+    else:
+    print("x is less than 10")
+  </code></pre>
+
+  <h3 id="loops">循環語句</h3>
+  <pre><code>
+    # for 迴圈
+    for i in range(5):
+    print(i)
+
+    # while 循環
+    count = 0
+    while count &lt; 5:
+    print(count)
+    count += 1
+  </code></pre>
+
+  <h3 id="functions">函數定義</h3>
+  <pre><code>
+    def greet(name):
+    return f"Hello, {name}!"
+    print(greet("Alice"))
+  </code></pre>
+
+  <h3 id="classes-objects">類別和物件</h3>
+  <pre><code>
+    class Person:
+    def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+    def greet(self):
+    return f"Hello, my name is {self.name}."
+
+    person = Person("Alice", 30)
+    print(person.greet())
+  </code></pre>
+
+  <h3 id="exceptions">例外處理</h3>
+  <pre><code>
+    try:
+    result = 10 / 0
+    except ZeroDivisionError:
+    print("Cannot divide by zero!")
+  </code></pre>
+
+  <h3 id="file-operations">檔案操作</h3>
+  <pre><code>
+    # 寫入文件
+    with open('file.txt', 'w') as f:
+    f.write("Hello, World!")
+
+    # 讀取文件
+    with open('file.txt', 'r') as f:
+    content = f.read()
+    print(content)
+  </code></pre>
+</div>

@@ -1,0 +1,94 @@
+<div class="content">
+  <h1>jQuery 筆記</h1>
+
+  <h3 id="select">選擇器</h3>
+  <pre><code>
+    $(document).ready(function(){
+    // 選擇所有的 &lt;p&gt; 元素
+    $("p").css("color", "blue");
+
+    // 選擇具有特定 ID 的元素
+    $("#myId").css("background-color", "yellow");
+
+    // 選擇具有特定 class 的元素
+    $(".myClass").css("font-size", "20px");
+    });
+  </code></pre>
+
+  <h3 id="events">事件處理</h3>
+  <pre><code>
+    $(document).ready(function(){
+    // 點擊事件
+    $("#myButton").click(function(){
+    alert("按鈕被點擊了！");
+    });
+
+    // 表單提交事件
+    $("form").submit(function(event){
+    event.preventDefault(); // 防止表單提交
+    alert("表單提交了！");
+    });
+    });
+  </code></pre>
+
+  <h3 id="manipulation">DOM 操作</h3>
+  <pre><code>
+    $(document).ready(function(){
+    // 新增內容
+    $("#myDiv").html("<p>新內容</p>");
+
+    // 新增元素
+    $("#myList").append("<li>新項目</li>");
+
+    // 移除元素
+    $("#myElement").remove();
+    });
+  </code></pre>
+
+  <h3 id="effects">效果</h3>
+  <pre><code>
+    $(document).ready(function(){
+    // 顯示元素
+    $("#myElement").show();
+
+    // 隱藏元素
+    $("#myElement").hide();
+
+    // 減少透明度
+    $("#myElement").fadeTo("slow", 0.5);
+
+    // 顯示元素並新增動畫
+    $("#myElement").slideDown();
+    });
+  </code></pre>
+
+  <h3 id="ajax">AJAX</h3>
+  <pre><code>
+    $(document).ready(function(){
+    // 發送 GET 請求
+    $.ajax({
+    url: "https://api.example.com/data",
+    method: "GET",
+    success: function(data){
+    console.log(data);
+    },
+    error: function(error){
+    console.error("發生錯誤：", error);
+    }
+    });
+
+    // 發送 POST 請求
+    $.ajax({
+    url: "https://api.example.com/submit",
+    method: "POST",
+    data: { key: "value" },
+    success: function(response){
+    alert("資料提交成功！");
+    },
+    error: function(error){
+    console.error("發生錯誤：", error);
+    }
+    });
+    });
+  </code></pre>
+</div>

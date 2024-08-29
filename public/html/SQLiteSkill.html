@@ -1,0 +1,51 @@
+<div class="content">
+  <h1>SQLite 筆記</h1>
+
+  <h3 id="select">SELECT 語句</h3>
+  <pre><code>SELECT * FROM table_name;</code></pre>
+
+  <h3 id="insert">INSERT INTO</h3>
+  <pre><code>
+    INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+  </code></pre>
+
+  <h3 id="update">UPDATE 語句</h3>
+  <pre><code>
+    UPDATE table_name
+    SET column1 = value1, column2 = value2
+    WHERE condition;
+  </code></pre>
+
+  <h3 id="delete">DELETE 語句</h3>
+  <pre><code>
+    DELETE FROM table_name
+    WHERE condition;
+  </code></pre>
+
+  <h3 id="joins">JOIN 語句</h3>
+  <pre><code>
+    SELECT columns
+    FROM table1
+    INNER JOIN table2 ON table1.common_field = table2.common_field;
+  </code></pre>
+
+  <h3 id="create-table">CREATE TABLE</h3>
+  <pre><code>
+    CREATE TABLE table_name (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    column1 TEXT NOT NULL,
+    column2 INTEGER
+    );
+  </code></pre>
+
+  <h3 id="alter-table">ALTER TABLE</h3>
+  <pre><code>
+    ALTER TABLE table_name
+    ADD COLUMN column_name datatype;
+  </code></pre>
+
+  <h3 id="drop-table">DROP TABLE</h3>
+  <pre><code>
+    DROP TABLE table_name;
+  </code></pre>
+</div>

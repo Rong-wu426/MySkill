@@ -1,0 +1,110 @@
+<div class="content">
+  <h1>Matplotlib 筆記</h1>
+
+  <h3 id="introduction">簡介</h3>
+  <p>
+    Matplotlib 是一個 Python的資料可視化庫，可以用來產生各種靜態、動態和互動式圖表。
+  </p>
+
+  <h3 id="installation">安裝</h3>
+  <pre><code>
+    # 使用 pip 安裝 Matplotlib
+    pip install matplotlib
+  </code></pre>
+
+  <h3 id="basic-plot">基本繪圖</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 繪製基本圖形
+    plt.plot([1, 2, 3, 4], [10, 20, 25, 30])
+    plt.xlabel('X 軸')
+    plt.ylabel('Y 軸')
+    plt.title('基本圖形')
+    plt.show()
+  </code></pre>
+
+  <h3 id="line-plot">折線圖</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 繪製折線圖
+    x = [1, 2, 3, 4]
+    y = [10, 20, 25, 30]
+
+    plt.plot(x, y, marker='o')
+    plt.xlabel('X 軸')
+    plt.ylabel('Y 軸')
+    plt.title('折線圖')
+    plt.grid(True)
+    plt.show()
+  </code></pre>
+
+  <h3 id="scatter-plot">散點圖</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 繪製散點圖
+    x = [1, 2, 3, 4]
+    y = [10, 20, 15, 25]
+
+    plt.scatter(x, y, color='red', marker='x')
+    plt.xlabel('X 軸')
+    plt.ylabel('Y 軸')
+    plt.title('散點圖')
+    plt.show()
+  </code></pre>
+
+  <h3 id="histogram">直方圖</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 繪製直方圖
+    data = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+
+    plt.hist(data, bins=4, color='blue', edgecolor='black')
+    plt.xlabel('數值')
+    plt.ylabel('頻次')
+    plt.title('直方圖')
+    plt.show()
+  </code></pre>
+
+  <h3 id="subplots">子圖</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 建立子圖
+    fig, axs = plt.subplots(2, 2, figsize=(10, 8))
+
+    axs[0, 0].plot([1, 2, 3], [1, 4, 9], 'tab:blue')
+    axs[0, 0].set_title('子圖 1')
+
+    axs[0, 1].scatter([1, 2, 3], [9, 4, 1], color='red')
+    axs[0, 1].set_title('子圖 2')
+
+    axs[1, 0].bar(['A', 'B', 'C'], [10, 20, 15], color='green')
+    axs[1, 0].set_title('子圖 3')
+
+    axs[1, 1].hist([1, 2, 2, 3, 3, 4], bins=3, color='purple')
+    axs[1, 1].set_title('子圖 4')
+
+    plt.tight_layout()
+    plt.show()
+  </code></pre>
+
+  <h3 id="customization">自定義</h3>
+  <pre><code>
+    import matplotlib.pyplot as plt
+
+    # 繪製自訂圖形
+    x = [1, 2, 3, 4]
+    y = [10, 20, 15, 25]
+
+    plt.plot(x, y, color='green', linestyle='--', marker='o', markersize=8)
+    plt.xlabel('X 軸')
+    plt.ylabel('Y 軸')
+    plt.title('自定義圖形')
+    plt.grid(True, linestyle='-.')
+    plt.show()
+  </code></pre>
+</div>

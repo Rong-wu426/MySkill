@@ -1,0 +1,48 @@
+<div class="content">
+  <h1>C# 筆記</h1>
+
+  <h3 id="variables">變數</h3>
+  <pre><code>
+  int x = 10;
+  string name = "Alice";
+  </code></pre>
+
+  <h3 id="functions">函數</h3>
+  <pre><code>
+  string Greet(string name) {
+    return $"Hello, {name}!";
+  }
+  Console.WriteLine(Greet("Alice"));
+  </code></pre>
+
+  <h3 id="classes">類別</h3>
+  <pre><code>
+  class Person {
+    public string Name { get; set; }
+    public int Age { get; set; }
+  
+    public string Greet() {
+      return $"Hello, my name is {Name}.";
+    }
+  }
+
+  Person person = new Person { Name = "Alice", Age = 30 };
+  Console.WriteLine(person.Greet());
+  </code></pre>
+
+  <h3 id="collections">集合</h3>
+  <pre><code>
+  List&lt;int&gt; numbers = new List&lt;int&gt; { 1, 2, 3 };
+  numbers.Add(4);
+  Console.WriteLine(string.Join(", ", numbers));
+  </code></pre>
+
+  <h3 id="exceptions">異常處理</h3>
+  <pre><code>
+  try {
+    int result = 10 / 0;
+  } catch (DivideByZeroException) {
+    Console.WriteLine("Cannot divide by zero!");
+  }
+  </code></pre>
+</div>

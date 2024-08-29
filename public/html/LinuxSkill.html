@@ -1,0 +1,110 @@
+<div class="content">
+  <h1>Linux 筆記</h1>
+
+  <h3 id="basic-commands">基本指令</h3>
+  <pre><code>
+    # 顯示目前目錄
+    pwd
+
+    # 列出目錄內容
+    ls
+
+    # 切換目錄
+    cd [directory]
+
+    # 建立目錄
+    mkdir [directory]
+
+    # 刪除文件
+    rm [file]
+
+    # 刪除目錄
+    rm -r [directory]
+  </code></pre>
+
+  <h3 id="file-management">檔案管理</h3>
+  <pre><code>
+    # 複製文件
+    cp [source] [destination]
+
+    # 移動文件
+    mv [source] [destination]
+
+    # 查看文件內容
+    cat [file]
+
+    # 編輯文件
+    nano [file]
+    vi [file]
+  </code></pre>
+
+  <h3 id="process-management">進程管理</h3>
+  <pre><code>
+    # 顯示目前進程
+    ps
+
+    # 尋找進程
+    ps aux | grep [process-name]
+
+    # 殺死進程
+    kill [PID]
+
+    # 強制殺死進程
+    kill -9 [PID]
+    </code></pre>
+
+    <h3 id="networking">網路指令</h3>
+    <pre><code>
+    # 查看網路介面
+    ifconfig
+
+    # 測試連接
+    ping [host]
+
+    # 查看開放埠
+    netstat -tuln
+
+    # 顯示路由表
+    route
+  </code></pre>
+
+  <h3 id="permissions">權限管理</h3>
+  <pre><code>
+    # 查看檔案權限
+    ls -l [file]
+
+    # 修改檔案權限
+    chmod [permissions] [file]
+
+    # 修改檔案擁有者
+    chown [user]:[group] [file]
+  </code></pre>
+
+  <h3 id="package-management">軟體包管理</h3>
+  <pre><code>
+    # 使用 apt (Debian/Ubuntu)
+    sudo apt update
+    sudo apt install [package]
+
+    # 使用 yum (CentOS)
+    sudo yum install [package]
+
+    # 使用 dnf (Fedora)
+    sudo dnf install [package]
+  </code></pre>
+
+  <h3 id="system-monitoring">系統監控</h3>
+  <pre><code>
+    # 查看磁碟使用情況
+    df -h
+
+    # 查看記憶體使用情況
+    free -h
+
+    # 查看系統負載
+    top
+
+    # 查看硬體資訊
+    lshw
+  </code></pre>
+</div>
