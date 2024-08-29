@@ -5,12 +5,26 @@
   <pre><code>
     # 顯示目前目錄
     pwd
+    查看目前位置(print working directory)
+    
+    # . 代表目前所在位置
+
+    # 在GUI打開路徑或檔案
+      # 適用Mac
+      open [directory]
+      # 適用WSL
+      explore [directory]
 
     # 列出目錄內容
     ls
-
+    ls -a:顯示隱藏檔案
+    ls -l:顯示詳細資訊
+    ls -la:顯示隱藏檔案且詳細資訊
+    ls -ls[directory]:後面可加上路徑，就可以列出某個路徑下的檔案
     # 切換目錄
-    cd [directory]
+    cd [directory]:移動到其他位置
+    (change directory)
+    - cd ..代表上一層路徑
 
     # 建立目錄
     mkdir [directory]
@@ -19,7 +33,7 @@
     rm [file]
 
     # 刪除目錄
-    rm -r [directory]
+    rm -R [directory]
   </code></pre>
 
   <h3 id="file-management">檔案管理</h3>
@@ -27,8 +41,14 @@
     # 複製文件
     cp [source] [destination]
 
+    # 複製目錄
+    cp -R [source] [destination]
+
     # 移動文件
     mv [source] [destination]
+
+    # 重新命名
+    mv [file_name] [new_file_name]
 
     # 查看文件內容
     cat [file]
@@ -36,7 +56,49 @@
     # 編輯文件
     nano [file]
     vi [file]
+    vim [file]
   </code></pre>
+
+  <h3 id="vim">Vim編輯器</h3>
+  <p>Vim主要分為Normal mode用於指令操作，和Insert mode用於一般編輯</p>
+  <p>按下「I」即可進到Insert mode</p>
+  <p>按下「ESC」即可返回到Normal mode</p>
+  <pre><code>
+    # 關閉Vim編輯器
+    :q
+
+    # 存檔
+    :w
+
+    # 關閉並存檔
+    :wq
+
+    # 強制關閉
+    :q!
+
+  </code></pre>
+  <p>在Normal Mode:</p>
+  <p>按下「U」(undo)還原</p>
+  <p>按下「Ctrl」+「R」(redo)下一步</p>
+  <p>按下「Y」「Y」(yank)複製一整行</p>
+  <p>按下「p」往下貼上</p>
+  <p>按下「P」往上貼上</p>
+  <p>按下「D」「D」剪下一整行</p>
+  <p>只想複製一小段文字，需要進入選取模式</p>
+  <p>按下「V」進入選取模式後，即可用方向鍵移動</p>
+  <p>按下「Y」可複製，按下「D」可剪下，按下「p」可貼上</p>
+  <p>輸入「/ &lt;想搜尋字串&gt;」，按下「N」上一個結果，按下「n」下一個結果</p>
+  <p>輸入「:set nu」顯示行數</p>
+  <p>按下「G」跳到編輯器的底部</p>
+  <p>按下「g」「g」跳到編輯器的頂部</p>
+  <p>按下「{」向上一個block</p>
+  <p>按下「}」向下一個block</p>
+  <p>按下「W」向後一個單字</p>
+  <p>按下「B」向前一個單字</p>
+  <p>按下「0」跳到行頭</p>
+  <p>按下「$」跳到行尾</p>
+
+
 
   <h3 id="process-management">進程管理</h3>
   <pre><code>
@@ -91,6 +153,15 @@
 
     # 使用 dnf (Fedora)
     sudo dnf install [package]
+
+    # 使用 pacman (Manjaro)
+    sudo pacman -S [package]
+
+    # 使用 brew (macOS)
+      # 安裝 Homebrew（如果尚未安裝）
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install [package]
+
   </code></pre>
 
   <h3 id="system-monitoring">系統監控</h3>
@@ -107,4 +178,9 @@
     # 查看硬體資訊
     lshw
   </code></pre>
+
+  <h3 id="others">其他</h3>
+  <p>按下方向鍵「↑、↓」可選擇之前輸入過的指令，不用重新輸入。</p>
+  <p>按下「Ctrl」+「R」輸入文字：可往前搜尋。</p>
+  <p>按下「Ctrl」+「S」輸入文字：可往後搜尋。</p>
 </div>
