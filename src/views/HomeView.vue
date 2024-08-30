@@ -59,7 +59,6 @@ export default {
   },
   data() {
     return {
-      // Define the categorized skills with their corresponding routes and icons
       categorizedSkills: {
         frontend: [
           { name: "HTML", path: "/html", icon: "/logo/HTML-logo.png" },
@@ -90,40 +89,74 @@ export default {
 </script>
 
 <style scoped>
-/* 添加样式使表格看起来更好 */
+/* 表格樣式 */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 20px 0;
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 16px; /* 增加內邊距 */
   vertical-align: top;
+  font-size: 22px; /* 增大字體 */
+  line-height: 1.5; /* 增加行高 */
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #4CAF50; /* 綠色背景 */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-tr {
-  text-align: left;
+td {
+  background-color: #f9f9f9; /* 淺灰色背景 */
 }
 
+/* 列表樣式 */
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
+  padding: 12px; /* 增加內邊距 */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  background-color: #e3f2fd; /* 淺藍色背景 */
+  font-size: 22px; /* 增大字體 */
+  line-height: 1.5; /* 增加行高 */
+  overflow: hidden; /* 防止溢出 */
+  text-overflow: ellipsis; /* 溢出處理 */
+}
+
+li:hover {
+  background-color: #bbdefb; /* 更深的藍色背景 */
 }
 
 .skill-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px; /* 在小屏幕上稍微縮小字體 */
+  }
+
+  .skill-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
 }
 </style>

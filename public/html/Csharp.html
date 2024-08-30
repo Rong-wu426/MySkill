@@ -1,48 +1,319 @@
 <div class="content">
   <h1>C# 筆記</h1>
+  <h3 id="print-output">列印輸出</h3>
+  <div class="code-container">
+    <pre><code>Console.WriteLine("Hello, World!");</code></pre>
+  </div>
+
+  <h3 id="comments">註解</h3>
+  <div class="code-container">
+    <pre><code>
+      // 這是單行註解
+
+      /*
+       這是多行註解
+      */
+    </code></pre>
+  </div>
 
   <h3 id="variables">變數</h3>
-  <pre><code>
-  int x = 10;
-  string name = "Alice";
-  </code></pre>
+  <div class="code-container">
+    <pre><code>
+      // 可以賦予變數
+      int x = 10;
+      string y = "Hello";
 
-  <h3 id="functions">函數</h3>
-  <pre><code>
-  string Greet(string name) {
-    return $"Hello, {name}!";
-  }
-  Console.WriteLine(Greet("Alice"));
-  </code></pre>
+      // 也可以一次賦予多個變數
+      int zx = 5, zy = 6;
+    </code></pre>
+  </div>
+
+  <h3 id="data-types-overview">資料類型概述</h3>
+  <h4>文本類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>文本類型</td>
+        <td>string</td>
+        <td><pre><code>string text = "Hello";</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>數值類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>整數</td>
+        <td>int</td>
+        <td><pre><code>int num = 10;</code></pre></td>
+      </tr>
+      <tr>
+        <td>浮點數</td>
+        <td>float</td>
+        <td><pre><code>float num = 3.14f;</code></pre></td>
+      </tr>
+      <tr>
+        <td>雙精度浮點數</td>
+        <td>double</td>
+        <td><pre><code>double num = 3.14;</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>序列類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>列表</td>
+        <td>List</td>
+        <td><pre><code>List&lt;int&gt; myList = new List&lt;int&gt; { 1, 2, 3 };</code></pre></td>
+      </tr>
+      <tr>
+        <td>元組</td>
+        <td>Tuple</td>
+        <td><pre><code>var myTuple = Tuple.Create(1, 2, 3);</code></pre></td>
+      </tr>
+      <tr>
+        <td>範圍</td>
+        <td>Enumerable.Range</td>
+        <td><pre><code>var myRange = Enumerable.Range(0, 5);</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>映射類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>字典</td>
+        <td>Dictionary</td>
+        <td><pre><code>var myDict = new Dictionary&lt;string, int&gt; { { "Alice", 25 } };</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>集合類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>集合</td>
+        <td>HashSet</td>
+        <td><pre><code>var mySet = new HashSet&lt;int&gt; { 1, 2, 3 };</code></pre></td>
+      </tr>
+      <tr>
+        <td>凍結集合</td>
+        <td>ImmutableHashSet</td>
+        <td><pre><code>var myFrozenset = ImmutableHashSet.Create(1, 2, 3);</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>布林類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>布林值</td>
+        <td>bool</td>
+        <td><pre><code>bool isValid = true;</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>二進位類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>位元組陣列</td>
+        <td>byte</td>
+        <td><pre><code>byte[] byteArrayData = new byte[] { 72, 101, 108, 108, 111 };</code></pre></td>
+      </tr>
+      <tr>
+        <td>記憶體檢視</td>
+        <td>Memory<T></td>
+        <td><pre><code>Memory&lt;byte&gt; memoryData = new Memory&lt;byte&gt;(byteData);</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>None 類型</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>表示</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>None 類型</td>
+        <td>Nullable</td>
+        <td><pre><code>int? noneValue = null;</code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="conditionals">條件語句</h3>
+  <div class="code-container">
+    <pre><code>
+      if (x > 10)
+      {
+          Console.WriteLine("x 大於 10");
+      }
+      else if (x == 10)
+      {
+          Console.WriteLine("x 等於 10");
+      }
+      else
+      {
+          Console.WriteLine("x 小於 10");
+      }
+    </code></pre>
+  </div>
+
+  <h3 id="loops">循環語句</h3>
+  <div class="code-container">
+    <pre><code>
+      // for 迴圈
+      for (int i = 0; i &lt; 5; i++)
+      {
+          Console.WriteLine(i);
+      }
+
+      // while 循環
+      int count = 0;
+      while (count &lt; 5)
+      {
+          Console.WriteLine(count);
+          count++;
+      }
+    </code></pre>
+  </div>
+
+  <h3 id="functions">函數定義</h3>
+  <div class="code-container">
+    <pre><code>
+      // 定義函數
+      public static int Add(int a, int b)
+      {
+          return a + b;
+      }
+
+      // 調用函數
+      int result = Add(5, 3);
+      Console.WriteLine(result);
+    </code></pre>
+  </div>
 
   <h3 id="classes">類別</h3>
-  <pre><code>
-  class Person {
-    public string Name { get; set; }
-    public int Age { get; set; }
-  
-    public string Greet() {
-      return $"Hello, my name is {Name}.";
-    }
-  }
+  <div class="code-container">
+    <pre><code>
+      public class Person
+      {
+          public string Name { get; set; }
+          public int Age { get; set; }
 
-  Person person = new Person { Name = "Alice", Age = 30 };
-  Console.WriteLine(person.Greet());
-  </code></pre>
+          public void Introduce()
+          {
+              Console.WriteLine($"我的名字是 {Name}，我 {Age} 歲。");
+          }
+      }
 
-  <h3 id="collections">集合</h3>
-  <pre><code>
-  List&lt;int&gt; numbers = new List&lt;int&gt; { 1, 2, 3 };
-  numbers.Add(4);
-  Console.WriteLine(string.Join(", ", numbers));
-  </code></pre>
+      // 創建類別實例
+      Person person = new Person { Name = "Alice", Age = 30 };
+      person.Introduce();
+    </code></pre>
+  </div>
 
-  <h3 id="exceptions">異常處理</h3>
-  <pre><code>
-  try {
-    int result = 10 / 0;
-  } catch (DivideByZeroException) {
-    Console.WriteLine("Cannot divide by zero!");
-  }
-  </code></pre>
+  <h3 id="exception-handling">異常處理</h3>
+  <div class="code-container">
+    <pre><code>
+      try
+      {
+          int result = 10 / 0; // 這會引發除零異常
+      }
+      catch (DivideByZeroException ex)
+      {
+          Console.WriteLine("發生錯誤: " + ex.Message);
+      }
+      finally
+      {
+          Console.WriteLine("這裡的代碼無論是否發生異常都會執行。");
+      }
+    </code></pre>
+  </div>
+
+  <h3 id="file-operations">檔案操作</h3>
+  <div class="code-container">
+    <pre><code>
+      // 讀取檔案
+      string text = File.ReadAllText("file.txt");
+      Console.WriteLine(text);
+
+      // 寫入檔案
+      File.WriteAllText("file.txt", "Hello, World!");
+    </code></pre>
+  </div>
+
+  <h3 id="modules">模組</h3>
+  <div class="code-container">
+    <pre><code>
+      // 引入模組
+      using System;
+      using System.Collections.Generic;
+
+      // 顯示模組內部的函數
+      Console.WriteLine("模組操作示例");
+    </code></pre>
+  </div>
 </div>

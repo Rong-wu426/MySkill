@@ -11,6 +11,9 @@
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,10 +22,13 @@
 }
 
 footer {
-  margin-top: auto; /* Pushes the footer to the bottom */
+  margin-top: auto; 
   background-color: #f1f1f1;
   padding: 10px;
   border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
