@@ -2,50 +2,64 @@
   <div class="sidebar">
     <ul>
       <li><a href="/">主頁</a></li>
-      <li><a href="#print-output">列印輸出</a></li>
-      <li><a href="#comments">註譯</a></li>
-      <li><a href="#variables">變數</a></li>
       <li><a href="#data-types-overview">資料類型概述</a></li>
+      <li><a href="#variables">變數</a></li>
+      <li><a href="#comments">註解</a></li>
+      <li><a href="#user-input">使用者輸入</a></li>
+      <li><a href="#print-output">列印輸出</a></li>
+      <li><a href="#operators">運算符</a></li>
+      <li><a href="#math-functions">數學函數</a></li>
+      <li><a href="#string-functions">字串操作</a></li>
       <li><a href="#conditionals">條件語句</a></li>
       <li><a href="#loops">循環語句</a></li>
       <li><a href="#functions">函數定義</a></li>
-      <li><a href="#classes-objects">類別和物件</a></li>
-      <li><a href="#exceptions">異常處理</a></li>
+      <li><a href="#classes">類別</a></li>
+      <li><a href="#exception-handling">異常處理</a></li>
       <li><a href="#file-operations">檔案操作</a></li>
-      <li><a href="#modules-package">模組</a></li>
+      <li><a href="#modules">模組</a></li>
     </ul>
   </div>
   <div class="content">
     <h1>Python 筆記</h1>
-  
-    <h3 id="print-output">列印輸出</h3>
-    <div class="code-block">
-      <pre><code>print("Hello, World!")</code></pre>
-    </div>
-  
-    <h3 id="comments">註解</h3>
-    <div class="code-block">
-      <pre><code>
-        # 這是單行註解
-  
-        """"
-        這是多行註解
-        """"
-      </code></pre>
-    </div>
-  
-    <h3 id="variables">變數</h3>
-    <div class="code-container">
-      <pre><code>
-        # 可以賦予變數
-        x = 10
-        y = "Hello"
-        # 也可以一次賦予多個變數
-        zx, zy = 5, 6
-      </code></pre>
-    </div>
-  
+    
+    <table>
+      <tr>
+        <td><a href="#data-types-overview">資料類型概述</a></td>
+        <td><a href="#variables">變數</a></td>
+        <td><a href="#comments">註解</a></td>
+      </tr>
+      <tr>
+        <td><a href="#user-input">使用者輸入</a></td>
+        <td><a href="#print-output">列印輸出</a></td>
+        <td><a href="#operators">運算符</a></td>
+      </tr>
+      <tr>
+        <td><a href="#math-functions">數學函數</a></td>
+        <td><a href="#string-functions">字串操作</a></td>
+        <td><a href="#conditionals">條件語句</a></td>
+      </tr>
+      <tr>
+        <td><a href="#loops">循環語句</a></td>
+        <td><a href="#functions">函數定義</a></td>
+        <td><a href="#classes">類別</a></td>
+      </tr>
+      <tr>
+        <td><a href="#exception-handling">異常處理</a></td>
+        <td><a href="#file-operations">檔案操作</a></td>
+        <td><a href="#modules">模組</a></td>
+      </tr>
+    </table>
+
     <h3 id="data-types-overview">資料類型概述</h3>
+    <p>常見的轉換類型:
+      <ul>'int()':轉換為整數類型</ul>
+      <ul>'float()':轉換為浮點數類型</ul>
+      <ul>'str()':轉換為字符串類型</ul>
+      <ul>'bool()':轉換為布林類型</ul>
+      <ul>'list()':轉換為列表類型</ul>
+      <ul>'tuple()':轉換為元組類型</ul>
+    </p>
+    </p>
     <h4>文本類型</h4>
     <table>
       <thead>
@@ -224,7 +238,198 @@
         </tr>
       </tbody>
     </table>
+
+    <h3 id="variables">變數</h3>
+    <div class="code-container">
+      <pre><code>
+        # 可以賦予變數
+        x = 10
+        y = "Hello"
+        # 也可以一次賦予多個變數
+        zx, zy = 5, 6
+      </code></pre>
+    </div>
   
+    <h3 id="comments">註解</h3>
+    <div class="code-block">
+      <pre><code>
+        # 這是單行註解
+  
+        """"
+        這是多行註解
+        """"
+      </code></pre>
+    </div>
+
+    <h3 id="user-input">使用者輸入</h3>
+    <div class="code-container">
+      <pre><code>
+        username = Input("Enter username")
+      </code></pre>
+    </div>
+
+    <h3 id="print-output">列印輸出</h3>
+    <div class="code-block">
+      <pre><code>print("Hello, World!")</code></pre>
+    </div>
+  
+    <h3 id="operators">運算符</h3>
+      <table>
+          <thead>
+              <tr>
+                  <th>類別</th>
+                  <th>運算符/功能</th>
+                  <th>範例</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- 算術運算符 -->
+              <tr>
+                  <td rowspan="7">算術運算符</td>
+                  <td>+</td>
+                  <td><code>a + b</code></td>
+              </tr>
+              <tr>
+                  <td>-</td>
+                  <td><code>a - b</code></td>
+              </tr>
+              <tr>
+                  <td>*</td>
+                  <td><code>a * b</code></td>
+              </tr>
+              <tr>
+                  <td>/</td>
+                  <td><code>a / b</code></td>
+              </tr>
+              <tr>
+                  <td>%</td>
+                  <td><code>a % b</code></td>
+              </tr>
+              <tr>
+                  <td>** (次方)</td>
+                  <td><code>a ** b</code></td>
+              </tr>
+              <tr>
+                  <td>// (整除)</td>
+                  <td><code>a // b</code></td>
+              </tr>
+
+              <!-- 複合運算符 -->
+              <tr>
+                  <td rowspan="12">複合運算符</td>
+                  <td>+=</td>
+                  <td><code>a += b</code></td>
+              </tr>
+              <tr>
+                  <td>-=</td>
+                  <td><code>a -= b</code></td>
+              </tr>
+              <tr>
+                  <td>*=</td>
+                  <td><code>a *= b</code></td>
+              </tr>
+              <tr>
+                  <td>/=</td>
+                  <td><code>a /= b</code></td>
+              </tr>
+              <tr>
+                  <td>%=</td>
+                  <td><code>a %= b</code></td>
+              </tr>
+              <tr>
+                  <td>**=</td>
+                  <td><code>a **= b</code></td>
+              </tr>
+              <tr>
+                  <td>//=</td>
+                  <td><code>a //= b</code></td>
+              </tr>
+              <tr>
+                  <td>&=</td>
+                  <td><code>a &= b</code></td>
+              </tr>
+              <tr>
+                  <td>|=</td>
+                  <td><code>a |= b</code></td>
+              </tr>
+              <tr>
+                  <td>^=</td>
+                  <td><code>a ^= b</code></td>
+              </tr>
+              <tr>
+                  <td>&gt;=</td>
+                  <td><code>a &gt;= b</code></td>
+              </tr>
+              <tr>
+                  <td>&lt;&lt;=</td>
+                  <td><code>a &lt;&lt;= b</code></td>
+              </tr>
+
+              <!-- 比較運算符 -->
+              <tr>
+                  <td rowspan="6">比較運算符</td>
+                  <td>==</td>
+                  <td><code>a == b</code></td>
+              </tr>
+              <tr>
+                  <td>!=</td>
+                  <td><code>a != b</code></td>
+              </tr>
+              <tr>
+                  <td>&gt;</td>
+                  <td><code>a &gt; b</code></td>
+              </tr>
+              <tr>
+                  <td>&lt;</td>
+                  <td><code>a &lt; b</code></td>
+              </tr>
+              <tr>
+                  <td>&gt;=</td>
+                  <td><code>a &gt;= b</code></td>
+              </tr>
+              <tr>
+                  <td>&lt;=</td>
+                  <td><code>a &lt;= b</code></td>
+              </tr>
+
+              <!-- 邏輯運算符 -->
+              <tr>
+                  <td rowspan="3">邏輯運算符</td>
+                  <td>and</td>
+                  <td><code>a and b</code></td>
+              </tr>
+              <tr>
+                  <td>or</td>
+                  <td><code>a or b</code></td>
+              </tr>
+              <tr>
+                  <td>not</td>
+                  <td><code>not a</code></td>
+              </tr>
+          </tbody>
+      </table>
+
+    <h3 id="math-functions">數學函數</h3>
+    <div id="code-container">
+      <pre><code>
+        平方根:math.sqrt(x)
+        絕對值:math.abs(x)
+        最大值:math.max(x,y)
+        最小值:math.min(x,y)
+        四捨五入:math.round(x)
+      </code></pre>
+    </div>
+
+    <h3 id="string-functions">字串操作</h3>
+    <div class="code-container">
+      <pre><code>
+        字串長度: len("string")
+        轉大寫: string.upper()
+        轉小寫: string.lower()
+        字串插值: f"Hello, {name}!" & "Hello, {}".format(name)        
+      </code></pre>
+    </div>
+
     <h3 id="conditionals">條件語句</h3>
     <div class="code-container">
       <pre><code>
@@ -262,7 +467,7 @@
       </code></pre>
     </div>
   
-    <h3 id="classes-objects">類別和物件</h3>
+    <h3 id="classes">類別和物件</h3>
     <div class="code-container">
       <pre><code>
         class Person:
@@ -279,7 +484,7 @@
       </code></pre>
     </div>
   
-    <h3 id="exceptions">異常處理</h3>
+    <h3 id="exceptions-handling">異常處理</h3>
     <div class="code-container">
       <pre><code>
         try:
@@ -309,7 +514,7 @@
       </code></pre>
     </div>
   
-    <h3 id="modules-package">模組</h3>
+    <h3 id="modules">模組</h3>
     <div class="code-container">
       <pre><code>
         # 導入整個模組

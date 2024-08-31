@@ -103,12 +103,12 @@
 .content p {
     font-size: 1.125rem;
     color: #2c3e50; 
-    margin-bottom: 30px;
+    margin: 5px 0px;
 }
 
 .content ul {
     list-style: disc;
-    margin-bottom: 20px;
+    margin:5px 0px;
     font-size: 18px;
     color: #2c3e50;
 }
@@ -121,7 +121,7 @@
 
 .content .code-container{
     width: 100%;
-    height: auto;
+    height:min-content;
     max-width: 600px;
     margin: 0px auto;
     box-sizing: border-box;
@@ -131,6 +131,7 @@
     border-radius: 5px;
     overflow:auto;
     font-family: monospace;
+    text-align: left;
     white-space: pre;
     line-height:normal;
 }
