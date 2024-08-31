@@ -1,20 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#install">安裝 Docker</a></li>
-        <li><a href="#dockerfile">Dockerfile</a></li>
-        <li><a href="#build">建立映像</a></li>
-        <li><a href="#run">運行容器</a></li>
-        <li><a href="#ps">查看運行中的容器</a></li>
-        <li><a href="#stop">停止容器</a></li>
-        <li><a href="#rm">刪除容器</a></li>
-        <li><a href="#images">查看映像</a></li>
-        <li><a href="#rmi">刪除映像</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -25,7 +13,7 @@ export default {
   name: 'DockerSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/DockerSkill.html'
     };
   },
   async mounted() {

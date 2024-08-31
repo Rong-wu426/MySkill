@@ -1,51 +1,66 @@
-<div class="content">
-  <h1>MySQL 筆記</h1>
-
-  <h3 id="select">SELECT 語句</h3>
-  <pre><code>SELECT * FROM table_name;</code></pre>
-
-  <h3 id="insert">INSERT INTO</h3>
-  <pre><code>
-    INSERT INTO table_name (column1, column2) VALUES (value1, value2);
-  </code></pre>
-
-  <h3 id="update">UPDATE 語句</h3>
-  <pre><code>
-    UPDATE table_name
-    SET column1 = value1, column2 = value2
-    WHERE condition;
-  </code></pre>
-
-  <h3 id="delete">DELETE 語句</h3>
-  <pre><code>
-    DELETE FROM table_name
-    WHERE condition;
-  </code></pre>
-
-  <h3 id="joins">JOIN 語句</h3>
-  <pre><code>
-    SELECT columns
-    FROM table1
-    JOIN table2 ON table1.common_field = table2.common_field;
-  </code></pre>
-
-  <h3 id="create-table">CREATE TABLE</h3>
-  <pre><code>
-    CREATE TABLE table_name (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    column1 VARCHAR(255) NOT NULL,
-    column2 INT
-    );
-  </code></pre>
-
-  <h3 id="alter-table">ALTER TABLE</h3>
-  <pre><code>
-    ALTER TABLE table_name
-    ADD column_name datatype;
-  </code></pre>
-
-  <h3 id="drop-table">DROP TABLE</h3>
-  <pre><code>
-    DROP TABLE table_name;
-  </code></pre>
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">主頁</a></li>
+      <li><a href="#select">SELECT 語句</a></li>
+      <li><a href="#insert">INSERT INTO</a></li>
+      <li><a href="#update">UPDATE 語句</a></li>
+      <li><a href="#delete">DELETE 語句</a></li>
+      <li><a href="#joins">JOIN 語句</a></li>
+      <li><a href="#create-table">CREATE TABLE</a></li>
+      <li><a href="#alter-table">ALTER TABLE</a></li>
+      <li><a href="#drop-table">DROP TABLE</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>MySQL 筆記</h1>
+  
+    <h3 id="select">SELECT 語句</h3>
+    <pre><code>SELECT * FROM table_name;</code></pre>
+  
+    <h3 id="insert">INSERT INTO</h3>
+    <pre><code>
+      INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+    </code></pre>
+  
+    <h3 id="update">UPDATE 語句</h3>
+    <pre><code>
+      UPDATE table_name
+      SET column1 = value1, column2 = value2
+      WHERE condition;
+    </code></pre>
+  
+    <h3 id="delete">DELETE 語句</h3>
+    <pre><code>
+      DELETE FROM table_name
+      WHERE condition;
+    </code></pre>
+  
+    <h3 id="joins">JOIN 語句</h3>
+    <pre><code>
+      SELECT columns
+      FROM table1
+      JOIN table2 ON table1.common_field = table2.common_field;
+    </code></pre>
+  
+    <h3 id="create-table">CREATE TABLE</h3>
+    <pre><code>
+      CREATE TABLE table_name (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      column1 VARCHAR(255) NOT NULL,
+      column2 INT
+      );
+    </code></pre>
+  
+    <h3 id="alter-table">ALTER TABLE</h3>
+    <pre><code>
+      ALTER TABLE table_name
+      ADD column_name datatype;
+    </code></pre>
+  
+    <h3 id="drop-table">DROP TABLE</h3>
+    <pre><code>
+      DROP TABLE table_name;
+    </code></pre>
+  </div>
 </div>

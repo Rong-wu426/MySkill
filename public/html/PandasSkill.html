@@ -1,82 +1,95 @@
-<div class="content">
-  <h1>Pandas 筆記</h1>
-
-  <h3 id="installation">安裝與導入</h3>
-  <pre><code>
-    # 安裝 Pandas
-    pip install pandas
-
-    # 導入 Pandas
-    import pandas as pd
-  </code></pre>
-
-  <h3 id="dataframes">DataFrame 創建</h3>
-  <pre><code>
-    import pandas as pd
-
-    # 從字典建立 DataFrame
-    data = {
-    'Name': ['Alice', 'Bob', 'Charlie'],
-    'Age': [25, 30, 35],
-    'City': ['New York', 'Los Angeles', 'Chicago']
-    }
-    df = pd.DataFrame(data)
-
-    # 從 CSV 檔案建立 DataFrame
-    df = pd.read_csv('data.csv')
-  </code></pre>
-
-  <h3 id="data-selection">數據選擇</h3>
-  <pre><code>
-    # 選擇單列
-    df['Name']
-
-    # 選擇多列
-    df[['Name', 'City']]
-
-    # 依條件篩選
-    df[df['Age'] > 30]
-
-    # 選擇行
-    df.iloc[0] # 第一行
-    df.loc[0] # 依索引選擇
-  </code></pre>
-
-  <h3 id="data-manipulation">數據操作</h3>
-  <pre><code>
-    # 新增列
-    df['Country'] = 'USA'
-
-    # 修改列
-    df['Age'] = df['Age'] + 1
-
-    # 刪除列
-    df.drop('Country', axis=1, inplace=True)
-
-    # 刪除行
-    df.drop(0, axis=0, inplace=True)
-  </code></pre>
-
-  <h3 id="data-cleaning">資料清理</h3>
-  <pre><code>
-    # 填充缺失值
-    df.fillna('N/A', inplace=True)
-
-    # 刪除缺失值
-    df.dropna(inplace=True)
-
-    # 重置索引
-    df.reset_index(drop=True, inplace=True)
-  </code></pre>
-
-  <h3 id="data-aggregation">資料聚合</h3>
-  <pre><code>
-    # 計算統計量
-    df['Age'].mean() # 平均值
-    df['Age'].sum() # 總和
-
-    # 按列分組並計算統計量
-    grouped = df.groupby('City')
-    grouped['Age'].mean()
-  </code></pre>
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">主頁</a></li>
+      <li><a href="#installation">安裝與導入</a></li>
+      <li><a href="#dataframes">DataFrame 創建</a></li>
+      <li><a href="#data-selection">數據選擇</a></li>
+      <li><a href="#data-manipulation">數據操作</a></li>
+      <li><a href="#data-cleaning">資料清理</a></li>
+      <li><a href="#data-aggregation">數據聚合</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>Pandas 筆記</h1>
+  
+    <h3 id="installation">安裝與導入</h3>
+    <pre><code>
+      # 安裝 Pandas
+      pip install pandas
+  
+      # 導入 Pandas
+      import pandas as pd
+    </code></pre>
+  
+    <h3 id="dataframes">DataFrame 創建</h3>
+    <pre><code>
+      import pandas as pd
+  
+      # 從字典建立 DataFrame
+      data = {
+      'Name': ['Alice', 'Bob', 'Charlie'],
+      'Age': [25, 30, 35],
+      'City': ['New York', 'Los Angeles', 'Chicago']
+      }
+      df = pd.DataFrame(data)
+  
+      # 從 CSV 檔案建立 DataFrame
+      df = pd.read_csv('data.csv')
+    </code></pre>
+  
+    <h3 id="data-selection">數據選擇</h3>
+    <pre><code>
+      # 選擇單列
+      df['Name']
+  
+      # 選擇多列
+      df[['Name', 'City']]
+  
+      # 依條件篩選
+      df[df['Age'] > 30]
+  
+      # 選擇行
+      df.iloc[0] # 第一行
+      df.loc[0] # 依索引選擇
+    </code></pre>
+  
+    <h3 id="data-manipulation">數據操作</h3>
+    <pre><code>
+      # 新增列
+      df['Country'] = 'USA'
+  
+      # 修改列
+      df['Age'] = df['Age'] + 1
+  
+      # 刪除列
+      df.drop('Country', axis=1, inplace=True)
+  
+      # 刪除行
+      df.drop(0, axis=0, inplace=True)
+    </code></pre>
+  
+    <h3 id="data-cleaning">資料清理</h3>
+    <pre><code>
+      # 填充缺失值
+      df.fillna('N/A', inplace=True)
+  
+      # 刪除缺失值
+      df.dropna(inplace=True)
+  
+      # 重置索引
+      df.reset_index(drop=True, inplace=True)
+    </code></pre>
+  
+    <h3 id="data-aggregation">資料聚合</h3>
+    <pre><code>
+      # 計算統計量
+      df['Age'].mean() # 平均值
+      df['Age'].sum() # 總和
+  
+      # 按列分組並計算統計量
+      grouped = df.groupby('City')
+      grouped['Age'].mean()
+    </code></pre>
+  </div>
 </div>

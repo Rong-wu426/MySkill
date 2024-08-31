@@ -1,319 +1,337 @@
-<div class="content">
-  <h1>Python 筆記</h1>
-
-  <h3 id="print-output">列印輸出</h3>
-  <div class="code-block">
-    <pre><code>print("Hello, World!")</code></pre>
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">主頁</a></li>
+      <li><a href="#print-output">列印輸出</a></li>
+      <li><a href="#comments">註譯</a></li>
+      <li><a href="#variables">變數</a></li>
+      <li><a href="#data-types-overview">資料類型概述</a></li>
+      <li><a href="#conditionals">條件語句</a></li>
+      <li><a href="#loops">循環語句</a></li>
+      <li><a href="#functions">函數定義</a></li>
+      <li><a href="#classes-objects">類別和物件</a></li>
+      <li><a href="#exceptions">異常處理</a></li>
+      <li><a href="#file-operations">檔案操作</a></li>
+      <li><a href="#modules-package">模組</a></li>
+    </ul>
   </div>
-
-  <h3 id="comments">註解</h3>
-  <div class="code-block">
-    <pre><code>
-      # 這是單行註解
-
-      """"
-      這是多行註解
-      """"
-    </code></pre>
-  </div>
-
-  <h3 id="variables">變數</h3>
-  <div class="code-container">
-    <pre><code>
-      # 可以賦予變數
-      x = 10
-      y = "Hello"
-      # 也可以一次賦予多個變數
-      zx, zy = 5, 6
-    </code></pre>
-  </div>
-
-  <h3 id="data-types-overview">資料類型概述</h3>
-  <h4>文本類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>文本類型</td>
-        <td>str</td>
-        <td><pre><code>text = "Hello"</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>數值類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>整數</td>
-        <td>int</td>
-        <td><pre><code>num = 10</code></pre></td>
-      </tr>
-      <tr>
-        <td>浮點數</td>
-        <td>float</td>
-        <td><pre><code>num = 3.14</code></pre></td>
-      </tr>
-      <tr>
-        <td>複數</td>
-        <td>complex</td>
-        <td><pre><code>num = 1 + 2j</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>序列類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>列表</td>
-        <td>list</td>
-        <td><pre><code>my_list = [1, 2, 3]</code></pre></td>
-      </tr>
-      <tr>
-        <td>元組</td>
-        <td>tuple</td>
-        <td><pre><code>my_tuple = (1, 2, 3)</code></pre></td>
-      </tr>
-      <tr>
-        <td>範圍</td>
-        <td>range</td>
-        <td><pre><code>my_range = range(5)</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>映射類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>字典</td>
-        <td>dict</td>
-        <td><pre><code>my_dict = {"name": "Alice", "age": 25}</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>集合類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>集合</td>
-        <td>set</td>
-        <td><pre><code>my_set = {1, 2, 3}</code></pre></td>
-      </tr>
-      <tr>
-        <td>凍結集合</td>
-        <td>frozenset</td>
-        <td><pre><code>my_frozenset = frozenset({1, 2, 3})</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>布林類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>布林值</td>
-        <td>bool</td>
-        <td><pre><code>is_valid = True</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>二進位類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>位元組</td>
-        <td>bytes</td>
-        <td><pre><code>byte_data = b"Hello"</code></pre></td>
-      </tr>
-      <tr>
-        <td>位元組陣列</td>
-        <td>bytearray</td>
-        <td><pre><code>bytearray_data = bytearray(b"Hello")</code></pre></td>
-      </tr>
-      <tr>
-        <td>記憶體檢視</td>
-        <td>memoryview</td>
-        <td><pre><code>memory_data = memoryview(b"Hello")</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>None 類型</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>類型</th>
-        <th>表示</th>
-        <th>範例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>None 類型</td>
-        <td>NoneType</td>
-        <td><pre><code>none_value = None</code></pre></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3 id="conditionals">條件語句</h3>
-  <div class="code-container">
-    <pre><code>
-      if x > 10:
-          print("x 大於 10")
-      elif x == 10:
-          print("x 等於 10")
-      else:
-          print("x 小於 10")
-    </code></pre>
-  </div>
-
-  <h3 id="loops">循環語句</h3>
-  <div class="code-container">
-    <pre><code>
-      # for 迴圈
-      for i in range(5):
-          print(i)
-
-      # while 循環
-      count = 0
-      while count < 5:
-          print(count)
-          count += 1
-    </code></pre>
-  </div>
-
-  <h3 id="functions">函數定義</h3>
-   <div class="code-container">
-    <pre><code>
-      def greet(name):
-          return f"你好, {name}!"
-      
-      print(greet("Alice"))
-    </code></pre>
-  </div>
-
-  <h3 id="classes-objects">類別和物件</h3>
-  <div class="code-container">
-    <pre><code>
-      class Person:
-          def __init__(self, name, age):
-              self.name = name
-              self.age = age
-
-          def greet(self):
-              return f"你好, 我是 {self.name}，我 {self.age} 歲。"
-
-      # 創建一個 Person 物件
-      person = Person("Alice", 30)
-      print(person.greet())
-    </code></pre>
-  </div>
-
-  <h3 id="exceptions">異常處理</h3>
-  <div class="code-container">
-    <pre><code>
-      try:
-          result = 10 / 0
-      except ZeroDivisionError:
-          print("不能除以零")
-      finally:
-          print("這個區塊會被執行")
-    </code></pre>
-  </div>
-
-  <h3 id="file-operations">檔案操作</h3>
-  <div class="code-container">
-    <pre><code>
-      # 寫入文件
-      with open('file.txt', 'w') as f:
-          f.write("Hello, World!")
+  <div class="content">
+    <h1>Python 筆記</h1>
   
-      # 讀取文件
-      with open('file.txt', 'r') as f:
-          content = f.read()
-      print(content)
+    <h3 id="print-output">列印輸出</h3>
+    <div class="code-block">
+      <pre><code>print("Hello, World!")</code></pre>
+    </div>
   
-      # 追加到文件
-      with open('file.txt', 'a') as f:
-          f.write("\n追加的内容")
-    </code></pre>
+    <h3 id="comments">註解</h3>
+    <div class="code-block">
+      <pre><code>
+        # 這是單行註解
+  
+        """"
+        這是多行註解
+        """"
+      </code></pre>
+    </div>
+  
+    <h3 id="variables">變數</h3>
+    <div class="code-container">
+      <pre><code>
+        # 可以賦予變數
+        x = 10
+        y = "Hello"
+        # 也可以一次賦予多個變數
+        zx, zy = 5, 6
+      </code></pre>
+    </div>
+  
+    <h3 id="data-types-overview">資料類型概述</h3>
+    <h4>文本類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>文本類型</td>
+          <td>str</td>
+          <td><pre><code>text = "Hello"</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>數值類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>整數</td>
+          <td>int</td>
+          <td><pre><code>num = 10</code></pre></td>
+        </tr>
+        <tr>
+          <td>浮點數</td>
+          <td>float</td>
+          <td><pre><code>num = 3.14</code></pre></td>
+        </tr>
+        <tr>
+          <td>複數</td>
+          <td>complex</td>
+          <td><pre><code>num = 1 + 2j</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>序列類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>列表</td>
+          <td>list</td>
+          <td><pre><code>my_list = [1, 2, 3]</code></pre></td>
+        </tr>
+        <tr>
+          <td>元組</td>
+          <td>tuple</td>
+          <td><pre><code>my_tuple = (1, 2, 3)</code></pre></td>
+        </tr>
+        <tr>
+          <td>範圍</td>
+          <td>range</td>
+          <td><pre><code>my_range = range(5)</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>映射類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>字典</td>
+          <td>dict</td>
+          <td><pre><code>my_dict = {"name": "Alice", "age": 25}</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>集合類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>集合</td>
+          <td>set</td>
+          <td><pre><code>my_set = {1, 2, 3}</code></pre></td>
+        </tr>
+        <tr>
+          <td>凍結集合</td>
+          <td>frozenset</td>
+          <td><pre><code>my_frozenset = frozenset({1, 2, 3})</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>布林類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>布林值</td>
+          <td>bool</td>
+          <td><pre><code>is_valid = True</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>二進位類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>位元組</td>
+          <td>bytes</td>
+          <td><pre><code>byte_data = b"Hello"</code></pre></td>
+        </tr>
+        <tr>
+          <td>位元組陣列</td>
+          <td>bytearray</td>
+          <td><pre><code>bytearray_data = bytearray(b"Hello")</code></pre></td>
+        </tr>
+        <tr>
+          <td>記憶體檢視</td>
+          <td>memoryview</td>
+          <td><pre><code>memory_data = memoryview(b"Hello")</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h4>None 類型</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>類型</th>
+          <th>表示</th>
+          <th>範例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>None 類型</td>
+          <td>NoneType</td>
+          <td><pre><code>none_value = None</code></pre></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h3 id="conditionals">條件語句</h3>
+    <div class="code-container">
+      <pre><code>
+        if x > 10:
+            print("x 大於 10")
+        elif x == 10:
+            print("x 等於 10")
+        else:
+            print("x 小於 10")
+      </code></pre>
+    </div>
+  
+    <h3 id="loops">循環語句</h3>
+    <div class="code-container">
+      <pre><code>
+        # for 迴圈
+        for i in range(5):
+            print(i)
+  
+        # while 循環
+        count = 0
+        while count < 5:
+            print(count)
+            count += 1
+      </code></pre>
+    </div>
+  
+    <h3 id="functions">函數定義</h3>
+     <div class="code-container">
+      <pre><code>
+        def greet(name):
+            return f"你好, {name}!"
+        
+        print(greet("Alice"))
+      </code></pre>
+    </div>
+  
+    <h3 id="classes-objects">類別和物件</h3>
+    <div class="code-container">
+      <pre><code>
+        class Person:
+            def __init__(self, name, age):
+                self.name = name
+                self.age = age
+  
+            def greet(self):
+                return f"你好, 我是 {self.name}，我 {self.age} 歲。"
+  
+        # 創建一個 Person 物件
+        person = Person("Alice", 30)
+        print(person.greet())
+      </code></pre>
+    </div>
+  
+    <h3 id="exceptions">異常處理</h3>
+    <div class="code-container">
+      <pre><code>
+        try:
+            result = 10 / 0
+        except ZeroDivisionError:
+            print("不能除以零")
+        finally:
+            print("這個區塊會被執行")
+      </code></pre>
+    </div>
+  
+    <h3 id="file-operations">檔案操作</h3>
+    <div class="code-container">
+      <pre><code>
+        # 寫入文件
+        with open('file.txt', 'w') as f:
+            f.write("Hello, World!")
+    
+        # 讀取文件
+        with open('file.txt', 'r') as f:
+            content = f.read()
+        print(content)
+    
+        # 追加到文件
+        with open('file.txt', 'a') as f:
+            f.write("\n追加的内容")
+      </code></pre>
+    </div>
+  
+    <h3 id="modules-package">模組</h3>
+    <div class="code-container">
+      <pre><code>
+        # 導入整個模組
+        import math
+  
+        # 使用模組中的函數
+        result = math.sqrt(16)
+        print(result)
+  
+        # 從模組中導入特定函數
+        from datetime import datetime
+  
+        # 使用導入函數
+        now = datetime.now()
+        print(now)
+  
+        # 導入自定義模組
+        import my_module
+  
+        # 使用自定義模組中的函數
+        my_module.my_function()
+      </code></pre>
+    </div>
   </div>
-
-  <h3 id="modules-package">模組</h3>
-  <div class="code-container">
-    <pre><code>
-      # 導入整個模組
-      import math
-
-      # 使用模組中的函數
-      result = math.sqrt(16)
-      print(result)
-
-      # 從模組中導入特定函數
-      from datetime import datetime
-
-      # 使用導入函數
-      now = datetime.now()
-      print(now)
-
-      # 導入自定義模組
-      import my_module
-
-      # 使用自定義模組中的函數
-      my_module.my_function()
-    </code></pre>
-  </div>
-</div>
+</div>  

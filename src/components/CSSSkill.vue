@@ -1,16 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#selectors">選擇器</a></li>
-        <li><a href="#box-model">盒子模型</a></li>
-        <li><a href="#positioning">定位</a></li>
-        <li><a href="#flexbox">Flexbox</a></li>
-        <li><a href="#grid">Grid</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -21,7 +13,7 @@ export default {
   name: 'CSSSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/CSSSkill.html'
     };
   },
   async mounted() {

@@ -1,17 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#installation">安裝</a></li>
-        <li><a href="#basic-usage">基本用法</a></li>
-        <li><a href="#directives">指令</a></li>
-        <li><a href="#components">組件</a></li>
-        <li><a href="#state-management">狀態管理</a></li>
-        <li><a href="#routing">路由</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -22,7 +13,7 @@ export default {
   name: 'VueSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/VueSkill.html'
     };
   },
   async mounted() {

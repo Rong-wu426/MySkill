@@ -1,17 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#installation">安裝與導入</a></li>
-        <li><a href="#dataframes">DataFrame 創建</a></li>
-        <li><a href="#data-selection">數據選擇</a></li>
-        <li><a href="#data-manipulation">數據操作</a></li>
-        <li><a href="#data-cleaning">資料清理</a></li>
-        <li><a href="#data-aggregation">數據聚合</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -22,7 +13,7 @@ export default {
   name: 'PandasSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/PandasSkill.html'
     };
   },
   async mounted() {

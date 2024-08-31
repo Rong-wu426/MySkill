@@ -1,22 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#print-output">列印輸出</a></li>
-        <li><a href="#comments">註解</a></li>
-        <li><a href="#variables">變數</a></li>
-        <li><a href="#data-types-overview">資料類型概述</a></li>
-        <li><a href="#conditionals">條件語句</a></li>
-        <li><a href="#loops">循環語句</a></li>
-        <li><a href="#functions">函數定義</a></li>
-        <li><a href="#classes">類別</a></li>
-        <li><a href="#exception-handling">異常處理</a></li>
-        <li><a href="#file-operations">檔案操作</a></li>
-        <li><a href="#modules">模組</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -27,9 +13,10 @@ export default {
   name: 'CsharpSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/Csharp.html' 
     };
   },
+  
   async mounted() {
     try {
       const response = await fetch('/html/Csharp.html');
@@ -43,6 +30,7 @@ export default {
         
         const thead = document.querySelector('.content thead');
         const tbody = document.querySelector('.content tbody');
+        
         if (thead && tbody) {
           tbody.style.width = `${thead.offsetWidth}px`;
         }

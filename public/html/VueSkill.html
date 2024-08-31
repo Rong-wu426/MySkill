@@ -1,122 +1,136 @@
-<div class="content">
-  <h1>Vue.js 筆記</h1>
-
-  <h3 id="introduction">簡介</h3>
-  <p>
-  Vue.js 是一個進階的 JavaScript 框架，用於建立使用者介面和單頁應用程式。
-  </p>
-
-  <h3 id="installation">安裝</h3>
-  <pre><code>
-    # 使用 npm 安裝
-    npm install vue
-
-    # 在 HTML 中使用 CDN
-    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.6/js/lightgallery.min.js"&gt;&lt;/script&gt;
-  </code></pre>
-
-  <h3 id="basic-usage">基本用法</h3>
-  <pre><code>
-    <!-- HTML 部分 -->
-    &lt;div id="app"&gt;
-    {{ message }}
-    &lt;/div&gt;
-
-    <!-- JavaScript 部分 -->
-    &lt;script&gt;
-    new Vue({
-    el: '#app',
-    data: {
-    message: 'Hello Vue!'
-    }
-    });
-    &lt;/script&gt;
-  </code></pre>
-
-  <h3 id="directives">指令</h3>
-  <pre><code>
-    <!-- v-bind 用於綁定屬性 -->
-    &lt;img v-bind:src="imageSrc" alt="Vue.js"&gt;
-
-    <!-- v-model 用於雙向資料綁定 -->
-    &lt;input v-model="inputValue" placeholder="輸入內容"&gt;
-
-    <!-- v-if 用於條件渲染 -->
-    &lt;p v-if="showParagraph"&gt;這是條件渲染的內容。 &lt;/p&gt;
-
-    <!-- v-for 用於列表渲染 -->
-    &lt;ul&gt;
-    &lt;li v-for="item in items" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;
-    &lt;/ul&gt;
-  </code></pre>
-
-  <h3 id="components">組件</h3>
-  <pre><code>
-    <!-- 定義一個簡單的元件 -->
-    &lt;script&gt;
-    Vue.component('my-component', {
-    template: '&lt;div&gt;A custom component!&lt;/div&gt;'
-    });
-    &lt;/script&gt;
-
-    <!-- 使用組件 -->
-    &lt;my-component&gt;&lt;/my-component&gt;
-  </code></pre>
-
-  <h3 id="state-management">狀態管理</h3>
-  <pre><code>
-    # 使用 Vuex 進行狀態管理
-    npm install vuex
-
-    # 建立 Vuex store
-    import Vue from 'vue';
-    import Vuex from 'vuex';
-
-    Vue.use(Vuex);
-
-    const store = new Vuex.Store({
-    state: {
-    count: 0
-    },
-    mutations: {
-    increment(state) {
-    state.count++;
-    }
-    }
-    });
-
-    new Vue({
-    el: '#app',
-    store,
-    computed: {
-    count() {
-    return this.$store.state.count;
-    }
-    }
-    });
-  </code></pre>
-
-  <h3 id="routing">路由</h3>
-  <pre><code>
-    # 使用 Vue Router 進行路由管理
-    npm install vue-router
-
-    # 設定路由
-    import Vue from 'vue';
-    import Router from 'vue-router';
-
-    Vue.use(Router);
-
-    const routes = [
-    { path: '/', component: Home },
-    { path: '/about', component: About }
-    ];
-
-    const router = new Router({ routes });
-
-    new Vue({
-    el: '#app',
-    router
-    });
-  </code></pre>
-</div>
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">主頁</a></li>
+      <li><a href="#installation">安裝</a></li>
+      <li><a href="#basic-usage">基本用法</a></li>
+      <li><a href="#directives">指令</a></li>
+      <li><a href="#components">組件</a></li>
+      <li><a href="#state-management">狀態管理</a></li>
+      <li><a href="#routing">路由</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>Vue.js 筆記</h1>
+  
+    <h3 id="introduction">簡介</h3>
+    <p>
+    Vue.js 是一個進階的 JavaScript 框架，用於建立使用者介面和單頁應用程式。
+    </p>
+  
+    <h3 id="installation">安裝</h3>
+    <pre><code>
+      # 使用 npm 安裝
+      npm install vue
+  
+      # 在 HTML 中使用 CDN
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.6/js/lightgallery.min.js"&gt;&lt;/script&gt;
+    </code></pre>
+  
+    <h3 id="basic-usage">基本用法</h3>
+    <pre><code>
+      <!-- HTML 部分 -->
+      &lt;div id="app"&gt;
+      {{ message }}
+      &lt;/div&gt;
+  
+      <!-- JavaScript 部分 -->
+      &lt;script&gt;
+      new Vue({
+      el: '#app',
+      data: {
+      message: 'Hello Vue!'
+      }
+      });
+      &lt;/script&gt;
+    </code></pre>
+  
+    <h3 id="directives">指令</h3>
+    <pre><code>
+      <!-- v-bind 用於綁定屬性 -->
+      &lt;img v-bind:src="imageSrc" alt="Vue.js"&gt;
+  
+      <!-- v-model 用於雙向資料綁定 -->
+      &lt;input v-model="inputValue" placeholder="輸入內容"&gt;
+  
+      <!-- v-if 用於條件渲染 -->
+      &lt;p v-if="showParagraph"&gt;這是條件渲染的內容。 &lt;/p&gt;
+  
+      <!-- v-for 用於列表渲染 -->
+      &lt;ul&gt;
+      &lt;li v-for="item in items" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;
+      &lt;/ul&gt;
+    </code></pre>
+  
+    <h3 id="components">組件</h3>
+    <pre><code>
+      <!-- 定義一個簡單的元件 -->
+      &lt;script&gt;
+      Vue.component('my-component', {
+      template: '&lt;div&gt;A custom component!&lt;/div&gt;'
+      });
+      &lt;/script&gt;
+  
+      <!-- 使用組件 -->
+      &lt;my-component&gt;&lt;/my-component&gt;
+    </code></pre>
+  
+    <h3 id="state-management">狀態管理</h3>
+    <pre><code>
+      # 使用 Vuex 進行狀態管理
+      npm install vuex
+  
+      # 建立 Vuex store
+      import Vue from 'vue';
+      import Vuex from 'vuex';
+  
+      Vue.use(Vuex);
+  
+      const store = new Vuex.Store({
+      state: {
+      count: 0
+      },
+      mutations: {
+      increment(state) {
+      state.count++;
+      }
+      }
+      });
+  
+      new Vue({
+      el: '#app',
+      store,
+      computed: {
+      count() {
+      return this.$store.state.count;
+      }
+      }
+      });
+    </code></pre>
+  
+    <h3 id="routing">路由</h3>
+    <pre><code>
+      # 使用 Vue Router 進行路由管理
+      npm install vue-router
+  
+      # 設定路由
+      import Vue from 'vue';
+      import Router from 'vue-router';
+  
+      Vue.use(Router);
+  
+      const routes = [
+      { path: '/', component: Home },
+      { path: '/about', component: About }
+      ];
+  
+      const router = new Router({ routes });
+  
+      new Vue({
+      el: '#app',
+      router
+      });
+    </code></pre>
+  </div>
+</div> 
+  

@@ -1,116 +1,132 @@
-<div class="content">
-  <h1>Seaborn 筆記</h1>
-
-  <h3 id="introduction">簡介</h3>
-  <p>
-  Seaborn 是一個基於 Matplotlib 的 Python資料視覺化庫，提供高階的介面來繪製統計圖表。
-  </p>
-
-  <h3 id="installation">安裝</h3>
-  <pre><code>
-    # 使用 pip 安裝 Seaborn
-    pip install seaborn
-  </code></pre>
-
-  <h3 id="basic-plot">基本繪圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製基本圖形
-    data = sns.load_dataset("tips")
-
-    sns.scatterplot(x="total_bill", y="tip", data=data)
-    plt.xlabel('總帳單')
-    plt.ylabel('小費')
-    plt.title('總帳單 vs 小費')
-    plt.show()
-  </code></pre>
-
-  <h3 id="histogram">直方圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製直方圖
-    data = sns.load_dataset("iris")
-
-    sns.histplot(data=data, x="sepal_length", hue="species", multiple="stack")
-    plt.xlabel('花萼長度')
-    plt.ylabel('頻次')
-    plt.title('花萼長度的直方圖')
-    plt.show()
-  </code></pre>
-
-  <h3 id="scatter-plot">散點圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製散點圖
-    data = sns.load_dataset("iris")
-
-    sns.scatterplot(x="sepal_length", y="sepal_width", hue="species", data=data)
-    plt.xlabel('花萼長度')
-    plt.ylabel('花萼寬度')
-    plt.title('花萼長度 vs 花萼寬度')
-    plt.show()
-  </code></pre>
-
-  <h3 id="box-plot">箱型圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製箱型圖
-    data = sns.load_dataset("tips")
-
-    sns.boxplot(x="day", y="total_bill", data=data)
-    plt.xlabel('星期')
-    plt.ylabel('總帳單')
-    plt.title('各星期的總帳單箱型圖')
-    plt.show()
-  </code></pre>
-
-  <h3 id="pair-plot">對角線圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製對角線圖
-    data = sns.load_dataset("iris")
-
-    sns.pairplot(data, hue="species")
-    plt.title('對角線圖')
-    plt.show()
-  </code></pre>
-
-  <h3 id="heatmap">熱力圖</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    # 使用 Seaborn 繪製熱力圖
-    data = np.random.rand(10, 12)
-    sns.heatmap(data, cmap="YlGnBu", annot=True)
-    plt.title('熱力圖')
-    plt.show()
-  </code></pre>
-
-  <h3 id="customization">自定義</h3>
-  <pre><code>
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-
-    # 使用 Seaborn 繪製自訂圖形
-    data = sns.load_dataset("tips")
-
-    sns.scatterplot(x="total_bill", y="tip", data=data, color='orange', marker='D', s=100)
-    plt.xlabel('總帳單')
-    plt.ylabel('小費')
-    plt.title('自訂散點圖')
-    plt.grid(True)
-    plt.show()
-  </code></pre>
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">主頁</a></li>
+      <li><a href="#introduction">簡介</a></li>
+      <li><a href="#installation">安裝</a></li>
+      <li><a href="#basic-plot">基本繪圖</a></li>
+      <li><a href="#histogram">直方圖</a></li>
+      <li><a href="#scatter-plot">散點圖</a></li>
+      <li><a href="#box-plot">箱型圖</a></li>
+      <li><a href="#pair-plot">對角線圖</a></li>
+      <li><a href="#heatmap">熱力圖</a></li>
+      <li><a href="#customization">自定義</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>Seaborn 筆記</h1>
+  
+    <h3 id="introduction">簡介</h3>
+    <p>
+    Seaborn 是一個基於 Matplotlib 的 Python資料視覺化庫，提供高階的介面來繪製統計圖表。
+    </p>
+  
+    <h3 id="installation">安裝</h3>
+    <pre><code>
+      # 使用 pip 安裝 Seaborn
+      pip install seaborn
+    </code></pre>
+  
+    <h3 id="basic-plot">基本繪圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製基本圖形
+      data = sns.load_dataset("tips")
+  
+      sns.scatterplot(x="total_bill", y="tip", data=data)
+      plt.xlabel('總帳單')
+      plt.ylabel('小費')
+      plt.title('總帳單 vs 小費')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="histogram">直方圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製直方圖
+      data = sns.load_dataset("iris")
+  
+      sns.histplot(data=data, x="sepal_length", hue="species", multiple="stack")
+      plt.xlabel('花萼長度')
+      plt.ylabel('頻次')
+      plt.title('花萼長度的直方圖')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="scatter-plot">散點圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製散點圖
+      data = sns.load_dataset("iris")
+  
+      sns.scatterplot(x="sepal_length", y="sepal_width", hue="species", data=data)
+      plt.xlabel('花萼長度')
+      plt.ylabel('花萼寬度')
+      plt.title('花萼長度 vs 花萼寬度')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="box-plot">箱型圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製箱型圖
+      data = sns.load_dataset("tips")
+  
+      sns.boxplot(x="day", y="total_bill", data=data)
+      plt.xlabel('星期')
+      plt.ylabel('總帳單')
+      plt.title('各星期的總帳單箱型圖')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="pair-plot">對角線圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製對角線圖
+      data = sns.load_dataset("iris")
+  
+      sns.pairplot(data, hue="species")
+      plt.title('對角線圖')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="heatmap">熱力圖</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+      import numpy as np
+  
+      # 使用 Seaborn 繪製熱力圖
+      data = np.random.rand(10, 12)
+      sns.heatmap(data, cmap="YlGnBu", annot=True)
+      plt.title('熱力圖')
+      plt.show()
+    </code></pre>
+  
+    <h3 id="customization">自定義</h3>
+    <pre><code>
+      import seaborn as sns
+      import matplotlib.pyplot as plt
+  
+      # 使用 Seaborn 繪製自訂圖形
+      data = sns.load_dataset("tips")
+  
+      sns.scatterplot(x="total_bill", y="tip", data=data, color='orange', marker='D', s=100)
+      plt.xlabel('總帳單')
+      plt.ylabel('小費')
+      plt.title('自訂散點圖')
+      plt.grid(True)
+      plt.show()
+    </code></pre>
+  </div>
 </div>

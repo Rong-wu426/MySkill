@@ -1,18 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#basic-commands">基本命令</a></li>
-        <li><a href="#branching">分支管理</a></li>
-        <li><a href="#merging">合併分支</a></li>
-        <li><a href="#remote-repositories">遠端倉庫</a></li>
-        <li><a href="#stashing">快取</a></li>
-        <li><a href="#reverting">回退</a></li>
-        <li><a href="#config">配置</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -23,7 +13,7 @@ export default {
   name: 'GitSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/GitSkill.html'
     };
   },
   async mounted() {

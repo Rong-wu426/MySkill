@@ -1,19 +1,12 @@
+
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#installation">安裝與導入</a></li>
-        <li><a href="#basic-operations">基本操作</a></li>
-        <li><a href="#tensors">張量操作</a></li>
-        <li><a href="#model-creation">模型創建</a></li>
-        <li><a href="#training">模型訓練</a></li>
-        <li><a href="#evaluation">模型評估</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
+
 
 <script>
 import '@/assets/css/Skill.css';
@@ -22,7 +15,7 @@ export default {
   name: 'TensorFlowSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/TensorFlowSkill.html'
     };
   },
   async mounted() {

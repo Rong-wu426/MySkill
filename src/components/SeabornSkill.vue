@@ -1,20 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#introduction">簡介</a></li>
-        <li><a href="#installation">安裝</a></li>
-        <li><a href="#basic-plot">基本繪圖</a></li>
-        <li><a href="#histogram">直方圖</a></li>
-        <li><a href="#scatter-plot">散點圖</a></li>
-        <li><a href="#box-plot">箱型圖</a></li>
-        <li><a href="#pair-plot">對角線圖</a></li>
-        <li><a href="#heatmap">熱力圖</a></li>
-        <li><a href="#customization">自定義</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -25,7 +13,7 @@ export default {
   name: 'SeabornSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/SeabornSkill.html'
     };
   },
   async mounted() {

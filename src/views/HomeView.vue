@@ -101,7 +101,7 @@ th, td {
   padding: 16px; /* 增加內邊距 */
   vertical-align: top;
   font-size: 22px; /* 增大字體 */
-  line-height: 1.5; /* 增加行高 */
+  line-height:normal;
 }
 
 th {

@@ -1,19 +1,8 @@
 <template>
   <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><router-link to="/">主頁</router-link></li>
-        <li><a href="#select">SELECT 語句</a></li>
-        <li><a href="#insert">INSERT INTO</a></li>
-        <li><a href="#update">UPDATE 語句</a></li>
-        <li><a href="#delete">DELETE 語句</a></li>
-        <li><a href="#joins">JOIN 語句</a></li>
-        <li><a href="#create-table">CREATE TABLE</a></li>
-        <li><a href="#alter-table">ALTER TABLE</a></li>
-        <li><a href="#drop-table">DROP TABLE</a></li>
-      </ul>
+    <div class="content">
+      <div v-html="htmlContent"></div>
     </div>
-    <div class="content" v-html="htmlContent"></div>
   </div>
 </template>
 
@@ -24,7 +13,7 @@ export default {
   name: 'MySQLSkill',
   data() {
     return {
-      htmlContent: ''
+      htmlContent: '/html/MySQLSkill.html'
     };
   },
   async mounted() {
