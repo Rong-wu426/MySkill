@@ -1,202 +1,203 @@
-<div class="container">
-  <div class="sidebar">
+
+<h1>Linux 筆記</h1>
+<div id="basic-commands">
+  <h3>基本指令</h3>
+  <pre><code>
+    # 顯示目前目錄
+    pwd
+    查看目前位置(print working directory)
+    
+    # . 代表目前所在位置
+
+    # 在GUI打開路徑或檔案
+      # 適用Mac
+      open [directory]
+      # 適用WSL
+      explore [directory]
+
+    # 列出目錄內容
+    ls
+    ls -a:顯示隱藏檔案
+    ls -l:顯示詳細資訊
+    ls -la:顯示隱藏檔案且詳細資訊
+    ls -ls[directory]:後面可加上路徑，就可以列出某個路徑下的檔案
+    # 切換目錄
+    cd [directory]:移動到其他位置
+    (change directory)
+    - cd ..代表上一層路徑
+
+    # 建立目錄
+    mkdir [directory]
+
+    # 刪除文件
+    rm [file]
+
+    # 刪除目錄
+    rm -R [directory]
+  </code></pre>
+</div>
+
+<div id="file-management">
+  <h3>檔案管理</h3>
+  <pre><code>
+    # 複製文件
+    cp [source] [destination]
+
+    # 複製目錄
+    cp -R [source] [destination]
+
+    # 移動文件
+    mv [source] [destination]
+
+    # 重新命名
+    mv [file_name] [new_file_name]
+
+    # 查看文件內容
+    cat [file]
+
+    # 編輯文件
+    nano [file]
+    vi [file]
+    vim [file]
+  </code></pre>
+</div>
+
+<div id="vim">
+<h3>Vim編輯器</h3>
+  <p>Vim主要分為Normal mode用於指令操作，和Insert mode用於一般編輯</p>
+  <p>按下「I」即可進到Insert mode</p>
+  <p>按下「ESC」即可返回到Normal mode</p>
+  <pre><code>
+    # 關閉Vim編輯器
+    :q
+
+    # 存檔
+    :w
+
+    # 關閉並存檔
+    :wq
+
+    # 強制關閉
+    :q!
+
+  </code></pre>
+  <p>在Normal Mode:
     <ul>
-      <li><a href="/">主頁</a></li>
-      <li><a href="#basic-commands">基本命令</a></li>
-      <li><a href="#file-management">檔案管理</a></li>
-      <li><a href="#vim">Vim編輯器</a></li>
-      <li><a href="#process-management">進程管理</a></li>
-      <li><a href="#networking">網路指令</a></li>
-      <li><a href="#permissions">權限管理</a></li>
-      <li><a href="#package-management">軟體包管理</a></li>
-      <li><a href="#system-monitoring">系統監控</a></li>
-      <li><a href="#others">其他</a></li>
+      <li>按下「U」(undo)還原</li>
+      <li>按下「Ctrl」+「R」(redo)下一步</li>
+      <li>按下「Y」「Y」(yank)複製一整行</li>
+      <li>按下「p」往下貼上</li>
+      <li>按下「P」往上貼上</li>
+      <li>按下「D」「D」剪下一整行</li>
+      <li>只想複製一小段文字，需要進入選取模式</li>
+      <li>按下「V」進入選取模式後，即可用方向鍵移動</li>
+      <li>按下「Y」可複製，按下「D」可剪下，按下「p」可貼上</li>
+      <li>輸入「/ &lt;想搜尋字串&gt;」，按下「N」上一個結果，按下「n」下一個結果</li>
+      <li>輸入「:set nu」顯示行數</li>
+      <li>按下「G」跳到編輯器的底部</li>
+      <li>按下「g」「g」跳到編輯器的頂部</li>
+      <li>按下「{」向上一個block</li>
+      <li>按下「}」向下一個block</li>
+      <li>按下「W」向後一個單字</li>
+      <li>按下「B」向前一個單字</li>
+      <li>按下「0」跳到行頭</li>
+      <li>按下「$」跳到行尾</li>
     </ul>
-  </div>
-  <div class="content">
-    <h1>Linux 筆記</h1>
-  
-    <h3 id="basic-commands">基本指令</h3>
-    <pre><code>
-      # 顯示目前目錄
-      pwd
-      查看目前位置(print working directory)
-      
-      # . 代表目前所在位置
-  
-      # 在GUI打開路徑或檔案
-        # 適用Mac
-        open [directory]
-        # 適用WSL
-        explore [directory]
-  
-      # 列出目錄內容
-      ls
-      ls -a:顯示隱藏檔案
-      ls -l:顯示詳細資訊
-      ls -la:顯示隱藏檔案且詳細資訊
-      ls -ls[directory]:後面可加上路徑，就可以列出某個路徑下的檔案
-      # 切換目錄
-      cd [directory]:移動到其他位置
-      (change directory)
-      - cd ..代表上一層路徑
-  
-      # 建立目錄
-      mkdir [directory]
-  
-      # 刪除文件
-      rm [file]
-  
-      # 刪除目錄
-      rm -R [directory]
-    </code></pre>
-  
-    <h3 id="file-management">檔案管理</h3>
-    <pre><code>
-      # 複製文件
-      cp [source] [destination]
-  
-      # 複製目錄
-      cp -R [source] [destination]
-  
-      # 移動文件
-      mv [source] [destination]
-  
-      # 重新命名
-      mv [file_name] [new_file_name]
-  
-      # 查看文件內容
-      cat [file]
-  
-      # 編輯文件
-      nano [file]
-      vi [file]
-      vim [file]
-    </code></pre>
-  
-    <h3 id="vim">Vim編輯器</h3>
-    <p>Vim主要分為Normal mode用於指令操作，和Insert mode用於一般編輯</p>
-    <p>按下「I」即可進到Insert mode</p>
-    <p>按下「ESC」即可返回到Normal mode</p>
-    <pre><code>
-      # 關閉Vim編輯器
-      :q
-  
-      # 存檔
-      :w
-  
-      # 關閉並存檔
-      :wq
-  
-      # 強制關閉
-      :q!
-  
-    </code></pre>
-    <p>在Normal Mode:</p>
-    <p>按下「U」(undo)還原</p>
-    <p>按下「Ctrl」+「R」(redo)下一步</p>
-    <p>按下「Y」「Y」(yank)複製一整行</p>
-    <p>按下「p」往下貼上</p>
-    <p>按下「P」往上貼上</p>
-    <p>按下「D」「D」剪下一整行</p>
-    <p>只想複製一小段文字，需要進入選取模式</p>
-    <p>按下「V」進入選取模式後，即可用方向鍵移動</p>
-    <p>按下「Y」可複製，按下「D」可剪下，按下「p」可貼上</p>
-    <p>輸入「/ &lt;想搜尋字串&gt;」，按下「N」上一個結果，按下「n」下一個結果</p>
-    <p>輸入「:set nu」顯示行數</p>
-    <p>按下「G」跳到編輯器的底部</p>
-    <p>按下「g」「g」跳到編輯器的頂部</p>
-    <p>按下「{」向上一個block</p>
-    <p>按下「}」向下一個block</p>
-    <p>按下「W」向後一個單字</p>
-    <p>按下「B」向前一個單字</p>
-    <p>按下「0」跳到行頭</p>
-    <p>按下「$」跳到行尾</p>
-  
-  
-  
-    <h3 id="process-management">進程管理</h3>
-    <pre><code>
-      # 顯示目前進程
-      ps
-  
-      # 尋找進程
-      ps aux | grep [process-name]
-  
-      # 殺死進程
-      kill [PID]
-  
-      # 強制殺死進程
-      kill -9 [PID]
-      </code></pre>
-  
-      <h3 id="networking">網路指令</h3>
-      <pre><code>
-      # 查看網路介面
-      ifconfig
-  
-      # 測試連接
-      ping [host]
-  
-      # 查看開放埠
-      netstat -tuln
-  
-      # 顯示路由表
-      route
-    </code></pre>
-  
-    <h3 id="permissions">權限管理</h3>
-    <pre><code>
-      # 查看檔案權限
-      ls -l [file]
-  
-      # 修改檔案權限
-      chmod [permissions] [file]
-  
-      # 修改檔案擁有者
-      chown [user]:[group] [file]
-    </code></pre>
-  
-    <h3 id="package-management">軟體包管理</h3>
-    <pre><code>
-      # 使用 apt (Debian/Ubuntu)
-      sudo apt update
-      sudo apt install [package]
-  
-      # 使用 yum (CentOS)
-      sudo yum install [package]
-  
-      # 使用 dnf (Fedora)
-      sudo dnf install [package]
-  
-      # 使用 pacman (Manjaro)
-      sudo pacman -S [package]
-  
-      # 使用 brew (macOS)
-        # 安裝 Homebrew（如果尚未安裝）
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      brew install [package]
-  
-    </code></pre>
-  
-    <h3 id="system-monitoring">系統監控</h3>
-    <pre><code>
-      # 查看磁碟使用情況
-      df -h
-  
-      # 查看記憶體使用情況
-      free -h
-  
-      # 查看系統負載
-      top
-  
-      # 查看硬體資訊
-      lshw
-    </code></pre>
-  
-    <h3 id="others">其他</h3>
-    <p>按下方向鍵「↑、↓」可選擇之前輸入過的指令，不用重新輸入。</p>
-    <p>按下「Ctrl」+「R」輸入文字：可往前搜尋。</p>
-    <p>按下「Ctrl」+「S」輸入文字：可往後搜尋。</p>
-  </div>
-</div>  
+  </p>
+</div>
+
+<div id="process-management">
+  <h3>進程管理</h3>
+  <pre><code>
+    # 顯示目前進程
+    ps
+
+    # 尋找進程
+    ps aux | grep [process-name]
+
+    # 殺死進程
+    kill [PID]
+
+    # 強制殺死進程
+    kill -9 [PID]
+  </code></pre>
+</div>
+
+<div id="networking">
+  <h3>網路指令</h3>
+  <pre><code>
+  # 查看網路介面
+  ifconfig
+
+  # 測試連接
+  ping [host]
+
+  # 查看開放埠
+  netstat -tuln
+
+  # 顯示路由表
+  route
+  </code></pre>
+</div>
+
+<div id="permissions">
+  <h3>權限管理</h3>
+  <pre><code>
+  # 查看檔案權限
+  ls -l [file]
+
+  # 修改檔案權限
+  chmod [permissions] [file]
+
+  # 修改檔案擁有者
+  chown [user]:[group] [file]
+  </code></pre>
+</div>
+
+<div id="package-management">
+  <h3>軟體包管理</h3>
+  <pre><code>
+  # 使用 apt (Debian/Ubuntu)
+  sudo apt update
+  sudo apt install [package]
+
+  # 使用 yum (CentOS)
+  sudo yum install [package]
+
+  # 使用 dnf (Fedora)
+  sudo dnf install [package]
+
+  # 使用 pacman (Manjaro)
+  sudo pacman -S [package]
+
+  # 使用 brew (macOS)
+    # 安裝 Homebrew（如果尚未安裝）
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew install [package]
+
+  </code></pre>
+</div>
+
+<div id="system-monitoring">
+  <h3>系統監控</h3>
+  <pre><code>
+  # 查看磁碟使用情況
+  df -h
+
+  # 查看記憶體使用情況
+  free -h
+
+  # 查看系統負載
+  top
+
+  # 查看硬體資訊
+  lshw
+  </code></pre>
+</div>
+
+<div id="others">
+  <h3>其他</h3>
+  <p>按下方向鍵「↑、↓」可選擇之前輸入過的指令，不用重新輸入。</p>
+  <p>按下「Ctrl」+「R」輸入文字：可往前搜尋。</p>
+  <p>按下「Ctrl」+「S」輸入文字：可往後搜尋。</p>
+</div>

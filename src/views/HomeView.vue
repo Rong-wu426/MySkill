@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="這是吳佳蓉的履歷" />
+    <HelloWorld msg="吳佳蓉的技能履歷" />
     <h2>技能表</h2>
     <table>
       <thead>
@@ -13,34 +13,19 @@
       <tbody>
         <tr>
           <td>
-            <ul>
-              <li v-for="skill in categorizedSkills.frontend" :key="skill.name">
-                <router-link :to="skill.path">
-                  <img :src="skill.icon" alt="" class="skill-icon" />
-                  {{ skill.name }}
-                </router-link>
-              </li>
-            </ul>
+            <div v-for="skill in categorizedSkills.frontend" :key="skill.name">
+              <SkillLink :skill="skill" />
+            </div>
           </td>
           <td>
-            <ul>
-              <li v-for="skill in categorizedSkills.backend" :key="skill.name">
-                <router-link :to="skill.path">
-                  <img :src="skill.icon" alt="" class="skill-icon" />
-                  {{ skill.name }}
-                </router-link>
-              </li>
-            </ul>
+            <div v-for="skill in categorizedSkills.backend" :key="skill.name">
+              <SkillLink :skill="skill" />
+            </div>
           </td>
           <td>
-            <ul>
-              <li v-for="skill in categorizedSkills.other" :key="skill.name">
-                <router-link :to="skill.path">
-                  <img :src="skill.icon" alt="" class="skill-icon" />
-                  {{ skill.name }}
-                </router-link>
-              </li>
-            </ul>
+            <div v-for="skill in categorizedSkills.other" :key="skill.name">
+              <SkillLink :skill="skill" />
+            </div>
           </td>
         </tr>
       </tbody>
@@ -49,38 +34,39 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import SkillLink from "@/components/SkillLink.vue";
 
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
+    SkillLink
   },
   data() {
     return {
       categorizedSkills: {
         frontend: [
-          { name: "HTML", path: "/html", icon: "/logo/HTML-logo.png" },
-          { name: "CSS", path: "/css", icon: "/logo/CSS-logo.png" },
-          { name: "JavaScript", path: "/javascript", icon: "/logo/Javascript-logo.png" },
-          { name: "jQuery", path: "/jquery", icon: "/logo/Jquery-logo.png" },
-          { name: "Vue", path: "/vue", icon: "/logo/vue-logo.png" }
+          { name: "HTML", path: "/skill/html", icon: "/logo/HTML-logo.png" },
+          { name: "CSS", path: "/skill/css", icon: "/logo/CSS-logo.png" },
+          { name: "JavaScript", path: "/skill/javascript", icon: "/logo/Javascript-logo.png" },
+          { name: "jQuery", path: "/skill/jquery", icon: "/logo/Jquery-logo.png" },
+          { name: "Vue", path: "/skill/vue", icon: "/logo/vue-logo.png" }
         ],
         backend: [
-          { name: "Python", path: "/python", icon: "/logo/python-logo.png" },
-          { name: "MySQL", path: "/mysql", icon: "/logo/MySQL-logo.png" },
-          { name: "SQLite", path: "/sqlite", icon: "/logo/SQLite-logo.png" }
+          { name: "Python", path: "/skill/python", icon: "/logo/python-logo.png" },
+          { name: "MySQL", path: "/skill/mysql", icon: "/logo/MySQL-logo.png" },
+          { name: "SQLite", path: "/skill/sqlite", icon: "/logo/SQLite-logo.png" }
         ],
         other: [
-          { name: "Git", path: "/git", icon: "/logo/Git-logo.png" },
-          { name: "Docker", path: "/docker", icon: "/logo/Docker-logo.png" },
-          { name: "Linux", path: "/linux", icon: "/logo/Linux-logo.png" },
-          { name: "Matplotlib", path: "/matplotlib", icon: "/logo/matplotlib-logo.png" },
-          { name: "Pandas", path: "/pandas", icon: "/logo/pandas-logo.png" },
-          { name: "Seaborn", path: "/seaborn", icon: "/logo/seaborn-logo.png" },
-          { name: "TensorFlow", path: "/tensorflow", icon: "/logo/TensorFlow-logo.png" },
-          { name: "C#", path: "/csharp", icon: "/logo/Csharp-logo.png" },
+          { name: "Git", path: "/skill/git", icon: "/logo/Git-logo.png" },
+          { name: "Docker", path: "/skill/docker", icon: "/logo/Docker-logo.png" },
+          { name: "Linux", path: "/skill/linux", icon: "/logo/Linux-logo.png" },
+          { name: "Matplotlib", path: "/skill/matplotlib", icon: "/logo/matplotlib-logo.png" },
+          { name: "Pandas", path: "/skill/pandas", icon: "/logo/pandas-logo.png" },
+          { name: "Seaborn", path: "/skill/seaborn", icon: "/logo/seaborn-logo.png" },
+          { name: "TensorFlow", path: "/skill/tensorflow", icon: "/logo/TensorFlow-logo.png" },
+          { name: "C#", path: "/skill/csharp", icon: "/logo/Csharp-logo.png" }
         ],
       },
     };
@@ -89,74 +75,83 @@ export default {
 </script>
 
 <style scoped>
-/* 表格樣式 */
+.home {
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin-top: 20px;
 }
 
 th, td {
+  padding: 10px;
+  text-align: center;
   border: 1px solid #ddd;
-  padding: 16px; /* 增加內邊距 */
-  vertical-align: top;
-  font-size: 22px; /* 增大字體 */
-  line-height:normal;
 }
 
 th {
-  background-color: #4CAF50; /* 綠色背景 */
-  color: white;
+  background-color: #f4f4f4;
   font-weight: bold;
-  text-align: center;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 td {
-  background-color: #f9f9f9; /* 淺灰色背景 */
+  vertical-align: middle;
 }
 
-/* 列表樣式 */
-ul {
+td ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  text-align: center; 
 }
 
-li {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  padding: 12px; /* 增加內邊距 */
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  background-color: #e3f2fd; /* 淺藍色背景 */
-  font-size: 22px; /* 增大字體 */
-  line-height: 1.5; /* 增加行高 */
-  overflow: hidden; /* 防止溢出 */
-  text-overflow: ellipsis; /* 溢出處理 */
+td ul li {
+  display: inline-block; 
+  margin: 10px 20px;
+  text-align: center; 
 }
 
-li:hover {
-  background-color: #bbdefb; /* 更深的藍色背景 */
+
+.router-link-active {
+  color: #42b983;
+  font-weight: bold;
+}
+
+.router-link-active img {
+  border: 2px solid #42b983;
+  border-radius: 50%;
 }
 
 .skill-icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
-  table {
-    font-size: 14px; /* 在小屏幕上稍微縮小字體 */
-  }
+a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
 
-  .skill-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
+a:hover {
+  color: #42b983;
+}
+
+a:hover .skill-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 </style>

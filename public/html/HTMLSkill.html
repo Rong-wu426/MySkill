@@ -1,28 +1,7 @@
-<div class="container">
-  <div class="sidebar">
-    <ul>
-      <li><a href="/">主頁</a></li>
-      <li><a href="#environment-setup">環境創建</a></li>
-      <li><a href="#doctype">DOCTYPE</a></li>
-      <li><a href="#headings">標題</a></li>
-      <li><a href="#paragraphs">段落</a></li>
-      <li><a href="#break">換行</a></li>
-      <li><a href="#links">連結</a></li>
-      <li><a href="#images">圖片</a></li>
-      <li><a href="#text-formatting">文字格式</a></li>
-      <li><a href="#input-tags">輸入標籤</a></li>
-      <li><a href="#meta-tags">meta 標籤</a></li>
-      <li><a href="#comments">註解</a></li>
-      <li><a href="#tables">表格</a></li>
-      <li><a href="#lists">列表</a></li>
-      <li><a href="#block-inline-elements">區塊和行內元素</a></li>
-      <li><a href="#class-id">類別和 ID</a></li>
-    </ul>
-  </div>
-<div class="content">
-  <h1>HTML 筆記</h1>
+<h1>HTML 筆記</h1>
 
-  <h3 id="environment-setup">環境創建</h3>
+<div id="environment-setup">
+  <h3>環境創建</h3>
   <div class="code-container">
     <pre><code>
       # 創建資料夾
@@ -47,16 +26,47 @@
       &lt;/html&gt;
     </code></pre>
   </div>
+</div>
 
-  <h3 id="doctype">DOCTYPE</h3>
+<div id="doctype">
+  <h3>DOCTYPE</h3>
   <div class="code-container">
   <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
   </div> 
   <p>
     DOCTYPE 用於告訴瀏覽器當前文檔的 HTML 版本，通常在 HTML 文檔的開頭。
   </p>
+</div>
 
-  <h3 id="headings">標題</h3>
+<div id="meta-tags">
+  <h3>meta 標籤</h3>
+  <div class="code-container">
+    <pre><code>
+      &lt;meta charset="UTF-8"&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      &lt;meta name="description" content="網站描述"&gt;
+    </code></pre>
+  </div>
+  <p>
+    &lt;meta&gt; 標籤用於提供有關 HTML 文檔的元數據。
+    <ul><li>charset: 指定文檔的字符編碼。</li> </ul>
+    <ul><li>viewport: 設定瀏覽器視口，控制頁面縮放。</li></ul>
+    <ul><li>description: 提供網頁描述，用於 SEO。</li></ul>
+  </p>
+</div>
+
+<div id="comments">
+  <h3>註解</h3>
+  <div class="code-container">
+    <pre><code>&lt;!-- 這是一個註解 --&gt;</code></pre>
+  </div>
+  <p>
+    註解用於在 HTML 文檔中添加說明性文字，不會顯示在頁面上。
+  </p>
+</div>
+
+<div id="heading">
+  <h3>標題</h3>
   <div class="code-container">
     <pre><code>
       &lt;h1&gt;主標題&lt;/h1&gt;
@@ -74,26 +84,34 @@
     從 &lt;h1&gt; 到 &lt;h6&gt;，
     其中&lt;h1&gt; 代表最重要的標題，&lt;h6&gt; 代表最不重要的標題。
   </p>
+</div>
 
-  <h3 id="paragraphs">段落</h3>
+<div id="paragraphs">
+  <h3>段落</h3>
   <div class="code-container">
     <pre><code>&lt;p&gt;這是一段文本&lt;/p&gt;</code></pre>
   </div> 
   <p>&lt;p&gt; 元素用於定義段落。</p>
+</div>
 
-  <h3 id="break">換行</h3>
+<div id="break">
+  <h3>換行</h3>
   <div class="code-container">
     <pre><code>&lt;br&gt;</code></pre>
   </div>
   <p>&lt;br&gt; 元素用於在文本中插入換行。</p>
+</div>
 
-  <h3 id="links">連結</h3>
+<div id="links">
+  <h3>連結</h3>
   <div class="code-container">
     <pre><code>&lt;a href="https://example.com"&gt;這是一個連結&lt;/a&gt;</code></pre>
   </div>
   <p>&lt;a&gt; 元素用於創建超連結。屬性 href 指定了連結的目標 URL。</p>
+</div>
 
-  <h3 id="images">圖片</h3>
+<div id="images">
+  <h3>圖片</h3>
   <div class="code-container">
     <pre><code>&lt;img src="image.jpg" alt="描述"&gt;</code></pre>
   </div>
@@ -102,8 +120,30 @@
     屬性 src 指定了圖片的 URL，
     屬性 alt 提供了圖片的描述。
   </p>
+</div>
 
-  <h3 id="text-formatting">文字格式</h3>
+<div id="videos">
+  <h3>影片</h3>
+  <div class="code-container">
+    <pre><code>
+      &lt;video width="640" height="360" controls&gt;
+        &lt;source src="movie.mp4" type="video/mp4"&gt;
+        您的瀏覽器不支持 video 元素。
+      &lt;/video&gt;
+    </code></pre>
+  </div>
+  <p>
+    &lt;video&gt; 元素用於嵌入影片。可以使用以下屬性：
+    <ul>
+      <li><strong>width</strong> 和 <strong>height</strong>: 設定影片的寬度和高度。</li>
+      <li><strong>controls</strong>: 顯示播放控制器。</li>
+    </ul>
+    &lt;source&gt; 元素指定影片文件的來源和格式。如果瀏覽器不支持影片格式，則會顯示 source 元素中的文本。
+  </p>
+</div>
+
+<div id="text-formatting">
+  <h3>文字格式</h3>
   <div class="code-container">
     <pre><code>
       &lt;b&gt;粗體文本&lt;/b&gt;
@@ -131,8 +171,10 @@
     <li><strong>&lt;sub&gt;</strong>: 下標文本。</li>
     <li><strong>&lt;sup&gt;</strong>: 上標文本。</li>
   </ul>
+</div>
 
-  <h3 id="input-tags">輸入標籤</h3>
+<div id="input-tags">
+  <h3>輸入標籤</h3>
   <div class="code-container">
     <pre><code>
       &lt;input type="text" placeholder="輸入文本"&gt;
@@ -144,31 +186,36 @@
     <li>&lt;input&gt; 元素用於創建輸入字段。可以使用 type 屬性指定輸入類型。</li>
     <li>&lt;textarea&gt; 元素用於創建多行文本框。</li>
   </ul></p>
+</div>
 
-  <h3 id="meta-tags">meta 標籤</h3>
+<div id="block-inline-elements">
+  <h3>區塊和行內元素</h3>
   <div class="code-container">
     <pre><code>
-      &lt;meta charset="UTF-8"&gt;
-      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-      &lt;meta name="description" content="網站描述"&gt;
+      &lt;div&gt;區塊元素&lt;/div&gt;
+      &lt;span&gt;行內元素&lt;/span&gt;
     </code></pre>
   </div>
   <p>
-    &lt;meta&gt; 標籤用於提供有關 HTML 文檔的元數據。
-    <ul><li>charset: 指定文檔的字符編碼。</li> </ul>
-    <ul><li>viewport: 設定瀏覽器視口，控制頁面縮放。</li></ul>
-    <ul><li>description: 提供網頁描述，用於 SEO。</li></ul>
-  </p>
+    區塊元素（如 &lt;div&gt;）會在頁面中創建一個新的區塊，而行內元素（如 &lt;span&gt;）則不會打斷文本流。
+  </p> 
+</div>
 
-  <h3 id="comments">註解</h3>
+<div id="class-id">
+  <h3>類別和 ID</h3>
   <div class="code-container">
-    <pre><code>&lt;!-- 這是一個註解 --&gt;</code></pre>
+    <pre><code>
+      &lt;div class="container"&gt;...&lt;/div&gt;
+      &lt;div id="unique"&gt;...&lt;/div&gt;
+    </code></pre>
   </div>
   <p>
-    註解用於在 HTML 文檔中添加說明性文字，不會顯示在頁面上。
+    類別（class）用於定義樣式，ID 用於唯一標識。
   </p>
+</div>
 
-  <h3 id="tables">表格</h3>
+<div id="tables">
+  <h3>表格</h3>
   <div class="code-container">
     <pre><code>
       &lt;table&gt;
@@ -184,11 +231,13 @@
     </code></pre>
   </div>
   <p>
-    &lt;table&gt; 元素用於創建表格。&lt;tr&gt; 定義行，&lt;th&gt; 定義表頭單元格，
+    &lt;table&gt; 元素用於創建表格。  &lt;tr&gt; 定義行，&lt;th&gt; 定義表頭單元格，
     &lt;td&gt; 定義普通單元格。
   </p>
+</div>
 
-  <h3 id="lists">列表</h3>
+<div id="lists">
+  <h3>列表</h3>
   <div class="code-container">
     <pre><code>
       &lt;ul&gt;
@@ -206,27 +255,4 @@
     - &lt;ul&gt;: 無序列表。
     - &lt;ol&gt;: 有序列表。
   </p>
-
-  <h3 id="block-inline-elements">區塊和行內元素</h3>
-  <div class="code-container">
-    <pre><code>
-      &lt;div&gt;區塊元素&lt;/div&gt;
-      &lt;span&gt;行內元素&lt;/span&gt;
-    </code></pre>
-  </div>
-  <p>
-    區塊元素（如 &lt;div&gt;）會在頁面中創建一個新的區塊，而行內元素（如 &lt;span&gt;）則不會打斷文本流。
-  </p>
-
-  <h3 id="class-id">類別和 ID</h3>
-  <div class="code-container">
-    <pre><code>
-      &lt;div class="container"&gt;...&lt;/div&gt;
-      &lt;div id="unique"&gt;...&lt;/div&gt;
-    </code></pre>
-  </div>
-  <p>
-    類別（class）用於定義樣式，ID 用於唯一標識。
-  </p>
-</div>
 </div>

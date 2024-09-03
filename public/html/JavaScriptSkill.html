@@ -1,143 +1,145 @@
-<div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><a href="/">主頁</a></li>
-        <li><a href="#variables">變數</a></li>
-        <li><a href="#data-types">資料型態</a></li>
-        <li><a href="#functions">函數</a></li>
-        <li><a href="#objects">物件</a></li>
-        <li><a href="#arrays">數組</a></li>
-        <li><a href="#conditionals">條件語句</a></li>
-        <li><a href="#loops">迴圈語句</a></li>
-        <li><a href="#events">事件處理</a></li>
-        <li><a href="#asynchronous">非同步程式設計</a></li>
-      </ul>
-    </div>
-    <div class="content">
-        <h1>JavaScript 筆記</h1>
-    
-        <h3 id="variables">變數</h3>
-        <pre><code>
-            /* 使用 var 定義變數 */
-            var x = 10;
-    
-            /* 使用 let 定義變數 */
-            let y = 20;
-    
-            /* 使用 const 定義常數 */
-            const z = 30;
-        </code></pre>
-    
-        <h3 id="data-types">資料型態</h3>
-        <pre><code>
-            /* 基本資料型態 */
-            let number = 42; // 數字
-            let string = "Hello, World!"; // 字串
-            let boolean = true; // 布林值
-    
-            /* 複雜資料型態 */
-            let array = [1, 2, 3]; // 陣列
-            let object = { name: "Alice", age: 25 }; // 對象
-        </code></pre>
-    
-        <h3 id="functions">函數</h3>
-        <pre><code>
-            /* 定義函數 */
-            function greet(name) {
-            return `Hello, ${name}!`;
-            }
-    
-            /* 呼叫函數 */
-            console.log(greet("Alice"));
-        </code></pre>
-    
-        <h3 id="objects">物件</h3>
-        <pre><code>
-            /* 建立物件 */
-            let person = {
-            name: "Alice",
-            age: 30,
-            greet: function() {
-            return `Hello, my name is ${this.name}.`;
-            }
-            };
-    
-            /* 存取物件屬性和方法 */
-            console.log(person.name);
-            console.log(person.greet());
-        </code></pre>
-    
-        <h3 id="arrays">數組</h3>
-        <pre><code>
-            /* 建立數組 */
-            let fruits = ["apple", "banana", "cherry"];
-    
-            /* 存取陣列元素 */
-            console.log(fruits[0]);
-    
-            /* 遍歷數組 */
-            fruits.forEach(function(fruit) {
-            console.log(fruit);
-            });
-        </code></pre>
-    
-        <h3 id="conditionals">條件語句</h3>
-        <pre><code>
-            /* if 語句 */
-            if (x > 10) {
-            console.log("x is greater than 10");
-            } else if (x === 10) {
-            console.log("x is 10");
-            } else {
-            console.log("x is less than 10");
-            }
-        </code></pre>
-    
-        <h3 id="loops">迴圈語句</h3>
-        <pre><code>
-            /* for 迴圈 */
-            for (let i = 0; i &lt; 5; i++) {
-            console.log(i);
-            }
-    
-            /* while 迴圈 */
-            let count = 0;
-            while (count &lt; 5) {
-            console.log(count);
-            count++;
-            }
-        </code></pre>
-    
-        <h3 id="events">事件處理</h3>
-        <pre><code>
-            /* 新增事件監聽器 */
-            document.getElementById("myButton").addEventListener("click", function() {
-            alert("Button clicked!");
-            });
-        </code></pre>
-    
-        <h3 id="asynchronous">非同步程式設計</h3>
-        <pre><code>
-            /* 使用 Promise */
-            function fetchData() {
-            return new Promise((resolve, reject) => {
-            setTimeout(() => {
-            resolve("Data fetched");
-            }, 2000);
-            });
-            }
-    
-            fetchData().then(result => {
-            console.log(result);
-            });
-    
-            /* 使用 async/await */
-            async function fetchDataAsync() {
-            let result = await fetchData();
-            console.log(result);
-            }
-    
-            fetchDataAsync();
-        </code></pre>
-    </div>
+
+<h1>JavaScript 筆記</h1>
+
+<div id="variables">
+    <h3>變數</h3>
+    <pre><code>
+        /* 使用 var 定義變數 */
+        var x = 10;
+
+        /* 使用 let 定義變數 */
+        let y = 20;
+
+        /* 使用 const 定義常數 */
+        const z = 30;
+    </code></pre>
 </div>
+
+<div id="data-types-overview">
+    <h3>資料類型概述</h3>
+    <pre><code>
+        /* 基本資料型態 */
+        let number = 42; // 數字
+        let string = "Hello, World!"; // 字串
+        let boolean = true; // 布林值
+
+        /* 複雜資料型態 */
+        let array = [1, 2, 3]; // 陣列
+        let object = { name: "Alice", age: 25 }; // 對象
+    </code></pre>
+</div>
+
+<div id="functions"> 
+    <h3>函數定義</h3>
+    <pre><code>
+        /* 定義函數 */
+        function greet(name) {
+        return `Hello, ${name}!`;
+        }
+
+        /* 呼叫函數 */
+        console.log(greet("Alice"));
+    </code></pre>
+</div>
+
+<div id="objects">
+    <h3>物件</h3>
+    <pre><code>
+        /* 建立物件 */
+        let person = {
+        name: "Alice",
+        age: 30,
+        greet: function() {
+        return `Hello, my name is ${this.name}.`;
+        }
+        };
+
+        /* 存取物件屬性和方法 */
+        console.log(person.name);
+        console.log(person.greet());
+    </code></pre>
+</div>
+
+<div id="arrays">
+    <h3>陣列</h3>
+    <pre><code>
+        /* 建立數組 */
+        let fruits = ["apple", "banana", "cherry"];
+
+        /* 存取陣列元素 */
+        console.log(fruits[0]);
+
+        /* 遍歷數組 */
+        fruits.forEach(function(fruit) {
+        console.log(fruit);
+        });
+    </code></pre>
+</div>
+
+<div id="conditionals">
+    <h3>條件語句</h3>
+    <pre><code>
+        /* if 語句 */
+        if (x > 10) {
+        console.log("x is greater than 10");
+        } else if (x === 10) {
+        console.log("x is 10");
+        } else {
+        console.log("x is less than 10");
+        }
+    </code></pre>
+</div>
+
+<div id="loops">
+    <h3>迴圈語句</h3>
+    <pre><code>
+        /* for 迴圈 */
+        for (let i = 0; i &lt; 5; i++) {
+        console.log(i);
+        }
+
+        /* while 迴圈 */
+        let count = 0;
+        while (count &lt; 5) {
+        console.log(count);
+        count++;
+        }
+    </code></pre>
+</div>
+
+<div id="events">
+    <h3>事件處理</h3>
+    <pre><code>
+        /* 新增事件監聽器 */
+        document.getElementById("myButton").addEventListener("click", function() {
+        alert("Button clicked!");
+        });
+    </code></pre>
+</div>
+
+<div id="asynchronous">
+    <h3>非同步程式設計</h3>
+    <pre><code>
+        /* 使用 Promise */
+        function fetchData() {
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve("Data fetched");
+        }, 2000);
+        });
+        }
+
+        fetchData().then(result => {
+        console.log(result);
+        });
+
+        /* 使用 async/await */
+        async function fetchDataAsync() {
+        let result = await fetchData();
+        console.log(result);
+        }
+
+        fetchDataAsync();
+    </code></pre>
+</div>
+

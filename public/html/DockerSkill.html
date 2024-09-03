@@ -1,100 +1,286 @@
-<div class="container">
-    <div class="sidebar">
-      <ul>
-        <li><a href="/">主頁</a></li>
-        <li><a href="#install">安裝 Docker</a></li>
-        <li><a href="#dockerfile">Dockerfile</a></li>
-        <li><a href="#build">建立映像</a></li>
-        <li><a href="#run">運行容器</a></li>
-        <li><a href="#ps">查看運行中的容器</a></li>
-        <li><a href="#stop">停止容器</a></li>
-        <li><a href="#rm">刪除容器</a></li>
-        <li><a href="#images">查看映像</a></li>
-        <li><a href="#rmi">刪除映像</a></li>
-      </ul>
-    </div>
-    <div class="content">
-        <h1>Docker 筆記</h1>
-    
-        <h3 id="install">安裝 Docker</h3>
-        <pre><code>
-        # 在 Ubuntu 上安裝 Docker
-        sudo apt-get update
-        sudo apt-get install docker-ce docker-ce-cli containerd.io
-        
-        # 驗證 Docker 是否安裝成功
-        sudo docker --version
-        </code></pre>
-    
-        <h3 id="dockerfile">Dockerfile</h3>
-        <pre><code>
-        # 使用官方 Ubuntu 基礎映像
-        FROM ubuntu:latest
-        
-        # 安裝更新和軟件包
-        RUN apt-get update && apt-get install -y \
-        python3 \
-        python3-pip
-        
-        # 設置工作目錄
-        WORKDIR /app
-        
-        # 複製目前目錄內容到容器內
-        COPY . /app
-        
-        # 安裝 Python 套件
-        RUN pip3 install -r requirements.txt
-        
-        # 設定容器啟動時執行的命令
-        CMD ["python3", "app.py"]
-        </code></pre>
-    
-        <h3 id="build">建構映像</h3>
-        <pre><code>
-        # 使用 Dockerfile 構建映像
-        docker build -t my-image .
-        
-        # 查看建立的映像
-        docker images
-        </code></pre>
-    
-        <h3 id="run">運行容器</h3>
-        <pre><code>
-        # 運行容器
-        docker run -d -p 80:80 my-image
-        
-        # 進入正在運行的容器
-        docker exec -it container_id /bin/bash
-        </code></pre>
-    
-        <h3 id="ps">查看運作中的容器</h3>
-        <pre><code>
-        # 列出運行中的容器
-        docker ps
-        </code></pre>
-    
-        <h3 id="stop">停止容器</h3>
-        <pre><code>
-        # 停止容器
-        docker stop container_id
-        </code></pre>
-    
-        <h3 id="rm">刪除容器</h3>
-        <pre><code>
-        # 刪除停止的容器
-        docker rm container_id
-        </code></pre>
-    
-        <h3 id="images">查看映像</h3>
-        <pre><code>
-        # 列出所有映像
-        docker images
-        </code></pre>
-    
-        <h3 id="rmi">刪除映像</h3>
-        <pre><code>
-        # 刪除映像
-        docker rmi image_id
-        </code></pre>
-    </div>
+
+<h1>Docker 筆記</h1>
+<div id="install-docker">
+  <h3>安裝 Docker</h3>
+  <div class="code-container">
+    <pre><code>
+      # 在 Ubuntu 上安裝 Docker
+      sudo apt-get update
+      sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+      # 驗證 Docker 是否安裝成功
+      sudo docker --version
+    </code></pre>
+  </div>
 </div>
+
+<div id="images-management">
+  <h3>鏡像管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 列出所有鏡像
+      docker images / docker image ls
+
+      # 搜索鏡像
+      docker search
+      docker search nginx
+
+      # 拉取鏡像
+      docker pull [image]
+
+      # 推送鏡像到遠程倉庫
+      docker push geekhour/hello-docker:latest
+
+      # 保存鏡像到檔案
+      docker save [image] -o FILE / docker save [image] > FILE
+      docker save geekhour/hello-docker:latest > hello-docker.tar
+
+      # 從檔案加載鏡像
+      docker load -i FILE
+      docker load -i hello-docker.tar
+
+      # 查看鏡像的歷史記錄
+      docker history [image]
+
+      # 刪除鏡像
+      docker rmi [image] / docker image rm [image]
+      docker image prune
+
+      # 將鏡像導入到 Docker
+      docker import [URL/FILE]
+
+      # 將容器提交為鏡像
+      docker commit [container] [image]
+
+      # 重新構建鏡像
+      docker build -t [your-image-name]:[tag] .
+
+      # 為鏡像打標籤
+      docker tag [your-image-name]:[tag] [your-image-name]:[new-tag]
+    </code></pre>
+  </div>
+</div>
+
+<div id="network">
+  <h3>網絡管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 列出所有網絡
+      docker network ls
+
+      # 查看網絡詳情
+      docker network inspect [network]
+
+      # 創建網絡
+      docker network create [network]
+
+      # 刪除網絡
+      docker network rm [network]
+
+      # 連接容器到網絡
+      docker network connect [network] [container]
+
+      # 斷開容器與網絡的連接
+      docker network disconnect [network] [container]
+    </code></pre>
+  </div>
+</div>  
+
+<div id="plugin">
+  <h3>插件管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 列出所有插件
+      docker plugin ls
+
+      # 安裝插件
+      docker plugin install [plugin]
+
+      # 啟用插件
+      docker plugin enable [plugin]
+
+      # 禁用插件
+      docker plugin disable [plugin]
+
+      # 刪除插件
+      docker plugin rm [plugin]
+    </code></pre>
+  </div>
+</div>
+
+<div id="container-management">
+  <h3>容器管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 列出正在運行的容器
+      docker ps / docker container ls
+
+      # 列出所有容器（包括停止的）
+      docker ps -a / docker container ls -a
+
+      # 進入容器的 bash 環境
+      docker exec -it [container] bash
+
+      # 附加到正在運行的容器
+      docker attach [container]
+
+      # 將容器導出為檔案
+      docker export [container] -o FILE / docker export [container] > FILE
+
+      # 從檔案導入容器
+      docker import FILE
+
+      # 查看容器的日誌
+      docker logs [container]
+
+      # 刪除容器
+      docker rm [container] / docker container rm [container]
+
+      # 查看容器的端口映射
+      docker port [container]
+
+      # 查看容器的進程列表
+      docker top [container]
+
+      # 將檔案複製到容器內
+      docker cp [FILE] [container]:[PATH]
+
+      # 查看容器內檔案的變更
+      docker diff [container]
+
+      # 查看容器的實時資源使用狀況
+      docker stats [container]
+    </code></pre>
+  </div>
+</div>
+
+<div id="volume">
+  <h3>數據卷管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 創建數據卷
+      docker volume create [volume]
+
+      # 列出所有數據卷
+      docker volume ls
+
+      # 查看數據卷的詳細資訊
+      docker volume inspect [volume]
+
+      # 刪除數據卷
+      docker volume rm [volume]
+
+      # 清理未使用的數據卷
+      docker volume prune
+    </code></pre>
+  </div>
+</div>
+
+<div id="daily">
+  <h3>日常操作</h3>
+  <div class="code-container">
+    <pre><code>
+      # 查看 Docker 系統的資訊
+      docker info
+
+      # 查看 Docker 的版本
+      docker version
+
+      # 查看 Docker 的幫助資訊
+      docker --help
+
+      # 查看某個 Docker 命令的幫助資訊
+      docker [command] --help
+
+      # 登錄到 Docker Hub
+      docker login
+
+      # 登出 Docker Hub
+      docker logout
+    </code></pre>
+  </div>
+</div>
+
+<div id="run">
+  <h3>容器運行</h3>
+  <div class="code-container">
+    <pre><code>
+      # 創建容器但不啟動
+      docker create [image]
+
+      # 運行容器
+      docker run [image]
+
+      # 啟動容器
+      docker start [container]
+
+      # 停止容器
+      docker stop [container]
+
+      # 重啟容器
+      docker restart [container]
+
+      # 運行容器並指定選項
+      docker run [options] [image] [command] [arg...]
+
+      # 給容器指定名稱
+      docker run --name [name] [image]
+
+      # 在背景中運行容器
+      docker run -d [image]
+
+      # 映射端口
+      docker run -p [hostPort]:[containerPort] [image]
+
+      # 自動映射所有容器端口
+      docker run -P [image]
+
+      # 設置環境變數
+      docker run -e [key=value] [image]
+
+      # 設置工作目錄
+      docker run -w [PATH] [image]
+
+      # 進入容器的 bash 環境
+      docker run -it nginx:latest /bin/bash
+
+      # 在背景中運行 MySQL 容器並映射端口和掛載卷
+      docker run -it -p 3316:3306 -v /data:/data -d mysql:latest
+
+      # 使用 Docker Compose 更新容器
+      docker-compose up -d --build
+    </code></pre>
+  </div>
+</div>
+
+<div id="dockerfile">
+  <h3>常用 Dockerfile 指令</h3>
+  <div class="code-container">
+    <pre><code>
+      # 基礎鏡像
+      FROM [base_image]
+
+      # 添加檔案
+      ADD
+
+      # 複製檔案
+      COPY [--chown=<user>:<group>] [來源路徑] [目標路徑]
+
+      # 設定工作目錄
+      WORKDIR [PATH]
+
+      # 設定環境變數
+      ENV <key><value>
+      ENV <key1>=<value1> <key2>=<value2>...
+
+      # 設定容器啟動命令
+      CMD <命令>
+      CMD ["可執行文件", "參數1", "參數2"...]
+
+      # 創建數據卷
+      VOLUME <路徑>
+      VOLUME ["路徑1", "路徑2"]
+    </code></pre>
+  </div>
+</div>  
+

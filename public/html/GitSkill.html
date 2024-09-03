@@ -1,198 +1,204 @@
-<div class="container">
-  <div class="sidebar">
-    <ul>
-      <li><a href="/">主頁</a></li>
-      <li><a href="#basic-commands">基本指令</a></li>
-      <li><a href="#init">初始化倉庫</a></li>
-      <li><a href="#config">配置</a></li>
-      <li><a href="#branching">分支管理</a></li>
-      <li><a href="#merging">合併分支</a></li>
-      <li><a href="#remote-repositories">遠端倉庫</a></li>
-      <li><a href="#stashing">快取</a></li>
-      <li><a href="#reverting">回退</a></li>
-      <li><a href="#log-oneline">提交歷史</a></li>
-      <li><a href="#diff">查看差異</a></li>
-      <li><a href="#reset">重設變更</a></li>
-      <li><a href="#gitignore">.gitignore</a></li>
-      <li><a href="#version">Git 版本</a></li>
-      <li><a href="#github">GitHub 筆記</a></li>
-    </ul>
-  </div>
-  <div class="content">
-      <h1>Git 筆記</h1>
 
-      <h3 id="basic-commands">基本指令</h3>
-      <div class="code-container">
-        <pre><code>
-          # 複製倉庫
-          git clone [repository-url]
-          
-          # 查看狀態
-          git status
-          
-          # 新增更改
-          git add [file]
-          
-          # 提交更改
-          git commit -m "Commit message"
-          
-          # 查看提交歷史
-          git log
-        </code></pre>
-      </div>
+<h1>Git 筆記</h1>
 
-      <h3 id="init">初始化倉庫</h3>
-      <div class="code-container">
-        <pre><code>
-          # 初始化一個新的 Git 倉庫
-          git init
-        </code></pre>
-      </div>
-
-      <h3 id="config">配置</h3>
-      <div class="code-container">
-        <pre><code>
-          # 設定使用者資訊
-          git config --global user.name "Your Name"
-          git config --global user.email "your.email@example.com"
-          
-          # 查看目前配置
-          git config --list
-        </code></pre>
-      </div>
-
-      <h3 id="branching">分支管理</h3>
-      <div class="code-container">
-        <pre><code>
-          # 查看所有分支
-          git branch
-          
-          # 建立新分支
-          git branch [branch-name]
-          
-          # 切換分支
-          git checkout [branch-name]
-          
-          # 建立並切換到新分支
-          git checkout -b [branch-name]
-        </code></pre>
-      </div>
-
-      <h3 id="merging">合併分支</h3>
-      <div class="code-container">
-        <pre><code>
-        # 切換到目標分支
-        git checkout [target-branch]
-        
-        # 合併其他分支
-        git merge [source-branch]
-        </code></pre>
-      </div>
+<div id="basic-commands">
+  <h3>基本指令</h3>
+  <div class="code-container">
+    <pre><code>
+      # 複製倉庫
+      git clone [repository-url]
       
-      <h3 id="remote-repositories">遠端倉庫</h3>
-      <div class="code-container">
-        <pre><code>
-        # 新增遠端倉庫
-        git remote add origin [repository-url]
-        
-        # 推送到遠端倉庫
-        git push origin [branch-name]
-        
-        # 拉取遠端倉庫更改
-        git pull origin [branch-name]
-        </code></pre>
-      </div>
+      # 查看狀態
+      git status
+      
+      # 新增更改
+      git add [file]
+      
+      # 提交更改
+      git commit -m "Commit message"
+      
+      # 查看提交歷史
+      git log
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="stashing">快取</h3>
-      <div class="code-container">
-        <pre><code>
-        # 儲存目前變更到快取區
-        git stash
-        
-        # 應用程式快取區的更改
-        git stash apply
-        
-        # 查看快取區列表
-        git stash list
-        </code></pre>
-      </div>
+<div id="init">
+  <h3>初始化倉庫</h3>
+  <div class="code-container">
+    <pre><code>
+      # 初始化一個新的 Git 倉庫
+      git init
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="reverting">回退</h3>
-      <div class="code-container">
-        <pre><code>
-        # 回退到某個提交
-        git reset --hard [commit-id]
-        
-        # 取消對文件的更改
-        git checkout -- [file]
-        </code></pre>
-      </div>
+<div id="config">
+  <h3>配置</h3>
+  <div class="code-container">
+    <pre><code>
+      # 設定使用者資訊
+      git config --global user.name "Your Name"
+      git config --global user.email "your.email@example.com"
+      
+      # 查看目前配置
+      git config --list
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="log-oneline">提交歷史</h3>
-      <div class="code-container">
-        <pre><code>
-        # 查看簡潔的提交歷史
-        git log --oneline
-        </code></pre>
-      </div>
+<div id="branching">
+  <h3>分支管理</h3>
+  <div class="code-container">
+    <pre><code>
+      # 查看所有分支
+      git branch
+      
+      # 建立新分支
+      git branch [branch-name]
+      
+      # 切換分支
+      git checkout [branch-name]
+      
+      # 建立並切換到新分支
+      git checkout -b [branch-name]
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="diff">查看差異</h3>
-      <div class="code-container">
-        <pre><code>
-        # 查看工作區和索引區的差異
-        git diff
-        
-        # 查看兩個提交之間的差異
-        git diff [commit-id1] [commit-id2]
-        </code></pre>
-      </div>
+<div id="merging">
+  <h3>合併分支</h3>
+  <div class="code-container">
+    <pre><code>
+    # 切換到目標分支
+    git checkout [target-branch]
+    
+    # 合併其他分支
+    git merge [source-branch]
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="reset">重設變更</h3>
-      <div class="code-container">
-        <pre><code>
-        # 重設文件到最新提交狀態
-        git reset [file]
-        
-        # 重設索引區和工作區到最新提交狀態
-        git reset --hard
-        </code></pre>
-      </div>
+<div id="remote-repositories">
+  <h3>遠端倉庫</h3>
+  <div class="code-container">
+    <pre><code>
+    # 新增遠端倉庫
+    git remote add origin [repository-url]
+    
+    # 推送到遠端倉庫
+    git push origin [branch-name]
+    
+    # 拉取遠端倉庫更改
+    git pull origin [branch-name]
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="gitignore">.gitignore</h3>
-      <div class="code-container">
-        <pre><code>
-        # 創建 .gitignore 文件
-        # 用來排除不需要的文件和目錄
-        # 例如：
-        # *.log
-        # node_modules/
-        # .env
-        </code></pre>
-      </div>
+<div id="stashing">
+  <h3>快取</h3>
+  <div class="code-container">
+    <pre><code>
+    # 儲存目前變更到快取區
+    git stash
+    
+    # 應用程式快取區的更改
+    git stash apply
+    
+    # 查看快取區列表
+    git stash list
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="version">Git 版本</h3>
-      <div class="code-container">
-        <pre><code>
-        # 查看 Git 版本
-        git version
-        </code></pre>
-      </div>
+<div id="reverting">
+  <h3>回退</h3>
+  <div class="code-container">
+    <pre><code>
+    # 回退到某個提交
+    git reset --hard [commit-id]
+    
+    # 取消對文件的更改
+    git checkout -- [file]
+    </code></pre>
+  </div>
+</div>
 
-      <h3 id="github">GitHub 筆記</h3>
-      <div class="code-container">
-        <pre><code>
-        # 設置遠端倉庫
-        git remote add origin https://github.com/username/repository.git
-        
-        # 重命名默認分支為 main
-        git branch -M main
-        
-        # 推送本地更改到 GitHub
-        git push -u origin main
-        
-        # 克隆 GitHub 倉庫到本地
-        git clone https://github.com/username/repository.git
-        </code></pre>
-      </div>
+<div id="log-oneline">
+  <h3>提交歷史</h3>
+  <div class="code-container">
+    <pre><code>
+    # 查看簡潔的提交歷史
+    git log --oneline
+    </code></pre>
+  </div>
+</div>
+
+<div id="diff">
+  <h3>查看差異</h3>
+  <div class="code-container">
+    <pre><code>
+    # 查看工作區和索引區的差異
+    git diff
+    
+    # 查看兩個提交之間的差異
+    git diff [commit-id1] [commit-id2]
+    </code></pre>
+  </div>
+</div>
+
+<div id="reset">
+  <h3>重設變更</h3>
+  <div class="code-container">
+    <pre><code>
+    # 重設文件到最新提交狀態
+    git reset [file]
+    
+    # 重設索引區和工作區到最新提交狀態
+    git reset --hard
+    </code></pre>
+  </div>
+</div>
+
+<div id="gitignore">
+  <h3>.gitignore</h3>
+  <div class="code-container">
+    <pre><code>
+    # 創建 .gitignore 文件
+    # 用來排除不需要的文件和目錄
+    # 例如：
+    # *.log
+    # node_modules/
+    # .env
+    </code></pre>
+  </div>
+</div>
+
+<div id="version">
+  <h3>Git 版本</h3>
+  <div class="code-container">
+    <pre><code>
+    # 查看 Git 版本
+    git version
+    </code></pre>
+  </div>
+</div>
+
+<div id="github">
+  <h3>GitHub</h3>
+  <div class="code-container">
+    <pre><code>
+    # 設置遠端倉庫
+    git remote add origin https://github.com/username/repository.git
+    
+    # 重命名默認分支為 main
+    git branch -M main
+    
+    # 推送本地更改到 GitHub
+    git push -u origin main
+    
+    # 克隆 GitHub 倉庫到本地
+    git clone https://github.com/username/repository.git
+    </code></pre>
   </div>
 </div>

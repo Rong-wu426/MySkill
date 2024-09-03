@@ -1,85 +1,83 @@
-<div class="container">
-  <div class="sidebar">
-    <ul>
-      <li><a href="/">主頁</a></li>
-      <li><a href="#installation">安裝與導入</a></li>
-      <li><a href="#basic-operations">基本操作</a></li>
-      <li><a href="#tensors">張量操作</a></li>
-      <li><a href="#model-creation">模型創建</a></li>
-      <li><a href="#training">模型訓練</a></li>
-      <li><a href="#evaluation">模型評估</a></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h1>TensorFlow 筆記</h1>
-  
-    <h3 id="installation">安裝與導入</h3>
-    <pre><code>
-      # 安裝 TensorFlow
-      pip install tensorflow
-  
-      # 匯入 TensorFlow
-      import tensorflow as tf
-    </code></pre>
-  
-    <h3 id="basic-operations">基本操作</h3>
-    <pre><code>
-      # 建立一個常數
-      a = tf.constant(2)
-      b = tf.constant(3)
-      c = a + b
-      print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)
-    </code></pre>
-  
-    <h3 id="tensors">張量操作</h3>
-    <pre><code>
-      # 創建張量
-      tensor = tf.constant([[1, 2], [3, 4]])
-  
-      # 張量形狀
-      print(tensor.shape) # 輸出: (2, 2)
-  
-      # 張量運算
-      tensor_transposed = tf.transpose(tensor)
-      print(tensor_transposed) # 輸出: tf.Tensor([[1, 3], [2, 4]], shape=(2, 2), dtype=int32)
-    </code></pre>
-  
-    <h3 id="model-creation">模型創建</h3>
-    <pre><code>
-      from tensorflow.keras.models import Sequential
-      from tensorflow.keras.layers import Dense
-  
-      # 創建模型
-      model = Sequential([
-      Dense(64, activation='relu', input_shape=(10,)),
-      Dense(10, activation='softmax')
-      ])
-    </code></pre>
-  
-    <h3 id="training">模型訓練</h3>
-    <pre><code>
-      # 編譯模型
-      model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-  
-      # 創建虛擬數據
-      import numpy as np
-      X_train = np.random.random((1000, 10))
-      y_train = np.random.randint(10, size=(1000,))
-  
-      # 訓練模型
-      model.fit(X_train, y_train, epochs=10, batch_size=32)
-    </code></pre>
-  
-    <h3 id="evaluation">模型評估</h3>
-    <pre><code>
-      # 創建測試數據
-      X_test = np.random.random((100, 10))
-      y_test = np.random.randint(10, size=(100,))
-  
-      # 評估模型
-      test_loss, test_acc = model.evaluate(X_test, y_test)
-      print(f'Test accuracy: {test_acc}')
-    </code></pre>
-  </div>
-</div> 
-  
+
+<h1>TensorFlow 筆記</h1>
+
+<div id="installation">
+  <h3>安裝與導入</h3>
+  <pre><code>
+    # 安裝 TensorFlow
+    pip install tensorflow
+
+    # 匯入 TensorFlow
+    import tensorflow as tf
+  </code></pre>
+</div>
+
+<div id="basic-operations">
+  <h3>基本操作</h3>
+  <pre><code>
+    # 建立一個常數
+    a = tf.constant(2)
+    b = tf.constant(3)
+    c = a + b
+    print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)
+  </code></pre>
+</div>
+
+<div id="tensors">
+  <h3>張量操作</h3>
+  <pre><code>
+    # 創建張量
+    tensor = tf.constant([[1, 2], [3, 4]])
+
+    # 張量形狀
+    print(tensor.shape) # 輸出: (2, 2)
+
+    # 張量運算
+    tensor_transposed = tf.transpose(tensor)
+    print(tensor_transposed) # 輸出: tf.Tensor([[1, 3], [2, 4]], shape=(2, 2), dtype=int32)
+  </code></pre>
+</div>
+
+<div id="model-creation">
+  <h3>模型創建</h3>
+  <pre><code>
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense
+
+    # 創建模型
+    model = Sequential([
+    Dense(64, activation='relu', input_shape=(10,)),
+    Dense(10, activation='softmax')
+    ])
+  </code></pre>
+</div>
+
+<div id="training">
+  <h3>模型訓練</h3>
+  <pre><code>
+    # 編譯模型
+    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+    # 創建虛擬數據
+    import numpy as np
+    X_train = np.random.random((1000, 10))
+    y_train = np.random.randint(10, size=(1000,))
+
+    # 訓練模型
+    model.fit(X_train, y_train, epochs=10, batch_size=32)
+  </code></pre>
+</div>
+
+<div id="evaluation">
+  <h3>模型評估</h3>
+  <pre><code>
+    # 創建測試數據
+    X_test = np.random.random((100, 10))
+    y_test = np.random.randint(10, size=(100,))
+
+    # 評估模型
+    test_loss, test_acc = model.evaluate(X_test, y_test)
+    print(f'Test accuracy: {test_acc}')
+  </code></pre>
+</div>
+
