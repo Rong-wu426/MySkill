@@ -9,27 +9,27 @@
     <li>RGB：通過紅、綠、藍三個原色的組合來表示顏色，例如 <code>rgb(255, 87, 51)</code>。</li>
     <li>HSL：通過色調、飽和度和亮度來表示顏色，例如 <code>hsl(9, 100%, 60%)</code>。</li>
   </ul>
-  <pre><code>
-  /* 顏色代碼 */
-  .example-color-code {
-    color: #FF5733; /* 橙色 */
-  }
+  <div class="code-container"><pre><code>
+    /* 顏色代碼 */
+    .example-color-code {
+      color: #FF5733; /* 橙色 */
+    }
 
-  /* 顏色名稱 */
-  .example-color-name {
-    color: red; /* 紅色 */
-  }
+    /* 顏色名稱 */
+    .example-color-name {
+      color: red; /* 紅色 */
+    }
 
-  /* RGB 三原色 */
-  .example-rgb {
-    color: rgb(255, 87, 51); /* 橙色 */
-  }
+    /* RGB 三原色 */
+    .example-rgb {
+      color: rgb(255, 87, 51); /* 橙色 */
+    }
 
-  /* HSL 顏色 */
-  .example-hsl {
-    color: hsl(9, 100%, 60%); /* 橙色 */
-  }
-  </code></pre>
+    /* HSL 顏色 */
+    .example-hsl {
+      color: hsl(9, 100%, 60%); /* 橙色 */
+    }
+  </code></pre></div> 
 </div>
 
 <div id="box-model">
@@ -40,19 +40,17 @@
     <li><strong>margin</strong>：控制元素與外部其他元素之間的外邊距。</li>
     <li><strong>border</strong>：控制元素的邊框樣式、顏色和寬度。</li>
   </ul>
-  <pre><code>
-  .box {
-    width: 100px;
-    padding: 10px; /* 內部空間 */
-    border: 1px solid black; /* 邊框 */
-    margin: 20px; /* 外部空間 */
-  }
-  </code></pre>
-  
-  <!-- 新增的盒子模型示意圖 -->
+  <div class="code-container"><pre><code>
+    .box {
+      width: 100px;
+      padding: 10px; /* 內部空間 */
+      border: 1px solid black; /* 邊框 */
+      margin: 20px; /* 外部空間 */
+    }
+  </code></pre></div>
+
   <h4>盒子模型示意圖</h4>
   <div class="box-model-demo">
-    
     <div class="box">
       <div class="border-box"></div>
     </div>
@@ -66,25 +64,25 @@
     <li><strong>float</strong>：將元素向左或向右浮動，使其與周圍的文本和行內元素一起排列。</li>
     <li><strong>display</strong>：控制元素的顯示方式，如塊級元素（<code>block</code>）、行內元素（<code>inline</code>）或隱藏元素（<code>none</code>）。</li>
   </ul>
-  <pre><code>
-  /* Float */
-  .float-example {
-    float: left; /* 向左浮動 */
-  }
+  <div class="code-container"><pre><code>
+    /* Float */
+    .float-example {
+      float: left; /* 向左浮動 */
+    }
 
-  /* Display */
-  .display-block {
-    display: block; /* 塊級元素 */
-  }
+    /* Display */
+    .display-block {
+      display: block; /* 塊級元素 */
+    }
 
-  .display-inline {
-    display: inline; /* 內聯元素 */
-  }
+    .display-inline {
+      display: inline; /* 內聯元素 */
+    }
 
-  .display-none {
-    display: none; /* 隱藏元素 */
-  }
-  </code></pre>
+    .display-none {
+      display: none; /* 隱藏元素 */
+    }
+  </code></pre></div>
 </div>
 
 <div id="positioning">
@@ -96,13 +94,13 @@
     <li><strong>fixed</strong>：相對於瀏覽器窗口進行定位，滾動頁面時位置不變。</li>
     <li><strong>sticky</strong>：元素在特定滾動位置變得固定。</li>
   </ul>
-  <pre><code>
-  .positioned {
-    position: absolute; /* 絕對定位 */
-    top: 10px;
-    left: 20px;
-  }
-  </code></pre>
+  <div class="code-container"><pre><code>
+    .positioned {
+      position: absolute; /* 絕對定位 */
+      top: 10px;
+      left: 20px;
+    }
+  </code></pre></div>
 </div>
 
 <div id="opacity-border-radius">
@@ -112,15 +110,15 @@
     <li><strong>opacity</strong>：設置元素的透明度，取值範圍是 0 到 1，0 表示完全透明，1 表示不透明。</li>
     <li><strong>border-radius</strong>：設置元素的邊框圓角，值可以是像素、百分比或其他單位。</li>
   </ul>
-  <pre><code>
-  .opacity-example {
-    opacity: 0.5; /* 透明度 */
-  }
+  <div class="code-container"><pre><code>
+    .opacity-example {
+      opacity: 0.5; /* 透明度 */
+    }
 
-  .border-radius-example {
-    border-radius: 10px; /* 圓角 */
-  }
-  </code></pre>
+    .border-radius-example {
+      border-radius: 10px; /* 圓角 */
+    }
+  </code></pre></div>
 </div>
 
 <div id="class-id">
@@ -130,17 +128,17 @@
     <li><strong>class</strong>：可以應用到多個元素，使用 <code>.</code> 開頭。</li>
     <li><strong>ID</strong>：唯一標識一個元素，使用 <code>#</code> 開頭。</li>
   </ul>
-  <pre><code>
-  /* Class */
-  .my-class {
-    color: blue;
-  }
+  <div class="code-container"><pre><code>
+    /* Class */
+    .my-class {
+      color: blue;
+    }
 
-  /* ID */
-  #my-id {
-    color: red;
-  }
-  </code></pre>
+    /* ID */
+    #my-id {
+      color: red;
+    }
+  </code></pre></div>
 </div>
 
 <div id="selectors">
@@ -154,37 +152,37 @@
     <li><strong>後代選擇器</strong>：選擇某元素內部的所有指定元素，例如 <code>div p</code>。</li>
     <li><strong>子元素選擇器</strong>：選擇某元素內部的直接子元素，例如 <code>ul > li</code>。</li>
   </ul>
-  <pre><code>
-  /* 元素選擇器 */
-  p {
-    color: green;
-  }
+  <div class="code-container"><pre><code>
+    /* 元素選擇器 */
+    p {
+      color: green;
+    }
 
-  /* 類別選擇器 */
-  .my-class {
-    font-size: 16px;
-  }
+    /* 類別選擇器 */
+    .my-class {
+      font-size: 16px;
+    }
 
-  /* ID 選擇器 */
-  #my-id {
-    background-color: yellow;
-  }
+    /* ID 選擇器 */
+    #my-id {
+      background-color: yellow;
+    }
 
-  /* 群組選擇器 */
-  h1, h2, h3 {
-    font-weight: bold;
-  }
+    /* 群組選擇器 */
+    h1, h2, h3 {
+      font-weight: bold;
+    }
 
-  /* 後代選擇器 */
-  div p {
-    margin: 0;
-  }
+    /* 後代選擇器 */
+    div p {
+      margin: 0;
+    }
 
-  /* 子元素選擇器 */
-  ul > li {
-    list-style-type: square;
-  }
-  </code></pre>
+    /* 子元素選擇器 */
+    ul > li {
+      list-style-type: square;
+    }
+  </code></pre></div>
 </div>
 
 <div id="animation">
@@ -194,25 +192,25 @@
     <li><strong>animation</strong>：創建複雜的動畫效果，通過定義關鍵幀來指定動畫的各個階段。</li>
     <li><strong>transition</strong>：在元素狀態發生變化時，創建過渡效果。</li>
   </ul>
-  <pre><code>
-  /* Animation */
-  @keyframes example {
-    from { background-color: red; }
-    to { background-color: yellow; }
-  }
+  <div class="code-container"><pre><code>
+    /* Animation */
+    @keyframes example {
+      from { background-color: red; }
+      to { background-color: yellow; }
+    }
 
-  .animation-example {
-    animation: example 3s infinite;
-  }
+    .animation-example {
+      animation: example 3s infinite;
+    }
 
-  /* Transition */
-  .transition-example {
-    transition: background-color 0.5s ease;
-  }
+    /* Transition */
+    .transition-example {
+      transition: background-color 0.5s ease;
+    }
 
-  .transition-example:hover {
-    background-color: blue;
-  }
+    .transition-example:hover {
+      background-color: blue;
+    }
   </code></pre>
 </div>
 

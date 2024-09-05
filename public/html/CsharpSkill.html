@@ -185,46 +185,41 @@
 
 <div id="variables">
   <h3>變數</h3>
-  <div class="code-container">
-    <pre><code>
-      // 可以賦予變數
-      int x = 10;
-      string y = "Hello";
+  <div class="code-container"><pre><code>
+    // 可以賦予變數
+    int x = 10;
+    string y = "Hello";
 
-      // 也可以一次賦予多個變數
-      int zx = 5, zy = 6;
-    </code></pre>
-  </div>
+    // 也可以一次賦予多個變數
+    int zx = 5, zy = 6;
+  </code></pre></div>
 </div>
 
 <div id="comments">
   <h3>註解</h3>
-  <div class="code-container">
-    <pre><code>
-      // 這是單行註解
+  <div class="code-container"><pre><code>
+    // 這是單行註解
 
-      /*
-      這是多行註解
-      */
-    </code></pre>
-  </div>
+    /*
+    這是多行註解
+    */
+  </code></pre></div>
 </div>
 
 <div id="user-input">
   <h3>使用者輸入</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
+    <pre><code>
     Console.WriteLine("Enter username:");
     string username = Console.ReadLine();
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="print-output">
   <h3>列印輸出</h3>
-  <div class="code-container">
-    <pre><code>
-      Console.WriteLine("Hello, World!");
-    </code></pre>
-  </div>
+  <div class="code-container"><pre><code>
+    Console.WriteLine("Hello, World!");
+  </code></pre></div>
 </div>
 
 <div id="operators">
@@ -394,152 +389,134 @@
 
 <div id="math-functions">
   <h3>數學函式</h3>
-  <div class="code-container">
-    <pre><code>
-      平方根: Math.Sqrt(x)
-      絕對值: Math.Abs(x)
-      最大值: Math.Max(x, y)
-      最小值: Math.Min(x, y)
-    </code></pre>
-  </div>
+  <div class="code-container"><pre><code>
+    平方根: Math.Sqrt(x)
+    絕對值: Math.Abs(x)
+    最大值: Math.Max(x, y)
+    最小值: Math.Min(x, y)
+  </code></pre></div>
 </div>
 
 <div id="string-functions">
   <h3>字串操作</h3>
-  <div class="code-container">
-    <pre><code>
+  <div class="code-container"><pre><code>
     字串長度: string.Length
     轉大寫: string.ToUpper()
     轉小寫: string.ToLower()
     字串插值: $"Hello, {name}!"
-    </code></pre>
-  </div>
+  </code></pre></div>
 </div>
 
 <div id="conditionals">
   <h3>條件語句</h3>
-  <div class="code-container">
-    <pre><code>
-      if (x > 10)
-      {
-          Console.WriteLine("x 大於 10");
-      }
-      else if (x == 10)
-      {
-          Console.WriteLine("x 等於 10");
-      }
-      else
-      {
-          Console.WriteLine("x 小於 10");
-      }
-    </code></pre>
-  </div>
+  <div class="code-container"><pre><code>
+    if (x > 10)
+    {
+      Console.WriteLine("x 大於 10");
+    }
+    else if (x == 10)
+    {
+      Console.WriteLine("x 等於 10");
+    }
+    else
+    {
+      Console.WriteLine("x 小於 10");
+    }
+  </code></pre></div>
 </div>
 
 <div id="loops">
   <h3>循環語句</h3>
-  <div class="code-container">
-    <pre><code>
-      // for 迴圈
-      for (int i = 0; i &lt; 5; i++)
-      {
-          Console.WriteLine(i);
-      }
+  <div class="code-container"><pre><code>
+    // for 迴圈
+    for (int i = 0; i &lt; 5; i++)
+    {
+      Console.WriteLine(i);
+    }
 
-      // while 循環
-      int count = 0;
-      while (count &lt; 5)
-      {
-          Console.WriteLine(count);
-          count++;
-      }
-    </code></pre>
-  </div>
+    // while 循環
+    int count = 0;
+    while (count &lt; 5)
+    {
+      Console.WriteLine(count);
+      count++;
+    }
+  </code></pre></div>
 </div>
 
 <div id="functions">
   <h3>函數定義</h3>
-  <div class="code-container">
-    <pre><code>
-      // 定義函數
-      public static int Add(int a, int b)
-      {
-          return a + b;
-      }
+  <div class="code-container"><pre><code>
+    // 定義函數
+    public static int Add(int a, int b)
+    {
+      return a + b;
+    }
 
-      // 調用函數
-      int result = Add(5, 3);
-      Console.WriteLine(result);
-    </code></pre>
-  </div>
+    // 調用函數
+    int result = Add(5, 3);
+    Console.WriteLine(result);
+  </code></pre></div>
 </div>
 
 <div id="classes">
   <h3>類別</h3>
-  <div class="code-container">
-    <pre><code>
-      public class Person
+  <div class="code-container"><pre><code>
+    public class Person
+    {
+      public string Name { get; set; }
+      public int Age { get; set; }
+
+      public void Introduce()
       {
-          public string Name { get; set; }
-          public int Age { get; set; }
-
-          public void Introduce()
-          {
-              Console.WriteLine($"我的名字是 {Name}，我 {Age} 歲。");
-          }
+        Console.WriteLine($"我的名字是 {Name}，我 {Age} 歲。");
       }
+    }
 
-      // 創建類別實例
-      Person person = new Person { Name = "Alice", Age = 30 };
-      person.Introduce();
-    </code></pre>
-  </div>
+    // 創建類別實例
+    Person person = new Person { Name = "Alice", Age = 30 };
+    person.Introduce();
+  </code></pre></div>
 </div>
 
 <div id="exception-handling">
   <h3>異常處理</h3>
-  <div class="code-container">
-    <pre><code>
-      try
-      {
-          int result = 10 / 0; // 這會引發除零異常
-      }
-      catch (DivideByZeroException ex)
-      {
-          Console.WriteLine("發生錯誤: " + ex.Message);
-      }
-      finally
-      {
-          Console.WriteLine("這裡的代碼無論是否發生異常都會執行。");
-      }
-    </code></pre>
-  </div>
+  <div class="code-container"><pre><code>
+  try
+    {
+      int  result = 10 / 0; // 這會引發除零異常
+    }
+    catch (DivideByZeroException ex)
+    {
+      Console.WriteLine("發生錯誤: " + ex.Message);
+    }
+    finally
+    {
+      Console.WriteLine("這裡的代碼無論是否發生異常都會執行。");
+    }
+  </code></pre></div>
 </div>
 
 <div id="file-operations">
   <h3>檔案操作</h3>
-  <div class="code-container">
-    <pre><code>
-      // 讀取檔案
-      string text = File.ReadAllText("file.txt");
-      Console.WriteLine(text);
+  <div class="code-container"><pre><code>
+    // 讀取檔案
+    string text = File.ReadAllText("file.txt");
+    Console.WriteLine(text);
 
-      // 寫入檔案
-      File.WriteAllText("file.txt", "Hello, World!");
-    </code></pre>
-  </div>
+    // 寫入檔案
+    File.WriteAllText("file.txt", "Hello, World!");
+  </code></pre></div>
 </div>
 
 <div id="modules">
   <h3>模組</h3>
-  <div class="code-container">
-    <pre><code>
-      // 引入模組
-      using System;
-      using System.Collections.Generic;
+  <div class="code-container"><pre><code>
+  // 引入模組
+    using System;
+    using System.Collections.Generic;
 
-      // 顯示模組內部的函數
-      Console.WriteLine("模組操作示例");
-    </code></pre>
-  </div>
+    // 顯示模組內部的函數
+    Console.WriteLine("模組操作示例");
+  </code></pre></div>
 </div>

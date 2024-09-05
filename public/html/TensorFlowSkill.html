@@ -3,29 +3,29 @@
 
 <div id="installation">
   <h3>安裝與導入</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     # 安裝 TensorFlow
     pip install tensorflow
 
     # 匯入 TensorFlow
     import tensorflow as tf
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="basic-operations">
   <h3>基本操作</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     # 建立一個常數
     a = tf.constant(2)
     b = tf.constant(3)
     c = a + b
     print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="tensors">
   <h3>張量操作</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     # 創建張量
     tensor = tf.constant([[1, 2], [3, 4]])
 
@@ -35,12 +35,12 @@
     # 張量運算
     tensor_transposed = tf.transpose(tensor)
     print(tensor_transposed) # 輸出: tf.Tensor([[1, 3], [2, 4]], shape=(2, 2), dtype=int32)
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="model-creation">
   <h3>模型創建</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     from tensorflow.keras.models import Sequential
     from tensorflow.keras.layers import Dense
 
@@ -49,12 +49,12 @@
     Dense(64, activation='relu', input_shape=(10,)),
     Dense(10, activation='softmax')
     ])
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="training">
   <h3>模型訓練</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     # 編譯模型
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
@@ -65,12 +65,12 @@
 
     # 訓練模型
     model.fit(X_train, y_train, epochs=10, batch_size=32)
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="evaluation">
   <h3>模型評估</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     # 創建測試數據
     X_test = np.random.random((100, 10))
     y_test = np.random.randint(10, size=(100,))
@@ -78,6 +78,6 @@
     # 評估模型
     test_loss, test_acc = model.evaluate(X_test, y_test)
     print(f'Test accuracy: {test_acc}')
-  </code></pre>
+  </code></pre></div>
 </div>
 

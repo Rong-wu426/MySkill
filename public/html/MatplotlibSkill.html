@@ -10,64 +10,63 @@
 
 <div id="installation">
   <h3>安裝</h3>
-  <pre><code>
-    # 使用 pip 安裝 Matplotlib
-    pip install matplotlib
-  </code></pre>
-</div>
+  <div class="code-container"><pre><code>
+      # 使用 pip 安裝 Matplotlib
+      pip install matplotlib
+    </code></pre></div>
+  </div>
 
 <div id="basic-plot">
   <h3>基本繪圖</h3>
-  <pre><code>
-    import matplotlib.pyplot as plt
-
-    # 繪製基本圖形
-    plt.plot([1, 2, 3, 4], [10, 20, 25, 30])
-    plt.xlabel('X 軸')
-    plt.ylabel('Y 軸')
-    plt.title('基本圖形')
-    plt.show()
-  </code></pre>
-</div>
+  <div class="code-container"><pre><code>
+      import matplotlib.pyplot as plt
+      
+      # 繪製基本圖形
+      plt.plot([1, 2, 3, 4], [10, 20, 25, 30])
+      plt.xlabel('X 軸')
+      plt.ylabel('Y 軸')
+      plt.title('基本圖形')
+      plt.show()
+    </code></pre></div>
+  </div>
 
 <div id="line-plot">
   <h3>折線圖</h3>
-  <pre><code>
-    import matplotlib.pyplot as plt
+  <div class="code-container"><pre><code>
+      import matplotlib.pyplot as plt
 
-    # 繪製折線圖
-    x = [1, 2, 3, 4]
-    y = [10, 20, 25, 30]
+      # 繪製折線圖
+      x = [1, 2, 3, 4]
+      y = [10, 20, 25, 30]
 
-    plt.plot(x, y, marker='o')
-    plt.xlabel('X 軸')
-    plt.ylabel('Y 軸')
-    plt.title('折線圖')
-    plt.grid(True)
-    plt.show()
-  </code></pre>
-</div>
+      plt.plot(x, y, marker='o')
+      plt.xlabel('X 軸')
+      plt.ylabel('Y 軸')
+      plt.title('折線圖')
+      plt.grid(True)
+      plt.show()
+    </div></div>
 
 <div id="scatter-plot">
   <h3>散點圖</h3>
-  <pre><code>
-    import matplotlib.pyplot as plt
+  <div class="code-container"><pre><code>
+      import matplotlib.pyplot as plt
 
-    # 繪製散點圖
-    x = [1, 2, 3, 4]
-    y = [10, 20, 15, 25]
+      # 繪製散點圖
+      x = [1, 2, 3, 4]
+      y = [10, 20, 15, 25]
 
-    plt.scatter(x, y, color='red', marker='x')
-    plt.xlabel('X 軸')
-    plt.ylabel('Y 軸')
-    plt.title('散點圖')
-    plt.show()
-  </code></pre>
-</div>
+      plt.scatter(x, y, color='red', marker='x')
+      plt.xlabel('X 軸')
+      plt.ylabel('Y 軸')
+      plt.title('散點圖')
+      plt.show()
+    </code></pre></div>
+  </div>
 
 <div id="histogram">
   <h3>直方圖</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     import matplotlib.pyplot as plt
 
     # 繪製直方圖
@@ -78,12 +77,12 @@
     plt.ylabel('頻次')
     plt.title('直方圖')
     plt.show()
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="subplots">
   <h3>子圖</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     import matplotlib.pyplot as plt
 
     # 建立子圖
@@ -103,12 +102,12 @@
 
     plt.tight_layout()
     plt.show()
-  </code></pre>
+  </code></pre></div>
 </div>
 
 <div id="customization">
   <h3>自定義</h3>
-  <pre><code>
+  <div class="code-container"><pre><code>
     import matplotlib.pyplot as plt
 
     # 繪製自訂圖形
@@ -121,5 +120,5 @@
     plt.title('自定義圖形')
     plt.grid(True, linestyle='-.')
     plt.show()
-  </code></pre>
+  </code></pre></div>
 </div>

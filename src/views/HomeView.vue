@@ -13,18 +13,24 @@
       <tbody>
         <tr>
           <td>
-            <div v-for="skill in categorizedSkills.frontend" :key="skill.name">
-              <SkillLink :skill="skill" />
+            <div class="skill-container">
+              <div v-for="skill in categorizedSkills.frontend" :key="skill.name" class="skill-item">
+                <SkillLink :skill="skill" />
+              </div>
             </div>
           </td>
           <td>
-            <div v-for="skill in categorizedSkills.backend" :key="skill.name">
-              <SkillLink :skill="skill" />
+            <div class="skill-container">
+              <div v-for="skill in categorizedSkills.backend" :key="skill.name" class="skill-item">
+                <SkillLink :skill="skill" />
+              </div>
             </div>
           </td>
           <td>
-            <div v-for="skill in categorizedSkills.other" :key="skill.name">
-              <SkillLink :skill="skill" />
+            <div class="skill-container">
+              <div v-for="skill in categorizedSkills.other" :key="skill.name" class="skill-item">
+                <SkillLink :skill="skill" />
+              </div>
             </div>
           </td>
         </tr>
@@ -75,83 +81,5 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  font-family: Arial, sans-serif;
-}
-
-h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-td {
-  vertical-align: middle;
-}
-
-td ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  text-align: center; 
-}
-
-td ul li {
-  display: inline-block; 
-  margin: 10px 20px;
-  text-align: center; 
-}
-
-
-.router-link-active {
-  color: #42b983;
-  font-weight: bold;
-}
-
-.router-link-active img {
-  border: 2px solid #42b983;
-  border-radius: 50%;
-}
-
-.skill-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-  display: flex;
-  align-items: center;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #42b983;
-}
-
-a:hover .skill-icon {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
+@import '@/assets/css/Home.css';
 </style>

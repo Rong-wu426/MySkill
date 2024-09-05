@@ -87,15 +87,22 @@ html {
     position: fixed;
     top: 0;
     right: 0;
+    display: grid;
     align-items: center;
     justify-items: center;
-    padding: 0;
+    padding: 0 8rem 2.25rem 8rem;
     font-size: 18px;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
     box-sizing: border-box;
     width: calc(100% - 235px); 
+}
+
+.content div {
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .content h1 {
@@ -141,19 +148,23 @@ html {
     font-weight: bold;
 }
 
-.content p {
+.content div p {
     font-size: 1.125rem;
     color: #2c3e50; 
     margin: 5px 0;
-    width: 600px;
+    text-align: left;
+    width: 100%;
     overflow-wrap: break-word; 
 }
 
 .content ul {
+    align-items: center;
     list-style: disc;
+    list-style-position: inside;
     margin: 5px 0;
     font-size: 18px;
     color: #2c3e50;
+    width: 100%;
 }
 
 .content li {
@@ -190,7 +201,7 @@ html {
     width: 100%;
     height: min-content;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0; 
     box-sizing: border-box;
     color: #333333;
     background-color: rgba(0,0,0,0.1);
@@ -198,22 +209,23 @@ html {
     border-radius: 5px;
     overflow: auto;
     font-family: monospace;
-    text-align: left;
+    text-align: left; 
     white-space: pre-wrap;
     word-wrap: break-word;
-}
-
-.content .code-container pre,
-.content .code-container code {
+    justify-self: start;
+  }
+  
+  .content .code-container pre,
+  .content .code-container code {
     margin: 0; 
-    padding: 0px 10px;
+    padding: 0px 5px;
     white-space: pre-wrap;
     word-wrap: break-word;
     display: block;
     text-align: left;
     line-height: 1.5;
-}
-
+  }
+  
 /* ========== 表格區塊 ========== */
 
 .content table {
