@@ -10,7 +10,7 @@
           <th>其他</th>
         </tr>
       </thead>
-      <tbody>
+        <tbody>
         <tr>
           <td>
             <div class="skill-container">
@@ -62,17 +62,17 @@ export default {
         backend: [
           { name: "Python", path: "/skill/python", icon: "/logo/python-logo.png" },
           { name: "MySQL", path: "/skill/mysql", icon: "/logo/MySQL-logo.png" },
-          { name: "SQLite", path: "/skill/sqlite", icon: "/logo/SQLite-logo.png" }
+          { name: "SQLite", path: "/skill/sqlite", icon: "/logo/SQLite-logo.png" },
+          { name: "C#", path: "/skill/csharp", icon: "/logo/Csharp-logo.png" },
+          { name: "Matplotlib", path: "/skill/matplotlib", icon: "/logo/matplotlib-logo.png" },
+          { name: "Pandas", path: "/skill/pandas", icon: "/logo/pandas-logo.png" },
+          { name: "Seaborn", path: "/skill/seaborn", icon: "/logo/seaborn-logo.png" },
+          { name: "TensorFlow", path: "/skill/tensorflow", icon: "/logo/TensorFlow-logo.png" }
         ],
         other: [
           { name: "Git", path: "/skill/git", icon: "/logo/Git-logo.png" },
           { name: "Docker", path: "/skill/docker", icon: "/logo/Docker-logo.png" },
-          { name: "Linux", path: "/skill/linux", icon: "/logo/Linux-logo.png" },
-          { name: "Matplotlib", path: "/skill/matplotlib", icon: "/logo/matplotlib-logo.png" },
-          { name: "Pandas", path: "/skill/pandas", icon: "/logo/pandas-logo.png" },
-          { name: "Seaborn", path: "/skill/seaborn", icon: "/logo/seaborn-logo.png" },
-          { name: "TensorFlow", path: "/skill/tensorflow", icon: "/logo/TensorFlow-logo.png" },
-          { name: "C#", path: "/skill/csharp", icon: "/logo/Csharp-logo.png" }
+          { name: "Linux", path: "/skill/linux", icon: "/logo/Linux-logo.png" }
         ],
       },
     };
