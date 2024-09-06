@@ -157,8 +157,10 @@ html {
     overflow-wrap: break-word; 
 }
 
-.content ul {
-    align-items: center;
+.content div ul {
+    display: grid;
+    align-items:center;
+    justify-items: left;
     list-style: disc;
     list-style-position: inside;
     margin: 5px 0;
@@ -167,9 +169,10 @@ html {
     width: 100%;
 }
 
-.content li {
+.content div li {
+    justify-items: left;
     margin: 5px;
-    line-height: 1.5;
+    line-height: normal ;
     text-align: left;
 }
 
@@ -200,7 +203,7 @@ html {
 .content .code-container {
     width: 100%;
     height: min-content;
-    max-width: 600px;
+    max-width: 500px;
     margin-bottom: 5px;
     box-sizing: border-box;
     color: #333333;
@@ -212,19 +215,19 @@ html {
     text-align: left; 
     white-space: pre-wrap;
     word-wrap: break-word;
-    justify-self: start;
+    justify-self: center;
   }
   
-  .content .code-container pre,
-  .content .code-container code {
+.content .code-container pre,
+.content .code-container code {
     margin: 0; 
-    padding: 0px 5px;
+    padding: 0px 10px;
     white-space: pre-wrap;
     word-wrap: break-word;
     display: block;
     text-align: left;
     line-height: 1.5;
-  }
+}
   
 /* ========== 表格區塊 ========== */
 

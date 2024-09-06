@@ -108,5 +108,9 @@
     { "id": "directives", "title": "指令" },
     { "id": "components", "title": "組件" },
     { "id": "state-management", "title": "狀態管理" },
-    { "id": "routing", "title": "路由" }
+    { "id": "routing", "title": "路由" },
+    { "id": "basic-syntax", "title": "基本語法"},
+    { "id": "changing-css-style", "title": "改變 CSS 樣式"},
+    { "id": "jquery-elements", "title":"顯示/隱藏元素"},
+    { "id": "ajax", "title": "AJAX"}
 ]  
