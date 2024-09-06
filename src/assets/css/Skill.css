@@ -111,7 +111,7 @@ html {
     text-align: center;
     width: 100%;
     margin: 0;
-    padding: 0;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -120,7 +120,7 @@ html {
     color: #7f8c8d; 
     width: 100%;
     margin: 0;
-    padding: 0;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -129,7 +129,7 @@ html {
     color: #2c3e50; 
     width: 100%;
     margin: 0;
-    padding: 0;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -139,7 +139,7 @@ html {
     width: 100%;
     font-weight: bold; 
     margin: 0;
-    padding: 0;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -168,7 +168,7 @@ html {
 }
 
 .content li {
-    margin-bottom: 10px;
+    margin: 5px;
     line-height: 1.5;
     text-align: left;
 }
@@ -180,7 +180,7 @@ html {
     padding: 10px;
     border: 2px solid #000;
     width: 300px;
-  }
+}
   
 .content .box {
     margin: 20px;
@@ -201,7 +201,7 @@ html {
     width: 100%;
     height: min-content;
     max-width: 600px;
-    margin: 0; 
+    margin-bottom: 5px;
     box-sizing: border-box;
     color: #333333;
     background-color: rgba(0,0,0,0.1);
@@ -243,7 +243,8 @@ html {
 .content th, .content td {
     padding: 5px;
     border: 1px solid #bdc3c7; 
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
     width: 180px;
 }
 

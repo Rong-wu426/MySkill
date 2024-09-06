@@ -11,126 +11,126 @@
 <div id="installation">
   <h3>安裝</h3>
   <div class="code-container"><pre><code>
-    # 使用 npm 安裝
-    npm install vue
+# 使用 npm 安裝
+npm install vue
 
-    # 在 HTML 中使用 CDN
-    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.6/js/lightgallery.min.js"&gt;&lt;/script&gt;
+# 在 HTML 中使用 CDN
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.6/js/lightgallery.min.js"&gt;&lt;/script&gt;
   </code></pre></div>
 </div>
 
 <div id="basic-usage">
   <h3>基本用法</h3>
   <div class="code-container"><pre><code>
-    <!-- HTML 部分 -->
-    &lt;div id="app"&gt;
-    {{ message }}
-    &lt;/div&gt;
+<!-- HTML 部分 -->
+&lt;div id="app"&gt;
+  {{ message }}
+&lt;/div&gt;
 
-    <!-- JavaScript 部分 -->
-    &lt;script&gt;
-    new Vue({
-    el: '#app',
-    data: {
-    message: 'Hello Vue!'
-    }
-    });
-    &lt;/script&gt;
+<!-- JavaScript 部分 -->
+&lt;script&gt;
+new Vue({
+  el: '#app',
+  data: {
+  message: 'Hello Vue!'
+  }
+});
+&lt;/script&gt;
   </code></pre></div>
 </div>
 
 <div id="directives">
   <h3>指令</h3>
   <div class="code-container"><pre><code>
-    <!-- v-bind 用於綁定屬性 -->
-    &lt;img v-bind:src="imageSrc" alt="Vue.js"&gt;
+<!-- v-bind 用於綁定屬性 -->
+&lt;img v-bind:src="imageSrc" alt="Vue.js"&gt;
 
-    <!-- v-model 用於雙向資料綁定 -->
-    &lt;input v-model="inputValue" placeholder="輸入內容"&gt;
+<!-- v-model 用於雙向資料綁定 -->
+&lt;input v-model="inputValue" placeholder="輸入內容"&gt;
 
-    <!-- v-if 用於條件渲染 -->
-    &lt;p v-if="showParagraph"&gt;這是條件渲染的內容。 &lt;/p&gt;
+<!-- v-if 用於條件渲染 -->
+&lt;p v-if="showParagraph"&gt;這是條件渲染的內容。 &lt;/p&gt;
 
-    <!-- v-for 用於列表渲染 -->
-    &lt;ul&gt;
-    &lt;li v-for="item in items" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;
-    &lt;/ul&gt;
+<!-- v-for 用於列表渲染 -->
+&lt;ul&gt;
+&lt;li v-for="item in items" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;
+&lt;/ul&gt;
   </code></pre></div>
 </div>
 
 <div id="components">
   <h3>組件</h3>
   <div class="code-container"><pre><code>
-    <!-- 定義一個簡單的元件 -->
-    &lt;script&gt;
-    Vue.component('my-component', {
-    template: '&lt;div&gt;A custom component!&lt;/div&gt;'
-    });
-    &lt;/script&gt;
+<!-- 定義一個簡單的元件 -->
+&lt;script&gt;
+Vue.component('my-component', {
+template: '&lt;div&gt;A custom component!&lt;/div&gt;'
+});
+&lt;/script&gt;
 
-    <!-- 使用組件 -->
-    &lt;my-component&gt;&lt;/my-component&gt;
+<!-- 使用組件 -->
+&lt;my-component&gt;&lt;/my-component&gt;
   </code></pre></div>
 </div>
 
 <div id="state-management">
   <h3>狀態管理</h3>
   <div class="code-container"><pre><code>
-    # 使用 Vuex 進行狀態管理
-    npm install vuex
+# 使用 Vuex 進行狀態管理
+npm install vuex
 
-    # 建立 Vuex store
-    import Vue from 'vue';
-    import Vuex from 'vuex';
+# 建立 Vuex store
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-    Vue.use(Vuex);
+Vue.use(Vuex);
 
-    const store = new Vuex.Store({
-    state: {
-    count: 0
-    },
-    mutations: {
-    increment(state) {
-    state.count++;
-    }
-    }
-    });
+const store = new Vuex.Store({
+state: {
+count: 0
+},
+mutations: {
+increment(state) {
+state.count++;
+}
+}
+});
 
-    new Vue({
-    el: '#app',
-    store,
-    computed: {
-    count() {
-    return this.$store.state.count;
-    }
-    }
-    });
+new Vue({
+el: '#app',
+store,
+computed: {
+count() {
+return this.$store.state.count;
+}
+}
+});
   </code></pre></div>
 </div>
 
 <div id="routing">
   <h3>路由</h3>
   <div class="code-container"><pre><code>
-    # 使用 Vue Router 進行路由管理
-    npm install vue-router
+# 使用 Vue Router 進行路由管理
+npm install vue-router
 
-    # 設定路由
-    import Vue from 'vue';
-    import Router from 'vue-router';
+# 設定路由
+import Vue from 'vue';
+import Router from 'vue-router';
 
-    Vue.use(Router);
+Vue.use(Router);
 
-    const routes = [
-    { path: '/', component: Home },
-    { path: '/about', component: About }
-    ];
+const routes = [
+{ path: '/', component: Home },
+{ path: '/about', component: About }
+];
 
-    const router = new Router({ routes });
+const router = new Router({ routes });
 
-    new Vue({
-    el: '#app',
-    router
-    });
+new Vue({
+el: '#app',
+router
+});
   </code></pre></div>
 </div>
 

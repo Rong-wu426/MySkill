@@ -4,142 +4,288 @@
 <div id="variables">
     <h3>變數</h3>
     <div class="code-container"><pre><code>
-        /* 使用 var 定義變數 */
-        var x = 10;
+/* 使用 var 定義變數 */
+var x = 10;
 
-        /* 使用 let 定義變數 */
-        let y = 20;
+/* 使用 let 定義變數 */
+let y = 20;
 
-        /* 使用 const 定義常數 */
-        const z = 30;
+/* 使用 const 定義常數 */
+const z = 30;
     </code></pre></div>
-</div>
-
+    <ul>
+        <li>var: 函數作用域，允許重複定義，變數提升</li>
+        <li>let: 塊級作用域，不允許重複定義，變數提升但進入「暫時性死區」</li>
+        <li>const: 塊級作用域，定義常數，無法重新賦值</li>
+    </ul>
+    <table>
+        <tr>
+            <th>函數作用域</th>
+            <th>塊級作用域</th>
+        </tr>
+        <tr>
+            <td>變數在函數內有效，函數外無法訪問</td>
+            <td>變數在只特定的代碼塊中有效，即使在同一函數內的其他代碼塊中，也無法訪問</td>
+        </tr>
+        <tr>
+            <td><pre><code>
+function example() {
+    var x =10;      // x只在函數內部可訪問
+    console.log(x); // 輸出10
+}
+console.log(x);     //錯誤: x在函數外部不可訪問
+            </code></pre></td>
+            <td>
+                <p>代碼塊通常由花括號{}定義</p>
+                <pre><code>
+if (true) {
+    let y = 20;     // y在此代碼塊內有效
+    console.log(y); // 輸出20
+}
+console.log(y);     // 錯誤: y在代碼塊不可訪問
+                </code></pre>
+            </td>
+        </tr>
+    </table>
+    <p>提升(Hoisting): 在JavaScript中，不論在函數中的哪一行用var宣告變數，一律視為在函數第一行宣告。</p>
+    <p>例如以下三個例子的寫法等義</p>
+    <div class="code-container"><pre><code>
+function printName( ) {
+    myName = "John";     // 直接使用myName變數
+    console.log(myName); 
+    var my Name;         
+    // 直到第三行才宣告myName變數
+}
+printName(); //John
+    </code></pre></div>
+    <div class="code-container"><pre><code>
+function printName( ) {
+    myName = "John"; // 直接使用myName變數
+    if (false) {
+        var myName   
+    // 即使把宣告放在不會被執行到的if裡面也是合法的
+    }
+    console.log(myName);
+}
+printName(); //John
+    </code></pre></div>    
+    <div class="code-container"><pre><code>
+function printName( ) {
+    var my Name;         
+    myName = "John";     
+    console.log(myName); 
+}
+printName(); //John
+    </code></pre></div>
+    <p>不論你宣告var變數的位置在哪，宣告的動作一律都會被「抬升」到函式的最頂端，這個特性就叫做hoisting(提升)</p>
+    <p>只有「宣告」這個動作有hoisting(提升)的特性，賦值(把值指定給變數)的動作並不會hoisting</p>
+    <div class="code-container"><pre><code>
+function printName() {
+    console.log(myName);  
+// undefined，宣告被抬升，但賦值並沒有被抬升
+    var myName = "John";  // 宣告並使用
+    console.log(myName);  // John
+}
+printName();
+    </code></pre></div>
 <div id="data-types-overview">
     <h3>資料類型概述</h3>
     <div class="code-container"><pre><code>
-        /* 基本資料型態 */
-        let number = 42; // 數字
-        let string = "Hello, World!"; // 字串
-        let boolean = true; // 布林值
+/* 基本資料型態 */
+let number = 42; // 數字
+let string = "Hello, World!"; // 字串
+let boolean = true; // 布林值
 
-        /* 複雜資料型態 */
-        let array = [1, 2, 3]; // 陣列
-        let object = { name: "Alice", age: 25 }; // 對象
+/* 複雜資料型態 */
+let array = [1, 2, 3]; // 陣列
+let object = { name: "Alice", age: 25 }; // 對象
     </code></pre></div>
 </div>
 
 <div id="functions"> 
     <h3>函數定義</h3>
     <div class="code-container"><pre><code>
-        /* 定義函數 */
-        function greet(name) {
-        return `Hello, ${name}!`;
-        }
+/* 定義函數 */
+function greet(name) {
+return `Hello, ${name}!`;
+}
 
-        /* 呼叫函數 */
-        console.log(greet("Alice"));
+/* 呼叫函數 */
+console.log(greet("Alice"));
     </code></pre></div>
 </div>
 
 <div id="objects">
     <h3>物件</h3>
     <div class="code-container"><pre><code>
-        /* 建立物件 */
-        let person = {
-        name: "Alice",
-        age: 30,
-        greet: function() {
-        return `Hello, my name is ${this.name}.`;
-        }
-        };
+/* 建立物件 */
+let person = {
+name: "Alice",
+age: 30,
+greet: function() {
+return `Hello, my name is ${this.name}.`;
+}
+};
 
-        /* 存取物件屬性和方法 */
-        console.log(person.name);
-        console.log(person.greet());
+/* 存取物件屬性和方法 */
+console.log(person.name);
+console.log(person.greet());
     </code></pre></div>
 </div>
 
 <div id="arrays">
     <h3>陣列</h3>
     <div class="code-container"><pre><code>
-        /* 建立數組 */
-        let fruits = ["apple", "banana", "cherry"];
+/* 建立數組 */
+let fruits = ["apple", "banana", "cherry"];
 
-        /* 存取陣列元素 */
-        console.log(fruits[0]);
+/* 存取陣列元素 */
+console.log(fruits[0]);
 
-        /* 遍歷數組 */
-        fruits.forEach(function(fruit) {
-        console.log(fruit);
-        });
+/* 遍歷數組 */
+fruits.forEach(function(fruit) {
+console.log(fruit);
+});
     </code></pre></div>
 </div>
 
 <div id="conditionals">
     <h3>條件語句</h3>
     <div class="code-container"><pre><code>
-        /* if 語句 */
-        if (x > 10) {
-        console.log("x is greater than 10");
-        } else if (x === 10) {
-        console.log("x is 10");
-        } else {
-        console.log("x is less than 10");
-        }
+/* if 語句 */
+if (x > 10) {
+console.log("x is greater than 10");
+} else if (x === 10) {
+console.log("x is 10");
+} else {
+console.log("x is less than 10");
+}
     </code></pre></div>
 </div>
 
 <div id="loops">
     <h3>迴圈語句</h3>
     <div class="code-container"><pre><code>
-        /* for 迴圈 */
-        for (let i = 0; i &lt; 5; i++) {
-        console.log(i);
-        }
+/* for 迴圈 */
+for (let i = 0; i &lt; 5; i++) {
+console.log(i);
+}
 
-        /* while 迴圈 */
-        let count = 0;
-        while (count &lt; 5) {
-        console.log(count);
-        count++;
-        }
+/* while 迴圈 */
+let count = 0;
+while (count &lt; 5) {
+console.log(count);
+count++;
+}
     </code></pre></div>
 </div>
 
 <div id="events">
     <h3>事件處理</h3>
     <div class="code-container"><pre><code>
-        /* 新增事件監聽器 */
-        document.getElementById("myButton").addEventListener("click", function() {
-        alert("Button clicked!");
-        });
+/* 新增事件監聽器 */
+document.getElementById("myButton").addEventListener("click", function() {
+alert("Button clicked!");
+});
     </code></pre></div>
+    <ol>
+        <li>
+            使用 getElementById 獲取元素:
+            <p>用於從HTML文件獲取具有指定ID的元素。返回一個匹配的元素，如果沒有找到，則返還null</p>
+            <ul>
+                <li>
+                    語法:
+                    <pre><code>
+let element = document.getElementById("elementId");
+                    </code></pre>
+                </li>
+                <li>
+                    示範:
+                    <pre><code>
+此為html
+&lt;button&gt; id="myButton">Click Me&lt;/button&gt;
+此為javascript
+let button = document.getElementById("myButton")
+                    </code></pre>
+                </li>
+            </ul> 
+        </li>
+        <li>
+            添加事件監聽器:
+            <p>使用addEventListener方法，可以給獲取到的元素添加事件監聽器。常見的事件包括click、mouseover、keydown等</p>
+            <ul>
+                <li>
+                    語法:
+                    <pre><code>
+此為javaScript
+element.addEventListener("event", eventHandler);
+                    </code></pre>
+                </li>
+                <li>
+                    示範:
+                    <pre><code>
+此為javaScript
+button.addEventListener("click", handleClick);
+                    </code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            事件處理函數:
+            <p>事件處理函數（如 handleClick、handleMouseOver...等）用於處理觸發的事件。可以定義不同的回調函數來處理不同的事件。</p>
+            <ul>
+                <li>handleMouseOver: 處理滑鼠懸停事件</li>
+                <li>handleKeyDown: 處理按鈕按下事件</li>
+                <li>handleFocus: 處理元素獲得焦點事件</li>
+            </ul>
+            <pre><code>
+function handleClick(event) {
+    // 當按鈕被點擊時顯示提示框
+    alert("Button clicked!");
+} 
+            </code></pre>
+        </li>
+    </ol>
 </div>
 
 <div id="asynchronous">
     <h3>非同步程式設計</h3>
     <div class="code-container"><pre><code>
-        /* 使用 Promise */
-        function fetchData() {
-        return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        resolve("Data fetched");
-        }, 2000);
-        });
-        }
+/* 使用 Promise */
+function fetchData() {
+return new Promise((resolve, reject) => {
+setTimeout(() => {
+resolve("Data fetched");
+}, 2000);
+});
+}
 
-        fetchData().then(result => {
-        console.log(result);
-        });
-
-        /* 使用 async/await */
-        async function fetchDataAsync() {
-        let result = await fetchData();
-        console.log(result);
-        }
-
-        fetchDataAsync();
+fetchData().then(result => {
+console.log(result);
+});
     </code></pre></div>
+    <p>使用 Promise</p>
+        <ul>
+            <li>
+                Promise用來處理非同步操作，resolve代表成功，reject代表失敗
+                <p>setTimeout中，() =&gt; {}是一個回調函數，它在指定的延遲時間後執行。
+                2000是延遲的時間(以毫秒為單位)，也就是2秒</p>
+            </li>
+            <li>fetchData返回一個Promise對象。</li>
+        </ul>
+    <div class="code-container"><pre><code>
+/* 使用 async/await */
+async function fetchDataAsync() {
+let result = await fetchData();
+console.log(result);
+}
+
+fetchDataAsync();
+    </code></pre></div>
+    <p>使用 async/await:</p>
+    <ul>
+        <li>async關鍵字使函數返還一個Promise</li>
+        <li>在 async 函數內部，await 關鍵字用於等待 Promise 完成。</li>
+    </ul>
 </div>
 
