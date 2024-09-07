@@ -29,9 +29,10 @@ export default {
       htmlContent: ''
     };
   },
+  // 使用async/await來做非同步程式設計
   async created() {
     try {
-      const response = await fetch('/html-subtitle.json');
+      const response = await fetch('/html-subtitle.json');  // 側邊欄
       if (response.ok) {
         this.skills = await response.json();
       } else {
@@ -41,7 +42,7 @@ export default {
       console.error('Error loading skills JSON:', error);
     }
 
-    // 根据传递的 skillName 加载对应的 HTML 文件
+    // 根據傳遞的技能名稱加載對應的HTML檔
     this.loadHtml(`${this.skillName}Skill.html`);
   },
   methods: {
@@ -55,13 +56,13 @@ export default {
         const htmlContent = await response.text();
         this.htmlContent = htmlContent;
 
-        // 更新技能的可见性，检查 HTML 文件中是否存在对应的 id
+        // 更新側邊欄的技能在網頁中是否有對應到的id的可見性
         const visibleSkills = this.skills.map(skill => ({
           ...skill,
           visible: htmlContent.includes(`id="${skill.id}"`)
         })).filter(skill => skill.visible);
 
-        // 根据 HTML 文件中的 ID 顺序排序 skills 数组
+        // 根據網頁的ID去排順序
         const idsInHtmlOrder = Array.from(htmlContent.matchAll(/id="([^"]+)"/g))
                                     .map(match => match[1]);
         this.skills = visibleSkills.sort((a, b) => {
@@ -73,6 +74,7 @@ export default {
         this.htmlContent = '<p>技能内容未找到</p>';
       }
     },
+    // 透過側邊欄自動跳轉到對應的內容
     scrollToId(id) {
       const element = document.getElementById(id);
       if (element) {
