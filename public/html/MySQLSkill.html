@@ -1,13 +1,87 @@
-
 <h1>MySQL 筆記</h1>
+
+<div id="basic-concept">
+  <h3>基本概念</h3>
+  <ul>
+    <li>資料庫(Database):用來存放資料的容器，每個資料庫都包含多個表</li>
+    <li>表(Table):資料以表的形式來儲存，由行和列組成</li>
+    <li>行(Row):表中的每條紀錄</li>
+    <li>列(Column):表中的每個屬性，描述資料的每個特徵</li>
+    <li>主鍵(Primary Key):「唯一」識別表中每一條紀錄的欄位</li>
+    <li>外鍵(Foreign Key):用來建立和維護表之間的「關聯」的欄位。外鍵的值對應於另一個表的主鍵，用來確保數據的一致性和完整性。外鍵約束可以用來防止在主表中刪除或修改有關聯的記錄，從而維持數據的完整性。</li>
+  </ul>
+</div>
+
+<div id="data-types-overview">
+  <h3>資料類型概述</h3>
+  <ul>
+    MySQL常見的資料類型包括:
+    <li>整數類型: INT、TINYINT、BIGINT</li>
+    <li>字串類型: VARCHAR、CHAR、TEXT</li>
+    <li>日期時間類型: DATE、DATETIME、TIMESTAMP</li>
+    <li>浮點數類型: FLOAT、DOUBLE</li>
+  </ul>
+</div>
+
+<div id="connect">
+  <h3>連結</h3>
+  <p>在MySQL官方網站下載安裝完成後，可以透過命令行或MySQL連接到MySQL伺服器</p>
+  <p>若是透過命令行連結，請打開終端機，並執行以下命令</p>
+  <div class="code-container"><pre><code>
+mysql -u root -p
+  </code></pre></div>
+  <ul>
+    <li>-u root: 用戶名為 root</li>
+    <li>-p: 要求輸入密碼</li>
+  </ul>
+</div>
+
+<div id="create-database">
+  <h3>創建資料庫</h3>
+  <p>使用CREATE DATABASE創建一個名為my_database的資料庫</p>
+  <div class="code-container"><pre><code>
+CREATE DATABASE my_database;
+  </code></pre></div>
+</div>
+
+<div id="use-database">
+  <h3>使用資料庫</h3>
+  <p>使用USE來使用已創建的資料庫</p>
+  <div class="code-container"><pre><code>
+USE my_database;
+  </code></pre></div>
+</div>
+
+<div id="create-table">
+  <h3>新增表格</h3>
+  <p>使用CREATE TABLE來新增表格</p>
+  <div class="code-container"><pre><code>
+CREATE TABLE table_name (
+  # 創建id、column1、column2三個欄位
+  id INT AUTO_INCREMENT PRIMARY KEY, 
+  column1 VARCHAR(255) NOT NULL,
+  column2 INT
+);
+  </code></pre></div>
+  <ul>
+    <li>INT: 整數類型</li>
+    <li>AUTO_INCREMENT: 自動增加欄位值</li>
+    <li>NOT NULL: 列不能空，所以它不能包含 NULL 值</li>
+    <li>VARCHAR(255): 可變長度的字元串，最大長度為 255</li>
+  </ul>
+</div>
 
 <div id="select">
   <h3>SELECT 語句</h3>
-  <div class="code-container"><pre><code>SELECT * FROM table_name;</code></pre></div>
+  <p>使用SELECT來查詢表中的資料</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name;
+  </code></pre></div>
 </div>
 
 <div id="insert">
   <h3>INSERT INTO</h3>
+  <p>使用INSERT INTO來插入數據</p>
   <div class="code-container"><pre><code>
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
   </code></pre></div>
@@ -15,6 +89,7 @@ INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 
 <div id="update">
   <h3>UPDATE 語句</h3>
+  <p>使用UPDATE來更新表中的資料</p>
   <div class="code-container"><pre><code>
 UPDATE table_name
 SET column1 = value1, column2 = value2
@@ -24,6 +99,7 @@ WHERE condition;
 
 <div id="delete">
   <h3>DELETE 語句</h3>
+  <p>使用DELETE來刪除資料</p>
   <div class="code-container"><pre><code>
 DELETE FROM table_name
 WHERE condition;
@@ -32,6 +108,7 @@ WHERE condition;
 
 <div id="joins">
   <h3>JOIN 語句</h3>
+  <p>JOIN 用於聯接兩個或多個表：</p>
   <div class="code-container"><pre><code>
 SELECT columns
 FROM table1
@@ -39,19 +116,9 @@ JOIN table2 ON table1.common_field = table2.common_field;
   </code></pre></div>
 </div>
 
-<div id="create-table">
-  <h3>新增表格</h3>
-  <div class="code-container"><pre><code>
-CREATE TABLE table_name (
-id INT AUTO_INCREMENT PRIMARY KEY,
-column1 VARCHAR(255) NOT NULL,
-column2 INT
-);
-  </code></pre></div>
-</div>
-
 <div id="alter-table">
   <h3>改變表格</h3>
+  <p>使用ALTER TABLE來修改表格結構</p>
   <div class="code-container"><pre><code>
 ALTER TABLE table_name
 ADD column_name datatype;
@@ -60,7 +127,304 @@ ADD column_name datatype;
 
 <div id="drop-table">
   <h3>移除表格</h3>
+  <p>使用DROP TABLE來刪除表格</p>
   <div class="code-container"><pre><code>
 DROP TABLE table_name;
+  </code></pre></div>
+</div>
+
+<div id="filter">
+  <h3>查詢條件與過濾</h3>
+  <ul>
+    <li>WHERE條件查詢
+      <p>WHERE 子句用於根據條件過濾查詢結果：</p>
+      <pre><code>
+SELECT * FROM users 
+WHERE name = 'John Doe';       
+      </code></pre>
+    </li>
+    <li>多條件查詢
+      <p>可以使用 AND 和 OR 結合多個條件：</p>
+      <pre><code>
+SELECT * FROM users 
+WHERE name = 'John Doe' 
+AND email LIKE '%example.com';
+      </code></pre>
+    </li>
+    <li>範圍查詢
+      <p>BETWEEN 用於範圍查詢，IN 用於多個值的查詢：</p>
+      <pre><code>
+SELECT * FROM users 
+WHERE id BETWEEN 1 AND 10;
+
+SELECT * FROM users 
+WHERE id IN (1, 2, 3);
+      </code></pre>
+    </li>
+    <li>模糊查詢
+      <p>LIKE 用於進行模糊查詢，% 代表任意數量的字符，_ 代表單個字符：</p>
+      <pre><code>
+SELECT * FROM users 
+WHERE email LIKE '%example.com';
+      </code></pre>
+    </li>
+  </ul>
+</div>
+
+<div id="aggregate-functions">
+  <h3>聚合函數</h3>
+  <p>聚合函數用於計算集合數據的統計信息：</p>
+  <ul>
+    <li>COUNT: 計算行數
+      <pre><code>
+SELECT COUNT(*) FROM users;
+      </code></pre>
+    </li>
+    <li>SUM: 計算總和
+      <pre><code>
+SELECT SUM(amount) FROM orders;
+      </code></pre>
+    </li>
+    <li>AVG: 計算平均值
+      <pre><code>
+SELECT AVG(amount) FROM orders;
+      </code></pre>
+    </li>
+    <li>MAX: 查找最大值
+      <pre><code>
+SELECT MAX(amount) FROM orders;
+      </code></pre>
+    </li>
+    <li>MIN: 查找最小值
+      <pre><code>
+SELECT MIN(amount) FROM orders;
+      </code></pre>
+    </li>
+  </ul>
+</div>
+
+<div id="group-by">
+  <h3>GROUP BY</h3>
+  <p>GROUP BY 用於分組查詢，配合聚合函數使用：</p>
+  <div class="code-container"><pre><code>
+SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1;
+  </code></pre></div>
+</div>
+
+<div id="having">
+  <h3>HAVING 子句</h3>
+  <p>HAVING 用於過濾分組後的結果，通常與 GROUP BY 一起使用：</p>
+  <div class="code-container"><pre><code>
+SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1
+HAVING COUNT(*) > 5;
+  </code></pre></div>
+</div>
+
+<div id="order-by">
+  <h3>ORDER BY</h3>
+  <p>ORDER BY 用於對查詢結果進行排序：</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name
+ORDER BY column1 ASC, column2 DESC;
+  </code></pre></div>
+</div>
+
+<div id="limit">
+  <h3>LIMIT</h3>
+  <p>LIMIT 用於限制查詢結果的行數：</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name
+LIMIT 10;
+  </code></pre></div>
+</div>
+
+<div id="subqueries">
+  <h3>子查詢</h3>
+  <p>子查詢是嵌套在其他查詢中的查詢：</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM users
+WHERE id IN (SELECT user_id FROM orders WHERE amount > 100);
+  </code></pre></div>
+</div>
+
+<div id="views">
+  <h3>視圖</h3>
+  <p>視圖是一個虛擬表，用於簡化複雜查詢：</p>
+  <div class="code-container"><pre><code>
+CREATE VIEW view_name AS
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+  </code></pre></div>
+</div>
+
+<div id="index">
+  <h3>索引</h3>
+  <p>索引用於加速查詢：</p>
+  <div class="code-container"><pre><code>
+CREATE INDEX index_name
+ON table_name (column1);
+  </code></pre></div>
+</div>
+
+<div id="transactions">
+  <h3>事務</h3>
+  <p>事務是一組操作，要麼全部成功，要麼全部失敗：</p>
+  <div class="code-container"><pre><code>
+START TRANSACTION;
+-- 進行一些操作
+COMMIT; -- 提交事務
+ROLLBACK; -- 回滾事務
+  </code></pre></div>
+</div>
+
+<div id="stored-procedures">
+  <h3>儲存過程</h3>
+  <p>儲存過程是預先編譯好的 SQL 語句集合：</p>
+  <div class="code-container"><pre><code>
+CREATE PROCEDURE procedure_name (parameters)
+BEGIN
+  -- SQL 語句
+END;
+  </code></pre></div>
+</div>
+
+<div id="triggers">
+  <h3>觸發器</h3>
+  <p>觸發器是在特定事件發生時自動執行的 SQL 語句：</p>
+  <div class="code-container"><pre><code>
+CREATE TRIGGER trigger_name
+AFTER INSERT ON table_name
+FOR EACH ROW
+BEGIN
+  -- SQL 語句
+END;
+  </code></pre></div>
+</div>
+
+<div id="cursors">
+  <h3>游標</h3>
+  <p>游標用於逐行處理查詢結果：</p>
+  <div class="code-container"><pre><code>
+DECLARE cursor_name CURSOR FOR
+SELECT column1 FROM table_name;
+
+OPEN cursor_name;
+-- 逐行處理
+CLOSE cursor_name;
+  </code></pre></div>
+</div>
+
+<div id="user-management">
+  <h3>使用者管理</h3>
+  <p>用於管理 MySQL 使用者及其權限：</p>
+  <div class="code-container"><pre><code>
+CREATE USER 'user'@'host' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON database_name.* TO 'user'@'host';
+
+REVOKE ALL PRIVILEGES ON database_name.* FROM 'user'@'host';
+
+DROP USER 'user'@'host';
+  </code></pre></div>
+</div>
+
+<div id="backup-and-restore">
+  <h3>備份與恢復</h3>
+  <p>用於備份和恢復 MySQL 資料：</p>
+  <div class="code-container"><pre><code>
+-- 備份
+mysqldump -u root -p my_database > backup.sql
+
+-- 恢復
+mysql -u root -p my_database < backup.sql
+  </code></pre></div>
+</div>
+
+<div id="security">
+  <h3>安全性</h3>
+  <p>保護 MySQL 資料庫的安全性：</p>
+  <div class="code-container"><pre><code>
+-- 更改用戶密碼
+ALTER USER 'user'@'host' IDENTIFIED BY 'new_password';
+
+-- 限制用戶權限
+REVOKE SELECT ON database_name.* FROM 'user'@'host';
+  </code></pre></div>
+</div>
+
+<div id="performance-tuning">
+  <h3>性能調優</h3>
+  <p>優化 MySQL 查詢性能：</p>
+  <div class="code-container"><pre><code>
+-- 查看查詢性能
+EXPLAIN SELECT * FROM table_name;
+
+-- 設置索引
+CREATE INDEX index_name ON table_name (column1);
+  </code></pre></div>
+</div>
+
+<div id="replication">
+  <h3>複製</h3>
+  <p>複製用於數據同步和備份：</p>
+  <div class="code-container"><pre><code>
+-- 主伺服器配置
+CHANGE MASTER TO MASTER_HOST='host', MASTER_USER='user', MASTER_PASSWORD='password';
+
+-- 從伺服器配置
+START SLAVE;
+  </code></pre></div>
+</div>
+
+<div id="partitioning">
+  <h3>分區</h3>
+  <p>分區用於將表分成更小、更容易管理的部分：</p>
+  <div class="code-container"><pre><code>
+CREATE TABLE table_name (
+  id INT,
+  name VARCHAR(100),
+  PRIMARY KEY (id, name)
+)
+PARTITION BY RANGE (id) (
+  PARTITION p0 VALUES LESS THAN (1000),
+  PARTITION p1 VALUES LESS THAN (2000)
+);
+  </code></pre></div>
+</div>
+
+<div id="views">
+  <h3>視圖</h3>
+  <p>視圖是虛擬表，用於簡化複雜查詢：</p>
+  <div class="code-container"><pre><code>
+CREATE VIEW view_name AS
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+  </code></pre></div>
+</div>
+
+<div id="database-migration-upgrade">
+  <h3>資料庫遷移和升級</h3>
+  <p>資料庫遷移和升級用於數據庫版本控制和遷移：</p>
+  <div class="code-container"><pre><code>
+-- 建立資料庫版本表
+CREATE TABLE schema_migrations (
+  version INT PRIMARY KEY,
+  applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 記錄版本
+INSERT INTO schema_migrations (version) VALUES (1);
+
+-- 升級腳本
+ALTER TABLE table_name ADD column_name datatype;
+
+-- 版本回滾腳本
+ALTER TABLE table_name DROP COLUMN column_name;
   </code></pre></div>
 </div>
