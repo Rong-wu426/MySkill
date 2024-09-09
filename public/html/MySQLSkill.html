@@ -57,7 +57,7 @@ USE my_database;
   <p>使用CREATE TABLE來新增表格</p>
   <div class="code-container"><pre><code>
 CREATE TABLE table_name (
-  # 創建id、column1、column2三個欄位
+  -- 創建id、column1、column2三個欄位
   id INT AUTO_INCREMENT PRIMARY KEY, 
   column1 VARCHAR(255) NOT NULL,
   column2 INT
@@ -264,167 +264,630 @@ WHERE condition;
 
 <div id="index">
   <h3>索引</h3>
-  <p>索引用於加速查詢：</p>
-  <div class="code-container"><pre><code>
-CREATE INDEX index_name
-ON table_name (column1);
-  </code></pre></div>
+  <p>索引是提高查詢效率的重要工具。它能夠加速資料庫的檢索操作。以下是常見的索引操作及其句型和填入部分：</p>
+
+  <ul>
+    <li><strong>創建索引：</strong> 使用 <code>CREATE INDEX</code> 語句來創建索引，並指定表和索引列。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE INDEX index_name ON table_name (column_name);</code></li>
+        <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
+          <ul>
+            <li><code>index_name</code>: 索引的名稱。</li>
+            <li><code>table_name</code>: 要添加索引的表名。</li>
+            <li><code>column_name</code>: 表中的列名，該列將被索引。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>刪除索引：</strong> 使用 <code>DROP INDEX</code> 語句來刪除索引。
+      <ul>
+        <li><strong>句型：</strong> <code>DROP INDEX index_name ON table_name;</code></li>
+        <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>
+          <ul>
+            <li><code>index_name</code>: 要刪除的索引名稱。</li>
+            <li><code>table_name</code>: 索引所在的表名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>查看索引：</strong> 使用 <code>SHOW INDEX</code> 語句來查看表中的索引。
+      <ul>
+        <li><strong>句型：</strong> <code>SHOW INDEX FROM table_name;</code></li>
+        <li><strong>填入部分：</strong> <code>table_name</code>
+          <ul>
+            <li><code>table_name</code>: 要查看索引的表名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>添加唯一索引：</strong> 使用 <code>CREATE UNIQUE INDEX</code> 語句來創建唯一索引，確保列中的值唯一。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE UNIQUE INDEX index_name ON table_name (column_name);</code></li>
+        <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
+          <ul>
+            <li><code>index_name</code>: 索引的名稱。</li>
+            <li><code>table_name</code>: 要添加索引的表名。</li>
+            <li><code>column_name</code>: 表中的列名，該列將被索引，且值必須唯一。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
+
 
 <div id="transactions">
   <h3>事務</h3>
-  <p>事務是一組操作，要麼全部成功，要麼全部失敗：</p>
-  <div class="code-container"><pre><code>
-START TRANSACTION;
--- 進行一些操作
-COMMIT; -- 提交事務
-ROLLBACK; -- 回滾事務
-  </code></pre></div>
+  <p>事務（Transaction）用於確保一組操作要麼全部成功，要麼全部失敗，以保持數據的一致性。事務包括開始、提交和轉返操作。</p>
+
+  <ul>
+    <li><strong>開始事務：</strong> 使用 <code>START TRANSACTION</code> 或 <code>BEGIN</code> 語句來開始一個事務。
+      <ul>
+        <li><strong>句型：</strong> <code>START TRANSACTION;</code> 或 <code>BEGIN;</code></li>
+      </ul>
+    </li>
+    
+    <li><strong>提交事務：</strong> 使用 <code>COMMIT</code> 語句來提交事務，使所做的更改永久生效。
+      <ul>
+        <li><strong>句型：</strong> <code>COMMIT;</code></li>
+      </ul>
+    </li>
+    
+    <li><strong>轉返事務：</strong> 使用 <code>ROLLBACK</code> 語句來轉返事務，撤銷自事務開始以來所做的更改。
+      <ul>
+        <li><strong>句型：</strong> <code>ROLLBACK;</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>注意事項：</h4>
+  <ul>
+    <li>事務應該被用來包裹一組互相關聯的操作，以確保數據的完整性。</li>
+    <li>如果在事務中發生錯誤，應使用 <code>ROLLBACK</code> 撤銷操作，並重新嘗試或處理錯誤。</li>
+    <li>每個事務的結束都必須有 <code>COMMIT</code> 或 <code>ROLLBACK</code>，否則事務會保持打開狀態，可能會影響系統性能。</li>
+  </ul>
 </div>
 
 <div id="stored-procedures">
   <h3>儲存過程</h3>
-  <p>儲存過程是預先編譯好的 SQL 語句集合：</p>
-  <div class="code-container"><pre><code>
-CREATE PROCEDURE procedure_name (parameters)
-BEGIN
-  -- SQL 語句
-END;
-  </code></pre></div>
+  <p>儲存過程（Stored Procedure）是預編譯的 SQL 語句集合，可以被多次調用以執行特定操作。</p>
+
+  <ul>
+    <li><strong>創建儲存過程：</strong> 使用 <code>CREATE PROCEDURE</code> 語句來創建儲存過程。
+      <ul>
+        <li><strong>句型：</strong> 
+          <code>
+            CREATE PROCEDURE procedure_name (parameters)
+            BEGIN
+              -- SQL statements
+            END;
+          </code>
+        </li>
+        <li><strong>填入部分：</strong> <code>procedure_name</code>、<code>parameters</code>、<code>SQL statements</code>
+          <ul>
+            <li><code>procedure_name</code>: 儲存過程的名稱。</li>
+            <li><code>parameters</code>: 儲存過程的參數（可選），格式為 <code>parameter_name datatype</code>。</li>
+            <li><code>SQL statements</code>: 儲存過程中執行的 SQL 語句。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>調用儲存過程：</strong> 使用 <code>CALL</code> 語句來調用已創建的儲存過程。
+      <ul>
+        <li><strong>句型：</strong> <code>CALL procedure_name(arguments);</code></li>
+        <li><strong>填入部分：</strong> <code>procedure_name</code>、<code>arguments</code>
+          <ul>
+            <li><code>procedure_name</code>: 儲存過程的名稱。</li>
+            <li><code>arguments</code>: 傳遞給儲存過程的參數（可選）。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>注意事項：</h4>
+  <ul>
+    <li>儲存過程可以重複使用，適合用來封裝複雜的邏輯或常用操作。</li>
+    <li>調用儲存過程時需提供正確的參數，確保儲存過程正常執行。</li>
+    <li>儲存過程在創建後會保存到資料庫中，可以多次調用，節省編寫和維護的時間。</li>
+  </ul>
 </div>
 
 <div id="triggers">
   <h3>觸發器</h3>
-  <p>觸發器是在特定事件發生時自動執行的 SQL 語句：</p>
-  <div class="code-container"><pre><code>
-CREATE TRIGGER trigger_name
-AFTER INSERT ON table_name
-FOR EACH ROW
-BEGIN
-  -- SQL 語句
-END;
-  </code></pre></div>
+  <p>觸發器（Trigger）是與表操作（如插入、更新、刪除）相關聯的自動執行的 SQL 語句集合。</p>
+
+  <ul>
+    <li><strong>創建觸發器：</strong> 使用 <code>CREATE TRIGGER</code> 語句來創建觸發器。
+      <ul>
+        <li><strong>句型：</strong> 
+          <code>
+            CREATE TRIGGER trigger_name
+            { BEFORE | AFTER } { INSERT | UPDATE | DELETE }
+            ON table_name
+            FOR EACH ROW
+            BEGIN
+              -- SQL statements
+            END;
+          </code>
+        </li>
+        <li><strong>填入部分：</strong> <code>trigger_name</code>、<code>{ BEFORE | AFTER }</code>、<code>{ INSERT | UPDATE | DELETE }</code>、<code>table_name</code>、<code>SQL statements</code>
+          <ul>
+            <li><code>trigger_name</code>: 觸發器的名稱。</li>
+            <li><code>{ BEFORE | AFTER }</code>: 觸發器的執行時機，`BEFORE` 表示在操作之前執行，`AFTER` 表示在操作之後執行。</li>
+            <li><code>{ INSERT | UPDATE | DELETE }</code>: 觸發器對應的操作類型。</li>
+            <li><code>table_name</code>: 觸發器所關聯的表名。</li>
+            <li><code>SQL statements</code>: 觸發器執行的 SQL 語句。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>修改觸發器：</strong> 使用 <code>ALTER TRIGGER</code> 語句來修改已創建的觸發器（僅限於某些資料庫系統）。
+      <ul>
+        <li><strong>句型：</strong> <code>ALTER TRIGGER trigger_name { BEFORE | AFTER } { INSERT | UPDATE | DELETE } ON table_name;</code></li>
+        <li><strong>填入部分：</strong> <code>trigger_name</code>、<code>{ BEFORE | AFTER }</code>、<code>{ INSERT | UPDATE | DELETE }</code>、<code>table_name</code></li>
+      </ul>
+    </li>
+    
+    <li><strong>刪除觸發器：</strong> 使用 <code>DROP TRIGGER</code> 語句來刪除觸發器。
+      <ul>
+        <li><strong>句型：</strong> <code>DROP TRIGGER trigger_name;</code></li>
+        <li><strong>填入部分：</strong> <code>trigger_name</code>
+          <ul>
+            <li><code>trigger_name</code>: 觸發器的名稱。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>注意事項：</h4>
+  <ul>
+    <li>觸發器可以自動執行特定的操作，例如審核數據變更或同步表。</li>
+    <li>注意觸發器的執行時機和操作類型，以確保正確性。</li>
+    <li>過多的觸發器可能會影響性能，應謹慎使用。</li>
+  </ul>
 </div>
+
 
 <div id="cursors">
   <h3>游標</h3>
-  <p>游標用於逐行處理查詢結果：</p>
+  <p>游標用於逐行處理查詢結果，比如在儲存過程中對查詢結果逐一進行操作：</p>
   <div class="code-container"><pre><code>
-DECLARE cursor_name CURSOR FOR
-SELECT column1 FROM table_name;
+DELIMITER $$
 
-OPEN cursor_name;
--- 逐行處理
-CLOSE cursor_name;
-  </code></pre></div>
+CREATE PROCEDURE process_employees()
+BEGIN
+  -- done 負責控制迴圈的終止條件， emp_name 存儲從游標讀取的資料
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE emp_name VARCHAR(255);
+
+  -- 宣告游標，選擇每位員工的名稱
+  DECLARE emp_cursor CURSOR FOR
+  SELECT name FROM employees;
+
+  -- 當游標沒有更多行時設置 done 為 TRUE
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+  -- 打開游標
+  OPEN emp_cursor;
+
+  -- 讀取游標中的每一行數據
+  read_loop: LOOP
+    FETCH emp_cursor INTO emp_name;  -- 從游標讀取員工姓名
+
+    IF done THEN  -- 當沒有更多資料時跳出循環
+      LEAVE read_loop;
+    END IF;
+
+    -- 列印出每個員工的名字
+    SELECT emp_name;
+  END LOOP;
+
+  -- 關閉游標
+  CLOSE emp_cursor;
+END$$
+
+DELIMITER ;
+    </code></pre></div>
+
+  <ol>
+    <h4>游標使用步驟：</h4>
+    <li><strong>宣告游標：</strong> 使用 <code>DECLARE CURSOR FOR</code> 語句來定義游標，並指定查詢。
+      <ul>
+        <li>定義了游標 <code>emp_cursor</code>，這個游標會選擇 <code>employees</code> 表中的所有員工姓名。</li>
+        <li>**錯誤處理**：使用 `DECLARE CONTINUE HANDLER FOR NOT FOUND` 來捕獲當沒有更多資料時的情況，並將 `done` 設置為 `TRUE`，告訴程序結束循環。</li>
+      </ul>
+    </li>
+    <li><strong>打開游標：</strong> 使用 <code>OPEN 游標名</code> 來打開游標，準備開始讀取資料。
+      <ul>
+        <li>在打開游標後，可以開始讀取資料，游標的打開操作是必需的，否則無法進行後續的讀取操作。</li>
+      </ul>
+    </li>
+    <li><strong>取出資料：</strong> 使用 <code>FETCH</code> 語句從游標中逐行取出資料。
+      <ul>
+        <li>**讀取資料**：使用 `FETCH emp_cursor INTO emp_name` 來逐行讀取員工姓名，並將其存儲在變數 `emp_name` 中。</li>
+        <li>每次從游標中提取數據後，將會執行 `done` 判斷以確定是否有更多的數據可供處理。</li>
+      </ul>
+    </li>
+    <li><strong>顯示結果：</strong> 將讀取的數據進行操作。
+      <ul>
+        <li>**顯示結果**：對每一行讀取的數據使用 `SELECT emp_name` 列印出來。這是該儲存過程中的具體操作，可以在這裡進行其他處理。</li>
+      </ul>
+    </li>
+    <li><strong>關閉游標：</strong> 完成資料讀取後，使用 <code>CLOSE 游標名</code> 關閉游標。
+      <ul>
+        <li>**關閉游標**：完成所有操作後，必須關閉游標以釋放資源。如果沒有正確關閉游標，可能會導致系統資源的浪費。</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h4>注意事項：</h4>
+  <ul>
+    <li>游標適合用於逐行操作的情況，但因為效率較低，所以不適合用於大規模的數據操作。</li>
+    <li>在使用游標時，應確保在操作完成後正確地關閉游標，否則可能導致資源洩漏。</li>
+    <li>在讀取游標的過程中，如果查詢結果沒有更多行，MySQL 會觸發 <code>NOT FOUND</code> 狀態，此時會執行 <code>CONTINUE HANDLER</code> 中定義的操作，例如設置 <code>done</code> 為 <code>TRUE</code>，來終止迴圈。</li>
+  </ul>
 </div>
+
+
 
 <div id="user-management">
   <h3>使用者管理</h3>
-  <p>用於管理 MySQL 使用者及其權限：</p>
-  <div class="code-container"><pre><code>
-CREATE USER 'user'@'host' IDENTIFIED BY 'password';
+  <p>MySQL 中的使用者管理包含創建用戶、授權、修改密碼與刪除用戶等操作。以下是這些操作的句型和填入部分：</p>
 
-GRANT ALL PRIVILEGES ON database_name.* TO 'user'@'host';
-
-REVOKE ALL PRIVILEGES ON database_name.* FROM 'user'@'host';
-
-DROP USER 'user'@'host';
-  </code></pre></div>
+  <ul>
+    <li><strong>創建新用戶：</strong> 使用 <code>CREATE USER</code> 語句來創建新用戶，並指定主機和密碼。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code></li>
+        <li><strong>填入部分：</strong> <code>'username'</code>、<code>'host'</code>、<code>'password'</code>
+          <ul>
+            <li><code>'username'</code>: 用戶名。</li>
+            <li><code>'host'</code>: 主機名，例如 <code>'localhost'</code> 表示本地。</li>
+            <li><code>'password'</code>: 用戶的登入密碼。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>授權給用戶：</strong> 使用 <code>GRANT ALL PRIVILEGES</code> 語句來授權用戶使用資料庫。
+      <ul>
+        <li><strong>句型：</strong> <code>GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'host';</code></li>
+        <li><strong>填入部分：</strong> <code>database_name.*</code>、<code>'username'@'host'</code>
+          <ul>
+            <li><code>database_name.*</code>: 資料庫名。</li>
+            <li><code>'username'@'host'</code>: 用戶名和主機。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>修改用戶密碼：</strong> 使用 <code>ALTER USER</code> 語句來更新用戶的密碼。
+      <ul>
+        <li><strong>句型：</strong> <code>ALTER USER 'username'@'host' IDENTIFIED BY 'new_password';</code></li>
+        <li><strong>填入部分：</strong> <code>'username'</code>、<code>'host'</code>、<code>'new_password'</code>
+          <ul>
+            <li><code>'username'</code>: 用戶名。</li>
+            <li><code>'host'</code>: 主機名。</li>
+            <li><code>'new_password'</code>: 新的登入密碼。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>刪除用戶：</strong> 使用 <code>DROP USER</code> 語句來刪除用戶。
+      <ul>
+        <li><strong>句型：</strong> <code>DROP USER 'username'@'host';</code></li>
+        <li><strong>填入部分：</strong> <code>'username'@'host'</code>
+          <ul>
+            <li><code>'username'</code>: 用戶名。</li>
+            <li><code>'host'</code>: 主機名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <div id="backup-and-restore">
   <h3>備份與恢復</h3>
-  <p>用於備份和恢復 MySQL 資料：</p>
-  <div class="code-container"><pre><code>
--- 備份
-mysqldump -u root -p my_database > backup.sql
+  <p>MySQL 的備份與恢復操作可以幫助保護數據並在需要時恢復。以下是這些操作的句型和填入部分：</p>
 
--- 恢復
-mysql -u root -p my_database < backup.sql
-  </code></pre></div>
+  <ul>
+    <li><strong>創建數據庫備份：</strong> 使用 <code>mysqldump</code> 命令來創建數據庫的備份。
+      <ul>
+        <li><strong>句型：</strong> <code>mysqldump -u username -p database_name > backup_file.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
+          <ul>
+            <li><code>username</code>: 用戶名。</li>
+            <li><code>database_name</code>: 要備份的數據庫名稱。</li>
+            <li><code>backup_file.sql</code>: 備份文件名及其路徑。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>恢復數據庫備份：</strong> 使用 <code>mysql</code> 命令來恢復數據庫的備份。
+      <ul>
+        <li><strong>句型：</strong> <code>mysql -u username -p database_name < backup_file.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
+          <ul>
+            <li><code>username</code>: 用戶名。</li>
+            <li><code>database_name</code>: 要恢復的數據庫名稱。</li>
+            <li><code>backup_file.sql</code>: 備份文件名及其路徑。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><strong>備份整個 MySQL 伺服器：</strong> 使用 <code>mysqldump</code> 命令來備份所有數據庫。
+      <ul>
+        <li><strong>句型：</strong> <code>mysqldump -u username -p --all-databases > all_databases_backup.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>all_databases_backup.sql</code>
+          <ul>
+            <li><code>username</code>: 用戶名。</li>
+            <li><code>all_databases_backup.sql</code>: 備份文件名及其路徑。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><strong>恢復所有數據庫：</strong> 使用 <code>mysql</code> 命令來恢復所有數據庫的備份。
+      <ul>
+        <li><strong>句型：</strong> <code>mysql -u username -p < all_databases_backup.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>all_databases_backup.sql</code>
+          <ul>
+            <li><code>username</code>: 用戶名。</li>
+            <li><code>all_databases_backup.sql</code>: 備份文件名及其路徑。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
+
 
 <div id="security">
   <h3>安全性</h3>
-  <p>保護 MySQL 資料庫的安全性：</p>
-  <div class="code-container"><pre><code>
--- 更改用戶密碼
-ALTER USER 'user'@'host' IDENTIFIED BY 'new_password';
+  <p>在 MySQL 中，維護資料庫的安全性至關重要，包括設置密碼策略、管理用戶權限和使用 SSL 進行加密等操作。以下是這些操作的句型和填入部分：</p>
 
--- 限制用戶權限
-REVOKE SELECT ON database_name.* FROM 'user'@'host';
-  </code></pre></div>
+  <ul>
+    <li><strong>設置密碼策略：</strong> 使用 <code>SET PASSWORD</code> 語句來強制實施密碼策略，例如密碼長度和複雜性。
+      <ul>
+        <li><strong>句型：</strong> <code>SET GLOBAL validate_password.policy = policy_level;</code></li>
+        <li><strong>填入部分：</strong> <code>policy_level</code>
+          <ul>
+            <li><code>policy_level</code>: 密碼策略級別，例如 <code>LOW</code>、<code>MEDIUM</code> 或 <code>STRONG</code>。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>管理用戶權限：</strong> 使用 <code>REVOKE</code> 和 <code>GRANT</code> 語句來管理用戶的訪問權限。
+      <ul>
+        <li><strong>句型：</strong> <code>REVOKE ALL PRIVILEGES ON database_name.* FROM 'username'@'host';</code></li>
+        <li><strong>填入部分：</strong> <code>database_name.*</code>、<code>'username'@'host'</code>
+          <ul>
+            <li><code>database_name.*</code>: 資料庫名。</li>
+            <li><code>'username'@'host'</code>: 用戶名和主機。</li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li><strong>句型：</strong> <code>GRANT SELECT, INSERT ON database_name.* TO 'username'@'host';</code></li>
+        <li><strong>填入部分：</strong> <code>SELECT, INSERT</code>、<code>database_name.*</code>、<code>'username'@'host'</code>
+          <ul>
+            <li><code>SELECT, INSERT</code>: 授權的操作，例如 <code>SELECT</code> 或 <code>INSERT</code>。</li>
+            <li><code>database_name.*</code>: 資料庫名。</li>
+            <li><code>'username'@'host'</code>: 用戶名和主機。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>使用 SSL 進行加密：</strong> 使用 <code>CREATE USER</code> 語句來指定用戶必須使用 SSL 連接。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE USER 'username'@'host' REQUIRE SSL;</code></li>
+        <li><strong>填入部分：</strong> <code>'username'@'host'</code>
+          <ul>
+            <li><code>'username'</code>: 用戶名。</li>
+            <li><code>'host'</code>: 主機名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
+
 
 <div id="performance-tuning">
   <h3>性能調優</h3>
-  <p>優化 MySQL 查詢性能：</p>
-  <div class="code-container"><pre><code>
--- 查看查詢性能
-EXPLAIN SELECT * FROM table_name;
+  <p>性能調優在 MySQL 中涉及到多方面的設定和優化措施，以提高資料庫的響應速度和處理效率。以下是一些常見的性能調優操作和建議：</p>
 
--- 設置索引
-CREATE INDEX index_name ON table_name (column1);
-  </code></pre></div>
+  <ul>
+    <li><strong>查詢優化：</strong> 使用索引和合理的查詢語句來提高查詢效率。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE INDEX index_name ON table_name(column_name);</code></li>
+        <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
+          <ul>
+            <li><code>index_name</code>: 索引的名稱。</li>
+            <li><code>table_name</code>: 要添加索引的表名。</li>
+            <li><code>column_name</code>: 要建立索引的列名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>配置緩存：</strong> 調整緩存設定以減少磁碟 I/O 操作，提高性能。
+      <ul>
+        <li><strong>句型：</strong> <code>SET GLOBAL key_buffer_size = size;</code></li>
+        <li><strong>填入部分：</strong> <code>key_buffer_size</code>、<code>size</code>
+          <ul>
+            <li><code>key_buffer_size</code>: 緩存區域的名稱。</li>
+            <li><code>size</code>: 緩存的大小（例如 <code>16M</code>）。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>數據表設計：</strong> 使用合適的數據表設計以提高查詢效率。
+      <ul>
+        <li><strong>句型：</strong> <code>ALTER TABLE table_name ADD INDEX index_name(column_name);</code></li>
+        <li><strong>填入部分：</strong> <code>table_name</code>、<code>index_name</code>、<code>column_name</code>
+          <ul>
+            <li><code>table_name</code>: 要添加索引的表名。</li>
+            <li><code>index_name</code>: 索引的名稱。</li>
+            <li><code>column_name</code>: 要建立索引的列名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>查詢緩存：</strong> 啟用和配置查詢緩存以提高重複查詢的性能。
+      <ul>
+        <li><strong>句型：</strong> <code>SET GLOBAL query_cache_size = size;</code></li>
+        <li><strong>填入部分：</strong> <code>query_cache_size</code>、<code>size</code>
+          <ul>
+            <li><code>query_cache_size</code>: 查詢緩存的大小。</li>
+            <li><code>size</code>: 緩存大小（例如 <code>64M</code>）。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>調整 MySQL 配置：</strong> 根據系統需求調整 MySQL 的配置文件。
+      <ul>
+        <li><strong>句型：</strong> 在 <code>my.cnf</code> 文件中調整配置項目。</li>
+        <li><strong>填入部分：</strong> <code>my.cnf</code>
+          <ul>
+            <li><code>my.cnf</code>: MySQL 的配置文件。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
 </div>
+
 
 <div id="replication">
   <h3>複製</h3>
-  <p>複製用於數據同步和備份：</p>
-  <div class="code-container"><pre><code>
--- 主伺服器配置
-CHANGE MASTER TO MASTER_HOST='host', MASTER_USER='user', MASTER_PASSWORD='password';
+  <p>複製是一種將數據從一個 MySQL 伺服器複製到另一個伺服器的技術。這對於備份和擴展非常有用。</p>
 
--- 從伺服器配置
-START SLAVE;
-  </code></pre></div>
+  <ul>
+    <li><strong>設置主伺服器：</strong> 在主伺服器上配置複製設置。
+      <ul>
+        <li><strong>句型：</strong> <code>CHANGE MASTER TO MASTER_HOST='host', MASTER_USER='user', MASTER_PASSWORD='password', MASTER_LOG_FILE='logfile', MASTER_LOG_POS=position;</code></li>
+        <li><strong>填入部分：</strong> <code>'host'</code>、<code>'user'</code>、<code>'password'</code>、<code>'logfile'</code>、<code>position</code>
+          <ul>
+            <li><code>'host'</code>: 主伺服器的主機名或 IP 地址。</li>
+            <li><code>'user'</code>: 用於複製的用戶名。</li>
+            <li><code>'password'</code>: 用戶的密碼。</li>
+            <li><code>'logfile'</code>: 主伺服器的日誌文件名。</li>
+            <li><code>position</code>: 日誌中的位置。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>設置從伺服器：</strong> 在從伺服器上配置複製設置。
+      <ul>
+        <li><strong>句型：</strong> <code>START SLAVE;</code></li>
+        <li><strong>填入部分：</strong> 無需額外填入內容。</li>
+      </ul>
+    </li>
+    
+    <li><strong>檢查複製狀態：</strong> 確保複製設置正確且正在運行。
+      <ul>
+        <li><strong>句型：</strong> <code>SHOW SLAVE STATUS\G;</code></li>
+        <li><strong>填入部分：</strong> 無需額外填入內容。</li>
+      </ul>
+    </li>
+  </ul>
 </div>
+
 
 <div id="partitioning">
   <h3>分區</h3>
-  <p>分區用於將表分成更小、更容易管理的部分：</p>
-  <div class="code-container"><pre><code>
-CREATE TABLE table_name (
-  id INT,
-  name VARCHAR(100),
-  PRIMARY KEY (id, name)
-)
-PARTITION BY RANGE (id) (
-  PARTITION p0 VALUES LESS THAN (1000),
-  PARTITION p1 VALUES LESS THAN (2000)
-);
-  </code></pre></div>
+  <p>分區是一種將大型表劃分為更小的、管理更方便的部分的技術。這有助於提高查詢效率和管理數據。</p>
+
+  <ul>
+    <li><strong>創建分區表：</strong> 使用 <code>PARTITION BY</code> 語句來創建分區。
+      <ul>
+        <li><strong>句型：</strong> <code>CREATE TABLE table_name (id INT, name VARCHAR(255)) PARTITION BY RANGE (id) (PARTITION p0 VALUES LESS THAN (1000), PARTITION p1 VALUES LESS THAN (2000));</code></li>
+        <li><strong>填入部分：</strong> <code>table_name</code>、<code>id</code>、<code>name</code>、<code>p0</code>、<code>p1</code>
+          <ul>
+            <li><code>table_name</code>: 表名。</li>
+            <li><code>id</code>、<code>name</code>: 欄位名。</li>
+            <li><code>p0</code>、<code>p1</code>: 分區名稱。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>查看分區信息：</strong> 查看表的分區設置。
+      <ul>
+        <li><strong>句型：</strong> <code>SHOW CREATE TABLE table_name;</code></li>
+        <li><strong>填入部分：</strong> <code>table_name</code>
+          <ul>
+            <li><code>table_name</code>: 表名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>修改分區：</strong> 修改表的分區設置。
+      <ul>
+        <li><strong>句型：</strong> <code>ALTER TABLE table_name REORGANIZE PARTITION p0 INTO (PARTITION p1 VALUES LESS THAN (1000), PARTITION p2 VALUES LESS THAN (2000));</code></li>
+        <li><strong>填入部分：</strong> <code>table_name</code>、<code>p0</code>、<code>p1</code>、<code>p2</code>
+          <ul>
+            <li><code>table_name</code>: 表名。</li>
+            <li><code>p0</code>: 原有分區名。</li>
+            <li><code>p1</code>、<code>p2</code>: 新分區名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
-<div id="views">
-  <h3>視圖</h3>
-  <p>視圖是虛擬表，用於簡化複雜查詢：</p>
-  <div class="code-container"><pre><code>
-CREATE VIEW view_name AS
-SELECT column1, column2
-FROM table_name
-WHERE condition;
-  </code></pre></div>
-</div>
 
 <div id="database-migration-upgrade">
   <h3>資料庫遷移和升級</h3>
-  <p>資料庫遷移和升級用於數據庫版本控制和遷移：</p>
-  <div class="code-container"><pre><code>
--- 建立資料庫版本表
-CREATE TABLE schema_migrations (
-  version INT PRIMARY KEY,
-  applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+  <p>資料庫遷移指的是將資料庫中的數據和結構從一個環境轉移到另一個環境，這通常涉及到數據導出和導入操作。</p>
 
--- 記錄版本
-INSERT INTO schema_migrations (version) VALUES (1);
+  <ul>
+    <li><strong>導出數據：</strong> 使用 <code>mysqldump</code> 工具來導出數據。
+      <ul>
+        <li><strong>句型：</strong> <code>mysqldump -u username -p database_name > backup_file.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
+          <ul>
+            <li><code>username</code>: MySQL 用戶名。</li>
+            <li><code>database_name</code>: 要導出的資料庫名。</li>
+            <li><code>backup_file.sql</code>: 導出後的備份文件名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <li><strong>導入數據：</strong> 使用 <code>mysql</code> 工具來導入數據。
+      <ul>
+        <li><strong>句型：</strong> <code>mysql -u username -p database_name < backup_file.sql</code></li>
+        <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
+          <ul>
+            <li><code>username</code>: MySQL 用戶名。</li>
+            <li><code>database_name</code>: 目標資料庫名。</li>
+            <li><code>backup_file.sql</code>: 要導入的備份文件名。</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 
--- 升級腳本
-ALTER TABLE table_name ADD column_name datatype;
-
--- 版本回滾腳本
-ALTER TABLE table_name DROP COLUMN column_name;
-  </code></pre></div>
 </div>
+
