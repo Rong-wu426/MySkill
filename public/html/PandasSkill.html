@@ -1,93 +1,350 @@
+<h1>Pandas</h1>
+<p>Pandas 是一個高效的資料處理與分析工具庫，專門用於結構化數據的操作。常見功能包括讀取資料、操作資料框、過濾資料及進行統計分析。</p>
 
-<h1>Pandas 筆記</h1>
+<div id="dataframe-creation">
+    <h3>創建資料框</h3>
+    <p>資料框是 Pandas 中的核心數據結構，類似於表格或數據庫中的表格。</p>
+    <div class="code-container">
+        <pre><code>
+import pandas as pd  # 創建一個簡單的資料框
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Age': [25, 30, 35],
+        'Salary': [50000, 60000, 70000]}
+df = pd.DataFrame(data)
 
-<div id="installation">
-  <h3>安裝</h3>
-  <div class="code-container"><pre><code>
-# 安裝 Pandas
-pip install pandas
-
-# 導入 Pandas
-import pandas as pd
-  </code></pre></div>
+# 顯示資料框
+print(df)
+        </code></pre>
+    </div>
+    <ul>
+        <li><strong>定義資料：</strong> 使用字典形式來定義資料，鍵是欄位名稱，值是欄位的數據。</li>
+        <li><strong>創建資料框：</strong> 使用 <code>pd.DataFrame()</code> 方法將資料轉換為 Pandas 資料框。</li>
+        <li><strong>顯示資料：</strong> 使用 <code>print()</code> 或 <code>df.head()</code> 來查看資料框的前幾行。</li>
+    </ul>
 </div>
 
-<div id="dataframes">
-  <h3>DataFrame 創建</h3>
-  <div class="code-container"><pre><code>
-import pandas as pd
+<div id="basic-operations">
+    <h3>基本操作</h3>
+    <h4>查看 DataFrame 的前幾行數據</h4>
+    <div class="code-container">
+        <pre><code>print(df.head())  # 默認顯示前 5 行</code></pre>
+    </div>
+    <h4>查看 DataFrame 的數據結構和類型</h4>
+    <div class="code-container">
+        <pre><code>
+print(df.info())
+print(df.describe())</code></pre>
+    </div>
+    <h4>選取單列數據</h4>
+    <div class="code-container">
+        <pre><code>
+names = df['Name']
+print(names)</code></pre>
+    </div>
+    <h4>選取多列數據</h4>
+    <div class="code-container">
+        <pre><code>
+subset = df[['Name', 'City']]
+print(subset)</code></pre>
+    </div> 
+    <h4>過濾數據</h4>
+    <div class="code-container">
+      <pre><code>
+# 篩選薪水大於 60000 的資料
+high_salary_df = df[df['Salary'] > 60000]
 
-# 從字典建立 DataFrame
+print(high_salary_df)
+      </code></pre>
+  </div>
+</div>
+
+<div id="pivot">
+  <h3>透視表</h3>
+  <p>透視表允許你將數據重新排列，根據不同的索引和列進行彙總。</p>
+  <div class="code-container">
+    <pre><code>
 data = {
-'Name': ['Alice', 'Bob', 'Charlie'],
-'Age': [25, 30, 35],
-'City': ['New York', 'Los Angeles', 'Chicago']
+    'Name': ['Tom', 'Jerry', 'Mickey', 'Donald', 'Goofy'],
+    'City': ['New York', 'Los Angeles', 'Chicago', 'New York', 'Chicago'],
+    'Age': [25, 23, 30, 35, 28],
+    'Score': [85, 88, 92, 75, 82]
 }
 df = pd.DataFrame(data)
 
-# 從 CSV 檔案建立 DataFrame
-df = pd.read_csv('data.csv')
-  </code></pre></div>
+# 創建透視表，計算每個城市的平均年齡和分數
+pivot = df.pivot_table(values=['Age', 'Score'], index='City', aggfunc='mean')
+
+print(pivot)
+    </code></pre>
+  </div>
+  <p>輸出：</p>
+  <div class="code-container">
+    <pre><code>
+                Age  Score
+  City                      
+  Chicago      29.0   87.0
+  Los Angeles  23.0   88.0
+  New York     30.0   80.0
+    </code></pre>
+  </div>
 </div>
 
-<div id="data-selection">
-  <h3>數據選擇</h3>
-  <div class="code-container"><pre><code>
-# 選擇單列
-df['Name']
+<div id="stack-unstack">
+  <h3>堆疊與拆分</h3>
+  <p>將數據堆疊（stack）和拆分（unstack）的功能，這在進行多層索引的操作時非常有用。</p>
+  <h4>使用 <code>stack</code></h4>
+  <div class="code-container">
+    <pre><code>
+stacked = df.set_index(['City', 'Name']).stack()
+print(stacked)
+    </code></pre>
+  </div>
+  <h4>使用 <code>unstack</code></h4>
+  <div class="code-container">
+    <pre><code>
+unstacked = stacked.unstack()
 
-# 選擇多列
-df[['Name', 'City']]
-
-# 依條件篩選
-df[df['Age'] > 30]
-
-# 選擇行
-df.iloc[0] # 第一行
-df.loc[0] # 依索引選擇
-  </code></pre></div>
+print(unstacked)
+    </code></pre>
+  </div>
 </div>
 
-<div id="data-manipulation">
-  <h3>數據操作</h3>
-  <div class="code-container"><pre><code>
-# 新增列
-df['Country'] = 'USA'
+<div id="melt">
+  <h3>重塑數據</h3>
+  <h4>使用 <code>melt</code></h4>
+  <div class="code-container">
+      <pre><code>
+  data = {
+      'Name': ['Tom', 'Jerry', 'Mickey'],
+      'Math': [85, 88, 92],
+      'English': [78, 82, 85],
+      'Science': [90, 86, 89]
+  }
+  df = pd.DataFrame(data)
 
-# 修改列
-df['Age'] = df['Age'] + 1
+  # 使用 melt 轉換數據
+  melted = pd.melt(df, id_vars='Name', value_vars=['Math', 'English', 'Science'], var_name='Subject', value_name='Score')
 
-# 刪除列
-df.drop('Country', axis=1, inplace=True)
-
-# 刪除行
-df.drop(0, axis=0, inplace=True)
-  </code></pre></div>
+  print(melted)
+      </code></pre>
+  </div>
+  <p>輸出：</p>
+  <div class="code-container">
+      <pre><code>
+      Name   Subject  Score
+  0    Tom      Math     85
+  1  Jerry      Math     88
+  2 Mickey      Math     92
+  3    Tom   English     78
+  4  Jerry   English     82
+  5 Mickey   English     85
+  6    Tom   Science     90
+  7  Jerry   Science     86
+  8 Mickey   Science     89
+      </code></pre>
+  </div>
 </div>
 
-<div id="data-cleaning">
-  <h3>資料清理</h3>
-  <div class="code-container"><pre><code>
+<div id="apply-function">
+  <h3>應用函數</h3>
+  <p><code>apply()</code> 函數允許對每一行或每一列應用自定義的函數，適合進行複雜的資料轉換。</p>
+  <div class="code-container">
+      <pre><code>
+# 定義一個函數來計算淨薪水
+def net_salary(salary):
+  return salary * 0.8
+
+# 使用 apply 函數對 Salary 欄位進行計算
+df['Net Salary'] = df['Salary'].apply(net_salary)
+
+print(df)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>定義函數：</strong> 可以定義一個自定義函數來應用於資料框中的欄位。</li>
+      <li><strong>應用函數：</strong> 使用 <code>apply()</code> 函數將自定義函數應用到某個欄位。</li>
+  </ul>
+</div>
+
+<div id="applymap-function">
+  <h3>應用映射</h3>
+  <p><code>applymap()</code> 函數允許對資料框中的每一個元素應用自定義的函數，適合對整個資料框進行轉換。</p>
+  <div class="code-container">
+      <pre><code>
+# 定義一個函數來格式化數字
+def format_number(x):
+  return f"${x:.2f}"
+
+# 使用 applymap 函數對整個資料框進行格式化
+df_formatted = df.applymap(format_number)
+
+print(df_formatted)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>定義函數：</strong> 可以定義一個自定義函數來應用於資料框中的每一個元素。</li>
+      <li><strong>應用函數：</strong> 使用 <code>applymap()</code> 函數將自定義函數應用到整個資料框。</li>
+  </ul>
+</div>
+
+
+<div id="groupby-aggregate-function">
+  <h3>數據分組與聚合</h3>
+  <p><code>groupby()</code> 函數可以根據一個或多個欄位進行分組，並對每組資料進行操作。</p>
+  
+  <h4>分組並計算均值</h4>
+  <div class="code-container">
+      <pre><code>
+# 根據年齡分組並計算每組的平均薪水
+grouped_df = df.groupby('Age')['Salary'].mean()
+
+print(grouped_df)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>分組資料：</strong> 使用 <code>groupby()</code> 函數根據某欄位對資料進行分組。</li>
+      <li><strong>聚合資料：</strong> 對每個分組使用統計函數，例如均值、總和等。</li>
+  </ul>
+  
+  <h4>使用多種聚合函數</h4>
+  <div class="code-container">
+      <pre><code>
+# 按 'City' 分組，計算 'Age' 的均值、最大值和最小值
+agg_result = df.groupby('City')['Age'].agg(['mean', 'max', 'min'])
+
+print(agg_result)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>多重聚合：</strong> 可以對一列應用多種聚合函數，例如均值、最大值、最小值等。</li>
+      <li><strong>指定聚合函數：</strong> 使用 <code>agg()</code> 方法指定要應用的聚合函數。</li>
+  </ul>
+  
+  <h4>使用其他聚合函數</h4>
+  <div class="code-container">
+      <pre><code>
+# 按 'City' 分組，計算 'Salary' 的總和、標準差和計數
+agg_result = df.groupby('City')['Salary'].agg(['sum', 'std', 'count'])
+
+print(agg_result)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>總和：</strong> 使用 <code>sum()</code> 計算每組的總和。</li>
+      <li><strong>標準差：</strong> 使用 <code>std()</code> 計算每組的標準差。</li>
+      <li><strong>計數：</strong> 使用 <code>count()</code> 計算每組的計數。</li>
+  </ul>
+  
+  <h4>使用自定義函數</h4>
+  <div class="code-container">
+      <pre><code>
+# 自定義函數計算每組薪水的範圍
+def range_func(x):
+  return x.max() - x.min()
+
+# 使用自定義函數進行聚合
+custom_agg = df.groupby('City')['Salary'].agg(range_func)
+
+print(custom_agg)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>自定義聚合函數：</strong> 可以定義自定義函數並使用 <code>agg()</code> 方法將其應用於分組結果。</li>
+  </ul>
+</div>
+
+
+<div id="missing-data">
+    <h3>缺失資料處理</h3>
+    <p>Pandas 提供處理缺失資料的方法，包括填充缺失值或刪除缺失值。</p>
+    <div class="code-container">
+        <pre><code>
 # 填充缺失值
-df.fillna('N/A', inplace=True)
+df.fillna(0, inplace=True)
 
-# 刪除缺失值
+# 刪除含有缺失值的行
 df.dropna(inplace=True)
-
-# 重置索引
-df.reset_index(drop=True, inplace=True)
-  </code></pre></div>
+        </code></pre>
+    </div>
+    <ul>
+        <li><strong>填充缺失值：</strong> 使用 <code>fillna()</code> 方法來填充缺失的資料。</li>
+        <li><strong>刪除缺失值：</strong> 使用 <code>dropna()</code> 刪除含有缺失值的行或列。</li>
+    </ul>
 </div>
 
-<div id="data-aggregation">
-  <h3>資料聚合</h3>
-  <div class="code-container"><pre><code>
-# 計算統計量
-df['Age'].mean() # 平均值
-df['Age'].sum() # 總和
+<div id="data-combine">
+  <h3>資料合併與串接</h3>
+  <p>Pandas 提供兩種主要的方式來組合資料框：merge() 用於類似 SQL 的資料合併，concat()</code> 用於沿著指定軸進行資料框的串接。</p>
+  
+  <h4>資料合併</h4>
+  <p>使用merge() 函數可以將兩個資料框根據某個欄位進行合併，類似於 SQL 中的 JOIN 操作。</p>
+  <div class="code-container">
+      <pre><code>
+# 創建另一個資料框
+data2 = {'Name': ['Alice', 'Bob', 'Charlie'],
+       'Department': ['HR', 'IT', 'Finance']}
+df2 = pd.DataFrame(data2)
 
-# 按列分組並計算統計量
-grouped = df.groupby('City')
-grouped['Age'].mean()
-  </code></pre></div>
+# 合併兩個資料框
+merged_df = pd.merge(df, df2, on='Name')
+
+print(merged_df)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>合併資料框：</strong> 使用 <code>merge()</code> 函數將兩個資料框根據某個欄位進行合併。</li>
+      <li><strong>指定鍵：</strong> 合併時需要指定哪個欄位作為鍵來進行匹配。</li>
+      <li><strong>多鍵合併：</strong> 可以同時指定多個欄位作為鍵來進行合併。</li>
+  </ul>
+
+  <h4>資料串接</h4>
+  <p>使用concat() 函數用於將多個資料框沿著指定的軸進行串接，通常用於縱向或橫向將資料框堆疊在一起。</p>
+  <div class="code-container">
+      <pre><code>
+# 創建兩個資料框
+data1 = {'Name': ['Tom', 'Jerry', 'Mickey'],
+       'Age': [25, 23, 30]}
+df1 = pd.DataFrame(data1)
+
+data2 = {'Name': ['Donald', 'Goofy'],
+       'Age': [35, 28]}
+df2 = pd.DataFrame(data2)
+
+# 使用 concat() 函數縱向串接資料框
+concatenated_df = pd.concat([df1, df2], axis=0)
+
+print(concatenated_df)
+      </code></pre>
+  </div>
+  <ul>
+      <li><strong>資料串接：</strong> 使用 <code>concat()</code> 函數可以將多個資料框串接在一起，預設為縱向串接（沿著 axis=0）。</li>
+      <li><strong>橫向串接：</strong> 可以通過設定 <code>axis=1</code> 來實現橫向串接。</li>
+      <li><strong>索引控制：</strong> 可以通過 <code>ignore_index=True</code> 來忽略原來的索引，為結果重新生成索引。</li>
+  </ul>
+</div>
+
+<div id="file-io">
+    <h3>文件讀寫</h3>
+    <p>Pandas 可以讀取和寫入多種格式的文件，最常見的是 CSV 和 Excel 文件。</p>
+    <div class="code-container">
+        <pre><code>
+# 讀取 CSV 或 Excel 文件
+df = pd.read_csv('data.csv')
+df = pd.read_excel('data.xlsx')
+
+# 將資料框寫入 CSV 或 Excel 文件
+df.to_csv('output.csv', index=False)
+df.to_excel('output.xlsx', index=False)
+        </code></pre>
+    </div>
+</div>
+
+<div id="performance-tuning">
+  <h3>性能調優</h3>
+  <ul>
+    在處理大數據時，可以通過以下方法來提高效率：
+    <li>使用<code>category</code>類型處理重複值較多的分類數據；</li>
+    <li>使用<code>pd.to_datetime()</code>來加速時間數據處理；</li>
+    <li>適當使用<code>df.iterrows()</code>或<code>df.itertuples()</code>來遍歷數據。</li>
+  </ul>
 </div>
