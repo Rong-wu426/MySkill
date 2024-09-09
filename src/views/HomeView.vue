@@ -10,7 +10,7 @@
           <th>其他</th>
         </tr>
       </thead>
-        <tbody>
+      <tbody>
         <tr>
           <td>
             <div class="skill-container">

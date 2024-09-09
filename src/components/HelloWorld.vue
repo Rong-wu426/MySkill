@@ -18,18 +18,11 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  text-align: center;
-  margin: 20px;
-}
-
-h1 {
-  font-size: 2.5em;
-  color: #2c3e50;
-}
-
 p {
-  font-size: 1.2em;
-  color: #606060;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+margin: 0;
 }
 </style>

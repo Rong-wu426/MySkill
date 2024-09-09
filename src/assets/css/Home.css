@@ -1,83 +1,111 @@
-/* Home.css */
 
 .home {
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
+    padding: 15px; 
+    font-family: Arial, sans-serif;
 }
 
+
 h2 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
+    margin: 0; 
+    font-size: 1.5rem;
+    color: #333; 
+    text-align: center; 
 }
+
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; 
+}
+
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 15px;
+    border-collapse: separate;
+    border: 0;
+    margin: 0;
+    border-style: solid
 }
 
-th, td {
-    padding: 8px 15px; 
-    text-align: center;
-    border: 1px solid #ddd;
+
+thead th {
+    font-size: 1.2rem;
+    background-color: #333; 
+    color: #fff; 
+    padding: 8px; 
+    text-align: center; 
+    border-bottom: 2px solid #333; 
 }
 
-th {
-background-color: #f2f2f2;
-color: #555;
-font-weight: bold;
-font-size: 1.25rem;
+
+tbody td {
+    padding: 5px; 
+    vertical-align:middle; 
+    text-align: center; 
+    border: 1px solid #333; 
+    background-color: #f9f9f9; 
 }
 
-td {
-background-color: #fff;
-vertical-align: top;
+
+tbody tr {
+border-bottom: 1px solid #ddd; 
 }
+
+
 
 .skill-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px; 
+    justify-content: center; 
+    width: 100%; 
 }
+
 
 .skill-item {
-display: flex;
-align-items: center;
-justify-items: center;
-padding: 2px;
-background-color: #fff;
-margin: 10px;
-max-width: 250px;
-transition: transform 0.3s, box-shadow 0.3s;
-box-sizing: border-box;
-font-size: 25px;
-line-height: 1.5;
-}
-
-.skill-item img {
-width: 30px;
-height: 30px;
-margin-right: 10px;
-transition: transform 0.3s;
-}
-
-.skill-item a {
-text-decoration: none;
-color: #333;
-font-size: 20px; 
-font-weight: 500;
-transition: color 0.3s;
+    flex: 0 0 auto; 
+    max-width: 60px;
+    min-width: 60px; 
+    height: 60px;
+    margin: 0;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    text-align: center; 
 }
 
 
-.skill-item:hover {
-transform: scale(1.05);
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.skill-link {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 2px 2px;
+    background-color: transparent;
+    border-radius: 6px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #007bff;
+    font-size: 0.7rem; 
+    text-decoration: none;  
 }
 
-.skill-item:hover img {
-transform: scale(1.5);
+
+.skill-icon {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 2px; 
+    transition: transform 0.3s;
+}
+
+
+.skill-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skill-link:hover .skill-icon {
+    transform: scale(1.2);
 }

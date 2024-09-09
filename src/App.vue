@@ -10,30 +10,35 @@
 </template>
 
 <style>
+
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  min-height: 100vh; 
+}
+
+.content {
+  flex: 1;
 }
 
 footer {
-  margin-top: auto; 
-  background-color: #f1f1f1;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex; 
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  font-size: 1rem;
+  color: #000000;
 }
 
 p {
-  font-size: 1rem;
-  color: #000000;
   margin: 0; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
+
 </style>
