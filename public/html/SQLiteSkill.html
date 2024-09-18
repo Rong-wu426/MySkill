@@ -1,66 +1,270 @@
-
 <h1>SQLite 筆記</h1>
+
+<div id="basic-concept">
+  <h3>基本概念</h3>
+  <ul>
+    <li><strong>資料庫 (Database)</strong>: 用來存放資料的容器，每個資料庫都包含多個表。</li>
+    <li><strong>表格 (Table)</strong>: 資料以表格的形式來儲存，由行和列組成。</li>
+    <li><strong>行 (Row)</strong>: 表格中的每條記錄。</li>
+    <li><strong>列 (Column)</strong>: 表格中的每個屬性，描述資料的每個特徵。</li>
+    <li><strong>主鍵 (Primary Key)</strong>: 唯一識別表中每一條記錄的欄位。</li>
+    <li><strong>外鍵 (Foreign Key)</strong>: 用來建立和維護表之間的關聯的欄位。外鍵的值對應於另一個表的主鍵，用來確保數據的一致性和完整性。</li>
+  </ul>
+</div>
+
+<div id="data-types-overview">
+  <h3>資料類型概述</h3>
+  <ul>
+      <li><strong>整數類型</strong>: <div class="code-container"><pre><code>INTEGER</code></pre></div></li>
+      <li><strong>字串類型</strong>: <div class="code-container"><pre><code>TEXT</code></pre></div></li>
+      <li><strong>日期時間類型</strong>: <div class="code-container"><pre><code>DATE</code></pre></div>、<div class="code-container"><pre><code>DATETIME</code></pre></div></li>
+      <li><strong>浮點數類型</strong>: <div class="code-container"><pre><code>REAL</code></pre></div></li>
+  </ul>
+</div>
+
+<div id="create-database">
+  <h3>創建資料庫</h3>
+  <p>使用 SQLite 的 <code>sqlite3</code> 命令來創建資料庫文件：</p>
+  <div class="code-container"><pre><code>sqlite3 my_database.db</code></pre></div>
+</div>
+
+<div id="use-database">
+  <h3>使用資料庫</h3>
+  <p>在 SQLite 中，選擇或創建資料庫時，直接在命令行中打開資料庫文件：<code>sqlite3 my_database.db</code></p>
+</div>
+
+<div id="create-table">
+  <h3>新增表格</h3>
+  <p>使用 <code>CREATE TABLE</code> 來新增表格：</p>
+  <div class="code-container"><pre><code>CREATE TABLE table_name (id INTEGER PRIMARY KEY AUTOINCREMENT, column1 TEXT NOT NULL, column2 INTEGER);</code></pre></div>
+</div>
 
 <div id="select">
   <h3>SELECT 語句</h3>
+  <p>使用 <code>SELECT</code> 來查詢表中的資料：</p>
   <div class="code-container"><pre><code>SELECT * FROM table_name;</code></pre></div>
 </div>
 
 <div id="insert">
   <h3>INSERT INTO</h3>
-  <div class="code-container"><pre><code>
-INSERT INTO table_name (column1, column2) VALUES (value1, value2);
-  </code></pre></div>
+  <p>使用 <code>INSERT INTO</code> 來插入數據：</p>
+  <div class="code-container"><pre><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></pre></div>
 </div>
 
 <div id="update">
   <h3>UPDATE 語句</h3>
-  <div class="code-container"><pre><code>
-UPDATE table_name
-SET column1 = value1, column2 = value2
-WHERE condition;
-  </code></pre></div>
+  <p>使用 <code>UPDATE</code> 來更新表中的資料：</p>
+  <div class="code-container"><pre><code>UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;</code></pre></div>
 </div>
 
 <div id="delete">
   <h3>DELETE 語句</h3>
-  <div class="code-container"><pre><code>
-DELETE FROM table_name
-WHERE condition;
-  </code></pre></div>
+  <p>使用 <code>DELETE</code> 來刪除資料：</p>
+  <div class="code-container"><pre><code>DELETE FROM table_name WHERE condition;</code></pre></div>
 </div>
 
 <div id="joins">
   <h3>JOIN 語句</h3>
-  <div class="code-container"><pre><code>
-SELECT columns
-FROM table1
-INNER JOIN table2 ON table1.common_field = table2.common_field;
-  </code></pre></div>
-</div>
-
-<div id="create-table">
-  <h3>新增表格</h3>
-  <div class="code-container"><pre><code>
-CREATE TABLE table_name (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-column1 TEXT NOT NULL,
-column2 INTEGER
-);
-  </code></pre></div>
+  <p>使用 <code>JOIN</code> 來聯接兩個或多個表：</p>
+  <div class="code-container"><pre><code>SELECT columns FROM table1 JOIN table2 ON table1.common_field = table2.common_field;</code></pre></div>
 </div>
 
 <div id="alter-table">
   <h3>改變表格</h3>
-  <div class="code-container"><pre><code>
-ALTER TABLE table_name
-ADD COLUMN column_name datatype;
-  </code></pre></div>
+  <p>使用 <code>ALTER TABLE</code> 來修改表格結構：</p>
+  <div class="code-container"><pre><code>ALTER TABLE table_name ADD column_name datatype;</code></pre></div>
 </div>
 
 <div id="drop-table">
   <h3>移除表格</h3>
+  <p>使用 <code>DROP TABLE</code> 來刪除表格：</p>
+  <div class="code-container"><pre><code>DROP TABLE table_name;</code></pre></div>
+</div>
+
+<div id="filter">
+  <h3>查詢條件與過濾</h3>
+  <ul>
+      <li><strong>WHERE 子句</strong>: 用於根據條件過濾查詢結果：
+          <div class="code-container"><pre><code>SELECT * FROM users WHERE name = 'John Doe';</code></pre></div>
+      </li>
+      <li><strong>多條件查詢</strong>: 使用 <div class="code-container"><pre><code>AND</code></pre></div> 和 <div class="code-container"><pre><code>OR</code></pre></div> 結合多個條件：
+          <div class="code-container"><pre><code>SELECT * FROM users WHERE name = 'John Doe' AND email LIKE '%example.com';</code></pre></div>
+      </li>
+      <li><strong>範圍查詢</strong>: 使用 <div class="code-container"><pre><code>BETWEEN</code></pre></div> 和 <div class="code-container"><pre><code>IN</code></pre></div>：
+          <div class="code-container"><pre><code>SELECT * FROM users WHERE id BETWEEN 1 AND 10; SELECT * FROM users WHERE id IN (1, 2, 3);</code></pre></div>
+      </li>
+      <li><strong>模糊查詢</strong>: 使用 <div class="code-container"><pre><code>LIKE</code></pre></div>：
+          <div class="code-container"><pre><code>SELECT * FROM users WHERE email LIKE '%example.com';</code></pre></div>
+      </li>
+  </ul>
+</div>
+
+<div id="aggregate-functions">
+  <h3>聚合函數</h3>
+  <p>聚合函數用於計算集合數據的統計信息：</p>
+  <ul>
+      <li><strong>COUNT</strong>: 計算行數</li>
+      <div class="code-container"><pre><code>SELECT COUNT(*) FROM users;</code></pre></div>
+      <li><strong>SUM</strong>: 計算總和</li>
+      <div class="code-container"><pre><code>SELECT SUM(amount) FROM orders;</code></pre></div>
+      <li><strong>AVG</strong>: 計算平均值</li>
+      <div class="code-container"><pre><code>SELECT AVG(amount) FROM orders;</code></pre></div>
+      <li><strong>MAX</strong>: 查找最大值</li>
+      <div class="code-container"><pre><code>SELECT MAX(amount) FROM orders;</code></pre></div>
+      <li><strong>MIN</strong>: 查找最小值</li>
+      <div class="code-container"><pre><code>SELECT MIN(amount) FROM orders;</code></pre></div>
+  </ul>
+</div>
+
+<div id="group-by">
+  <h3>GROUP BY</h3>
+  <p>GROUP BY 用於分組查詢</p>
   <div class="code-container"><pre><code>
-DROP TABLE table_name;
+SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name;
   </code></pre></div>
+</div>
+
+<div id="having">
+  <h3>HAVING 子句</h3>
+  <p>HAVING 用於過濾分組後的結果</p>
+  <div class="code-container"><pre><code>
+SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name HAVING COUNT(*) > 1;
+  </code></pre></div>
+</div>
+
+<div id="order-by">
+  <h3>ORDER BY</h3>
+  <p>ORDER BY 用於對查詢結果進行排序</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name ORDER BY column_name ASC/DESC;
+  </code></pre></div>
+</div>
+
+<div id="limit">
+  <h3>LIMIT</h3>
+  <p>LIMIT 用於限制查詢結果的行數</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name LIMIT 10;
+  </code></pre></div>
+</div>
+
+<div id="subqueries">
+  <h3>子查詢</h3>
+  <p>子查詢是嵌套在其他查詢中的查詢：</p>
+  <div class="code-container"><pre><code>
+SELECT * FROM table_name 
+WHERE column_name = (SELECT MAX(column_name) FROM another_table);
+  </code></pre></div>
+</div>
+
+<div id="views">
+  <h3>視圖</h3>
+  <ul>
+    <li><strong>創建視圖</strong>: 保存查詢結果以供未來使用</li>
+    <div class="code-container"><pre><code>CREATE VIEW view_name AS SELECT column_name FROM table_name;</code></pre></div>
+    <li><strong>刪除視圖</strong>: 移除視圖</li>
+    <div class="code-container"><pre><code>DROP VIEW IF EXISTS view_name;</code></pre></div>
+  </ul>
+</div>
+
+<div id="index">
+  <h3>索引</h3>
+  <p>索引是提高查詢效率的重要工具。它能夠加速資料庫的檢索操作。以下是常見的索引操作及其句型和填入部分：</p>
+  <ul>
+      <li><strong>創建索引</strong>: 使用 <div class="code-container"><pre><code>CREATE INDEX</code></pre></div> 語句來創建索引，並指定表和索引列。
+          <ul>
+              <li><strong>句型</strong>: <div class="code-container"><pre><code>CREATE INDEX index_name ON table_name (column_name);</code></pre></div></li>
+              <li><strong>填入部分</strong>: <div class="code-container"><pre><code>index_name</code></pre></div>、<div class="code-container"><pre><code>table_name</code></pre></div>、<div class="code-container"><pre><code>column_name</code></pre></div>
+                  <ul>
+                      <li><div class="code-container"><pre><code>index_name</code></pre></div>: 索引的名稱。</li>
+                      <li><div class="code-container"><pre><code>table_name</code></pre></div>: 要添加索引的表名。</li>
+                      <li><div class="code-container"><pre><code>column_name</code></pre></div>: 表中的列名，該列將被索引。</li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li><strong>刪除索引</strong>: 使用 <div class="code-container"><pre><code>DROP INDEX</code></pre></div> 語句來刪除索引。
+          <ul>
+              <li><strong>句型</strong>: <div class="code-container"><pre><code>DROP INDEX index_name ON table_name;</code></pre></div></li>
+              <li><strong>填入部分</strong>: <div class="code-container"><pre><code>index_name</code></pre></div>、<div class="code-container"><pre><code>table_name</code></pre></div>
+                  <ul>
+                      <li><div class="code-container"><pre><code>index_name</code></pre></div>: 要刪除的索引名稱。</li>
+                      <li><div class="code-container"><pre><code>table_name</code></pre></div>: 索引所在的表名。</li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li><strong>查看索引</strong>: 使用 <div class="code-container"><pre><code>SHOW INDEX</code></pre></div> 語句來查看表中的索引。
+          <ul>
+              <li><strong>句型</strong>: <div class="code-container"><pre><code>SHOW INDEX FROM table_name;</code></pre></div></li>
+              <li><strong>填入部分</strong>: <div class="code-container"><pre><code>table_name</code></pre></div>
+                  <ul>
+                      <li><div class="code-container"><pre><code>table_name</code></pre></div>: 要查看索引的表名。</li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li><strong>添加唯一索引</strong>: 使用 <div class="code-container"><pre><code>CREATE UNIQUE INDEX</code></pre></div> 語句來創建唯一索引，確保列中的值唯一。
+          <ul>
+              <li><strong>句型</strong>: <div class="code-container"><pre><code>CREATE UNIQUE INDEX index_name ON table_name (column_name);</code></pre></div></li>
+              <li><strong>填入部分</strong>: <div class="code-container"><pre><code>index_name</code></pre></div>、<div class="code-container"><pre><code>table_name</code></pre></div>、<div class="code-container"><pre><code>column_name</code></pre></div>
+                  <ul>
+                      <li><div class="code-container"><pre><code>index_name</code></pre></div>: 索引的名稱。</li>
+                      <li><div class="code-container"><pre><code>table_name</code></pre></div>: 要添加索引的表名。</li>
+                      <li><div class="code-container"><pre><code>column_name</code></pre></div>: 表中的列名，該列將被索引，且值必須唯一。</li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+  </ul>
+</div>
+
+<div id="transactions">
+  <h3>事務</h3>
+  <p>事務（Transaction）用於確保一組操作要麼全部成功，要麼全部失敗，以保持數據的一致性。事務包括開始、提交和轉返操作。</p>
+  <ul>
+    <li><strong>開始事務</strong>: 使用 <div class="code-container"><pre><code>BEGIN TRANSACTION;</code></pre></div> 開始事務。</li>
+    <li><strong>提交事務</strong>: 使用 <div class="code-container"><pre><code>COMMIT;</code></pre></div> 來提交事務。</li>
+    <li><strong>回滾事務</strong>: 使用 <div class="code-container"><pre><code>ROLLBACK;</code></pre></div> 回滾事務。</li>
+  </ul>
+</div>
+
+<div id="triggers">
+  <h3>觸發器</h3>
+  <ul>
+    <li><strong>創建觸發器</strong>: 當表發生特定事件時執行動作
+      <div class="code-container"><pre><code>CREATE TRIGGER trigger_name AFTER INSERT ON table_name BEGIN UPDATE another_table SET column_name = value; END;</code></pre></div>
+    </li>
+    <li><strong>刪除觸發器</strong>: 使用 <div class="code-container"><pre><code>DROP TRIGGER IF EXISTS trigger_name;</code></pre></div> 來移除觸發器。</li>
+</ul>
+</div>
+
+<div id="backup-and-restore">
+  <h3>備份與還原</h3>
+  <ul>
+    <li><strong>備份</strong>: 使用 SQLite 提供的備份 API 或者手動複製 `.sqlite` 文件。</li>
+    <li><strong>還原</strong>: 將備份的 `.sqlite` 文件複製回來即可還原。</li>
+  </ul>
+</div>
+
+<div id="security">
+  <p>SQLite 通過加密來保護數據安全。使用第三方工具，如 SQLite Encryption Extension (SEE) 或 SQLCipher。</p>
+</div>
+
+<div id="performance-tuning">
+  <ul>
+    <li><strong>使用索引</strong>: 創建索引以加快查詢速度。
+      <div class="code-container"><pre><code>CREATE INDEX index_name ON table_name (column_name);</code></pre></div>
+    </li>
+    <li><strong>避免不必要的 DISTINCT 和 ORDER BY</strong> 來提高性能。</li>
+  </ul>
+</div>
+
+<div id="database-migration-upgrade">
+  <ul>
+    <li><strong>手動遷移</strong>: 可以導出數據到 SQL 文件，然後在新的數據庫上導入。
+      <div class="code-container"><pre><code>.dump</code></pre></div>
+    </li>
+    <li><strong>升級</strong>: 更新到新版本的 SQLite 會自動處理數據庫升級。</li>
+  </ul>
 </div>
