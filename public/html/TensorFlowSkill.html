@@ -1,29 +1,23 @@
-<h1>TensorFlow 筆記</h1>
-
 <div id="installation">
   <h3>安裝與導入</h3>
   <div class="code-container">
-    <pre><code>
-# 安裝 TensorFlow
+    <pre><code># 安裝 TensorFlow
 pip install tensorflow
 
 # 導入 TensorFlow
-import tensorflow as tf
-    </code></pre>
-  </div>
+import tensorflow as tf</code></pre>
+</div>
   <p>TensorFlow 是一個開源的深度學習框架，可以用來創建和訓練神經網路模型。安裝 TensorFlow 後，可以通過 <code>import tensorflow as tf</code> 來導入它，並使用其提供的各種功能。</p>
 </div>
 
 <div id="basic-operations">
   <h3>基本操作</h3>
   <div class="code-container">
-    <pre><code>
-# 創建一個常數
+    <pre><code># 創建一個常數
 a = tf.constant(2)
 b = tf.constant(3)
 c = a + b
-print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)
-    </code></pre>
+print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)</code></pre>
   </div>
   <p>TensorFlow 提供了對張量的基本操作。<code>tf.constant</code> 用來創建一個張量。在上面的範例中，創建了兩個常數張量 <code>a</code> 和 <code>b</code>，並對它們進行加法操作。結果是張量 <code>c</code>，它的值是 5。</p>
 </div>
@@ -31,8 +25,7 @@ print(c) # 輸出: tf.Tensor(5, shape=(), dtype=int32)
 <div id="tensors">
   <h3>張量操作</h3>
   <div class="code-container">
-    <pre><code>
-# 創建張量
+    <pre><code># 創建張量
 tensor = tf.constant([[1, 2], [3, 4]])
 
 # 張量形狀
@@ -40,34 +33,169 @@ print(tensor.shape) # 輸出: (2, 2)
 
 # 張量運算
 tensor_transposed = tf.transpose(tensor)
-print(tensor_transposed) # 輸出: tf.Tensor([[1, 3], [2, 4]], shape=(2, 2), dtype=int32)
-    </code></pre>
+print(tensor_transposed) # 輸出: tf.Tensor([[1, 3], [2, 4]], shape=(2, 2), dtype=int32)</code></pre>
   </div>
   <p>張量是 TensorFlow 中的核心數據結構。可以使用 <code>tf.constant</code> 創建張量，並通過 <code>tensor.shape</code> 獲取張量的形狀。<code>tf.transpose</code> 用來對張量進行轉置操作。</p>
 </div>
 
 <div id="model-creation">
   <h3>模型創建</h3>
-  <div class="code-container">
-    <pre><code>
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+  <ul>
+    <li>Sequential Model(序列模型)-single input and output model</li>
+    <div class="code-container">
+      <pre><code>from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten
 
 # 創建模型
 model = Sequential([
-Dense(64, activation='relu', input_shape=(10,)),
-Dense(10, activation='softmax')
-])
-    </code></pre>
-  </div>
-  <p>TensorFlow 的 Keras API 提供了構建神經網路模型的簡單方法。<code>Sequential</code> 模型是線性堆疊的模型，其中每一層的輸入來自於前一層。<code>Dense</code> 層是全連接層，其中 <code>activation</code> 參數指定激活函數。上面的代碼創建了一個具有兩個全連接層的簡單模型。</p>
+  # 輸入層 (Input Layer)
+  Dense(64, activation='relu', input_shape=(10,)),
+  
+  # 隱藏層 (Hidden Layers)
+  Dense(64, activation='relu'),
+  
+  # 輸出層 (Output Layer)
+  Dense(10, activation='softmax')
+])</code></pre>
+    </div>
+    <li>Functional API(函數式模型)-multi(single) input and output model</li>
+    <div class="code-container">
+      <pre><code># 使用 Functional API 創建更複雜的模型
+from tensorflow.keras import Input, Model
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, Concatenate
+
+# 輸入層
+img_input = Input(shape=(28, 28, 1), name='Image_Input')
+info_input = Input(shape=(1,), name='Information_Input')
+
+# 隱藏層
+hidden1 = Conv2D(64, kernel_size=5, strides=2, activation='relu', name='hidden1')(img_input)
+hidden2 = Conv2D(32, kernel_size=5, strides=2, activation='relu', name='hidden2')(hidden1)
+hidden2_flat = Flatten()(hidden2)
+
+hidden3 = Dense(64, activation='relu', name='hidden3')(info_input)
+
+# 合併層
+concat = Concatenate()([hidden2_flat, hidden3])
+
+# 輸出層
+outputs = Dense(1, name='Output')(concat)
+
+# 創建模型
+model = Model(inputs=[img_input, info_input], outputs=outputs)</code></pre>
+    </div>
+  </ul>
+  <p>在 TensorFlow 的 Keras API 中，模型的創建可以分為以下幾個部分：</p>
+  <ul>
+    <li><strong>輸入層 (Input Layer)</strong>：指定模型的輸入形狀。在上面的例子中，<code>Dense</code> 層的 <code>input_shape</code> 參數用於定義輸入層的形狀。</li>
+    <li><strong>隱藏層 (Hidden Layers)</strong>：模型的主要計算層。在這裡，你可以添加多個 <code>Dense</code> 層，並使用不同的激活函數來增加模型的表達能力。</li>
+    <li><strong>輸出層 (Output Layer)</strong>：模型的最後一層，通常用於生成預測結果。在這裡，<code>Dense</code> 層的 <code>activation</code> 參數設置為 <code>'softmax'</code> 以進行多類別分類。</li>
+  </ul>
+  <p>常用的 Keras 指令：</p>
+  <ul>
+    <li>
+      <strong>1. 全連接層（Fully Connected Layers）</strong>
+      <ul>
+        <li><strong><code>Dense</code></strong>: 最常見的全連接層，對每個輸入與每個輸出神經元進行加權和偏置的線性變換，適用於大多數神經網路結構。</li>
+        <div class="code-container"><pre><code>Dense(units, activation=None)</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>2. 卷積層（Convolutional Layers）</strong>
+      <ul>
+        <li><strong><code>Conv1D</code></strong>: 一維卷積層，適合處理一維數據，如序列或時間序列數據。</li>
+        <div class="code-container"><pre><code>Conv1D(filters, kernel_size, activation=None)</code></pre></div>
+        <li><strong><code>Conv2D</code></strong>: 二維卷積層，適合處理圖像類數據。</li>
+        <div class="code-container"><pre><code>Conv2D(filters, kernel_size, activation=None)</code></pre></div>
+        <li><strong><code>Conv3D</code></strong>: 三維卷積層，適合處理三維數據，如 3D 醫學影像或視頻。</li>
+        <div class="code-container"><pre><code>Conv3D(filters, kernel_size, activation=None)</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>3. 池化層（Pooling Layers）</strong>
+      <ul>
+        <li><strong><code>MaxPooling2D</code></strong>: 最大池化層，從特徵圖中提取局部區域的最大值，通常與卷積層一起使用。</li>
+        <div class="code-container"><pre><code>MaxPooling2D(pool_size=(2, 2))</code></pre></div>
+        <li><strong><code>AveragePooling2D</code></strong>: 平均池化層，從特徵圖中取局部區域的平均值。</li>
+        <div class="code-container"><pre><code>AveragePooling2D(pool_size=(2, 2))</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>4. 展平層（Flatten Layer）</strong>
+      <ul>
+        <li><strong><code>Flatten</code></strong>: 將多維的輸入展平為一維，通常在卷積層和全連接層之間使用。</li>
+        <div class="code-container"><pre><code>Flatten()</code></pre></div>
+        
+      </ul>
+    </li>
+
+    <li>
+      <strong>5. 正規化層（Normalization Layers）</strong></li>
+      <ul>
+        <li><strong><code>BatchNormalization</code></strong>: 對每一層的輸入進行標準化（均值為 0，方差為 1），加速訓練。</li>
+        <div class="code-container"><pre><code>BatchNormalization()</code></pre></div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>6. 激活層（Activation Layers）</strong>
+      <ul>
+        <li><strong><code>Activation</code></strong>: 可以指定任何激活函數，如 <code>'relu'</code>、<code>'sigmoid'</code>、<code>'softmax'</code> 等。</li>
+        <div class="code-container"><pre><code>Activation('relu')</code></pre></div>
+        
+        <li><strong><code>ReLU</code></strong>: 使用修正線性單元（ReLU）作為激活函數的層。</li>
+        <div class="code-container"><pre><code>ReLU()</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>7. 遞歸層（Recurrent Layers）</strong>
+      <ul>
+        <li><strong><code>LSTM</code></strong>: 長短期記憶層，能夠記住長期依賴關係的序列。</li>
+        <div class="code-container"><pre><code>LSTM(units)</code></pre></div>
+        <li><strong><code>GRU</code></strong>: 閘控循環單元層，是 LSTM 的簡化版本，效率更高。</li>
+        <div class="code-container"><pre><code>GRU(units)</code></pre></div>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>8. 嵌入層（Embedding Layer）</strong>
+      <ul>
+        <li><strong><code>Embedding</code></strong>: 將離散數據（如詞彙）映射到連續的高維向量空間，適合處理文本數據。</li>
+        <div class="code-container"><pre><code>Embedding(input_dim, output_dim)</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>9. Dropout層</strong>
+      <ul>
+        <li><strong><code>Dropout</code></strong>: 在訓練過程中隨機丟棄一部分神經元，防止過擬合。</li>
+        <div class="code-container"><pre><code>Dropout(rate)</code></pre></div>
+      </ul>
+    </li>
+
+    <li>
+      <strong>10. 全局池化層（Global Pooling Layers）</strong>
+      <ul>
+        <li><strong><code>GlobalAveragePooling2D</code></strong>: 對整個特徵圖的每個通道進行全局平均池化，產生單一的輸出值。</li>
+        <div class="code-container"><pre><code>GlobalAveragePooling2D()</code></pre></div>
+        
+        <li><strong><code>GlobalMaxPooling2D</code></strong>: 對每個特徵圖的通道進行全局最大池化。</li>
+        <div class="code-container"><pre><code>GlobalMaxPooling2D()</code></pre></div>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <div id="training">
   <h3>模型訓練</h3>
   <div class="code-container">
-    <pre><code>
-# 編譯模型
+    <pre><code># 編譯模型
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # 創建虛擬數據
@@ -76,8 +204,7 @@ X_train = np.random.random((1000, 10))
 y_train = np.random.randint(10, size=(1000,))
 
 # 訓練模型
-model.fit(X_train, y_train, epochs=10, batch_size=32)
-    </code></pre>
+model.fit(X_train, y_train, epochs=10, batch_size=32)</code></pre>
   </div>
   <p>在訓練模型之前，需要先編譯模型，指定優化器、損失函數和評估指標。<code>fit</code> 方法用於訓練模型，需要提供訓練數據、標籤、訓練輪數和批次大小。上面的代碼中，生成了一些隨機數據用於訓練。</p>
 </div>
@@ -85,15 +212,13 @@ model.fit(X_train, y_train, epochs=10, batch_size=32)
 <div id="evaluation">
   <h3>模型評估</h3>
   <div class="code-container">
-    <pre><code>
-# 創建測試數據
+    <pre><code># 創建測試數據
 X_test = np.random.random((100, 10))
 y_test = np.random.randint(10, size=(100,))
 
 # 評估模型
 test_loss, test_acc = model.evaluate(X_test, y_test)
-print(f'Test accuracy: {test_acc}')
-    </code></pre>
+print(f'Test accuracy: {test_acc}')</code></pre>
   </div>
   <p>模型訓練完成後，可以使用測試數據來評估模型的性能。<code>evaluate</code> 方法會返回損失值和評估指標的值。在上面的代碼中，我們使用生成的隨機測試數據來評估模型的準確性。</p>
 </div>

@@ -15,21 +15,21 @@
           <td>
             <div class="skill-container">
               <div v-for="skill in categorizedSkills.frontend" :key="skill.name" class="skill-item">
-                <SkillLink :skill="skill" />
+                <SkillLink :skill="skill" :showName="false"/>
               </div>
             </div>
           </td>
           <td>
             <div class="skill-container">
               <div v-for="skill in categorizedSkills.backend" :key="skill.name" class="skill-item">
-                <SkillLink :skill="skill" />
+                <SkillLink :skill="skill" :showName="false"/>
               </div>
             </div>
           </td>
           <td>
             <div class="skill-container">
               <div v-for="skill in categorizedSkills.other" :key="skill.name" class="skill-item">
-                <SkillLink :skill="skill" />
+                <SkillLink :skill="skill" :showName="false"/>
               </div>
             </div>
           </td>

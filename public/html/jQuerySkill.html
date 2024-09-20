@@ -1,24 +1,16 @@
-<h1>jQuery 筆記</h1>
-
 <div id="installation">
   <h3>安裝</h3>
   <ol>
     <li>使用CDN引入:</li>
-    <div class="code-container"><pre><code>
-&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-    </code></pre></div>
+    <div class="code-container"><pre><code>&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;</code></pre></div>
     <li>在本地使用:</li>
-    <div class="code-container"><pre><code>
-&lt;script src="path/to/jquery.js"&gt;&lt;/script&gt;
-    </code></pre></div>
+    <div class="code-container"><pre><code>&lt;script src="path/to/jquery.js"&gt;&lt;/script&gt;</code></pre></div>
   </ol>
 </div>
 
 <div id="basic-syntax">
   <h3>基本語法</h3>
-  <div class="code-container"><pre><code>
-$(選擇器).動作();
-  </code></pre></div>
+  <div class="code-container"><pre><code>$(選擇器).動作();</code></pre></div>
   <ul>
     <li>$:這是jQuery的符號，表示要使用jQuery</li>
     <li>選擇器：就像 CSS 選擇器一樣，用來選擇 HTML 元素</li>
@@ -28,8 +20,7 @@ $(選擇器).動作();
 
 <div id="selectors">
   <h3>選擇器</h3>
-  <div class="code-container"><pre><code>
-$(document).ready(function(){
+  <div class="code-container"><pre><code>$(document).ready(function(){
   // 選擇所有的 &lt;p&gt; 元素
   $("p").css("color", "blue");
 
@@ -38,71 +29,50 @@ $(document).ready(function(){
 
   // 選擇具有特定 class 的元素
   $(".myClass").css("font-size", "20px");
-});
-  </code></pre></div>
+});</code></pre></div>
 </div>
 
 <div id="manipulation">
   <h3>DOM 操作</h3>
-  <p>DOM（Document Object Model，文檔對象模型）是一個用於表示結構化文檔的編程接口</p>
-  <ul>
-    <li>append() 和 prepend()：在元素內部添加內容</li>
-      <div class="code-container"><pre><code>
-// 動態添加一個列表項目
-$("ul").append("&lt;li&gt;新項目&lt;/li&gt;");
-      </code></pre></div>
+  <ul>DOM（Document Object Model，文檔對象模型）是一個用於表示結構化文檔的編程接口
+    <li><code>append()</code> 和 <code>prepend()</code>：在元素內部添加內容</li>
+      <div class="code-container"><pre><code>// 動態添加一個列表項目
+$("ul").append("&lt;li&gt;新項目&lt;/li&gt;");</code></pre></div>
 
-    <li>before() 和 after()：在元素外部添加內容。</li>
-      <div class="code-container"><pre><code>
-// 在元素前面插入一個段落
-$("h2").before("&lt;p&gt;這是插入在標題前的段落&lt;/p&gt;");
-      </code></pre></div>
+    <li><code>before()</code> 和 <code>after()</code>：在元素外部添加內容</li>
+      <div class="code-container"><pre><code>// 在元素前面插入一個段落
+$("h2").before("&lt;p&gt;這是插入在標題前的段落&lt;/p&gt;");</code></pre></div>
     
-    <li>remove()：刪除元素。
-      <div class="code-container"><pre><code>
-// 刪除所有的段落
-$("p").remove();
-      </code></pre></div>
-    </li>
-
-    <li>html() 和 text()：獲取或設置 HTML 和文字內容</li>
-      <div class="code-container"><pre><code>
-// 獲取或設置 HTML 內容
-$("div").html("&lt;p&gt;這是新的 HTML 內容&lt;/p&gt;");
-      </code></pre></div>
+    <li><code>remove()</code>：刪除元素</li>
+    <div class="code-container"><pre><code>// 刪除所有的段落
+$("p").remove();</code></pre></div>
     
-    <li>parent()：獲取當前元素的父元素</li>
-      <div class="code-container"><pre><code>
-// 獲取父元素
-$("li").parent().css("background-color", "lightgray");
-      </code></pre></div>
+    <li><code>html()</code> 和 <code>text()</code>：獲取或設置 HTML 和文字內容</li>
+    <div class="code-container"><pre><code>// 獲取或設置 HTML 內容
+$("div").html("&lt;p&gt;這是新的 HTML 內容&lt;/p&gt;");</code></pre></div>
     
-    <li>children()：獲取當前元素的所有子元素</li>
-      <div class="code-container"><pre><code>
-// 獲取子元素
-$("ul").children().css("color", "blue");          
-      </code></pre></div>
+    <li><code>parent()</code>：獲取當前元素的父元素</li>
+    <div class="code-container"><pre><code>// 獲取父元素
+$("li").parent().css("background-color", "lightgray");</code></pre></div>
     
-    <li>find()：在當前元素內查找特定的子元素</li>
-      <div class="code-container"><pre><code>
-// 查找子元素
-$("div").find("p").css("font-weight", "bold");
-      </code></pre></div>
+    <li><code>children()</code>：獲取當前元素的所有子元素</li>
+    <div class="code-container"><pre><code>// 獲取子元素
+$("ul").children().css("color", "blue");</code></pre></div>
     
-    <li>siblings()：獲取當前元素的兄弟元素</li>
-    <div class="code-container"><pre><code>
-// 獲取兄弟元素
-$("li.active").siblings().hide();
-    </code></pre></div>
+    <li><code>find()</code>：在當前元素內查找特定的子元素</li>
+    <div class="code-container"><pre><code>// 查找子元素
+$("div").find("p").css("font-weight", "bold");</code></pre></div>
     
-    <li>next() 和 prev()：分別獲取當前元素的下一個或上一個兄弟元素</li>
-    <div class="code-container"><pre><code>
-// 獲取下一個兄弟元素
+    <li><code>siblings()</code>：獲取當前元素的兄弟元素</li>
+    <div class="code-container"><pre><code>// 獲取兄弟元素
+$("li.active").siblings().hide();</code></pre></div>
+    
+    <li><code>next()</code> 和 <code>prev()</code>：分別獲取當前元素的下一個或上一個兄弟元素</li>
+    <div class="code-container"><pre><code>// 獲取下一個兄弟元素
 $("h2").next().css("color", "red");
 
 // 獲取上一個兄弟元素
-$("h2").prev().css("color", "green");
-      </code></pre></div>
+$("h2").prev().css("color", "green");</code></pre></div>
     </li>
   </ul>
 </div>
@@ -110,59 +80,49 @@ $("h2").prev().css("color", "green");
 <div id="changing-css-style">
   <h3>改變 CSS 樣式</h3>
   <ul>
-    <li>css()：獲取或設置 CSS 樣式</li>
-    <li>addClass() 和 removeClass()：添加或移除 class</li>
+    <li><code>css()</code> ：獲取或設置 CSS 樣式</li>
+    <li><code>addClass()</code> 和 <code>removeClass()</code>：添加或移除 class</li>
   </ul>
-  <div class="code-container"><pre><code>
-// 改變所有段落的顏色為藍色
-$("p").css("color", "blue");
-  </code></pre></div>
-  </div>
+  <div class="code-container"><pre><code>// 改變所有段落的顏色為藍色
+$("p").css("color", "blue");</code></pre></div>
 </div>
 
 <div id="jquery-elements">  
   <h3>顯示/隱藏元素</h3>
   <ul>
-    <li>hide()：隱藏元素</li>
-    <li>show()：顯示元素</li>
-    <li>toggle()：切換顯示狀態</li>
+    <li><code>hide()</code>：隱藏元素</li>
+    <li><code>show()</code>：顯示元素</li>
+    <li><code>toggle()</code>：切換顯示狀態</li>
   </ul>
-  <div class="code-container"><pre><code>
-// 點擊按鈕時切換段落顯示狀態
+  <div class="code-container"><pre><code>// 點擊按鈕時切換段落顯示狀態
 $("button").click(function() {
     $("p").toggle();
-});
-  </code></pre></div>
+});</code></pre></div>
 </div>
 
 <div id="events">
   <h3>事件處理</h3>
   <ul>
-    <li>
+    <li>常見的事件處理方法：
       <ul>
-        <li>.click() 和 .dblclick() 用於處理用戶的點擊和雙擊行為</li>
-        <li>.mouseenter() 和 .mouseleave() 用於處理滑鼠進入和離開元素的事件</li>
-        <li>.keydown() 和 .keyup() 用於處理鍵盤按鍵的按下和釋放事件</li>
-        <li>.change() 用於處理表單元素值變更的事件</li>
+        <li><code>.click()</code> 和<code>.dblclick()</code> 用於處理用戶的點擊和雙擊行為</li>
+        <li><code>.mouseenter()</code> 和<code>.mouseleave()</code> 用於處理滑鼠進入和離開元素的事件</li>
+        <li><code>.keydown()</code> 和<code>.keyup()</code> 用於處理鍵盤按鍵的按下和釋放事件</li>
+        <li><code>.change()</code> 用於處理表單元素值變更的事件</li>
       </ul>
-      <pre><code>
-// 當按鈕被點擊時，顯示一個警告框
+      <div class="code-container"><pre><code>// 當按鈕被點擊時，顯示一個警告框
 $("button").click(function() {
   alert("按鈕被點擊了！");
-});
-      </code></pre>
+});</code></pre></div>
     </li>
-    <li>on()：用於事件委派
-      <pre><code> 
-// 事件委派：對所有未來加入的 .item 元素處理點擊事件
+    <li><code>on()</code>：用於事件委派
+    <div class="code-container"><pre><code>// 事件委派：對所有未來加入的 .item 元素處理點擊事件
 $("ul").on("click", ".item", function() {
   alert("列表項目被點擊！");
-});
-      </code></pre>
+});</code></pre></div>
     </li>
-    <li>hover()：處理滑鼠進入和離開事件
-      <pre><code>
-// 滑鼠懸停事件：當鼠標懸停在 .box 元素上時，改變顏色
+    <li><code>hover()</code>：處理滑鼠進入和離開事件
+    <div class="code-container"><pre><code>// 滑鼠懸停事件：當鼠標懸停在 .box 元素上時，改變顏色
 $(".box").hover(
   function() {
     $(this).css("background-color", "yellow");
@@ -170,8 +130,7 @@ $(".box").hover(
   function() {
     $(this).css("background-color", "white");
   }
-);
-      </code></pre>
+);</code></pre></div>
     </li>
   </ul>
 </div>
@@ -179,60 +138,47 @@ $(".box").hover(
 <div id="effects">
   <h3>效果</h3>
   <ul>
-    <li>fadeIn() 和 fadeOut()：淡入淡出效果</li>
-    <li>fadeTo()：指定透明度進行淡入淡出效果</li>
-    <li>slideUp() 和 slideDown()：滑動顯示和隱藏</li>
-    <li>animate()：進行自定義動畫</li>
+    <li><code>fadeIn()</code> 和<code>fadeOut()</code> ：淡入淡出效果</li>
+    <div class="code-container"><pre><code>$("button").click(function() {
+  $("p").fadeIn("slow");
+});</code></pre></div>
+    <li><code>fadeTo()</code>：指定透明度進行淡入淡出效果</li>
+    <div class="code-container"><pre><code>$("button").click(function() {
+  $("p").fadeTo("slow", 0.5);
+});</code></pre></div>
+    <li><code>slideUp()</code> 和<code>slideDown()</code> ：滑動顯示和隱藏</li>
+    <div class="code-container"><pre><code>$("button").click(function() {
+  $("p").slideUp();
+});</code></pre></div>
+    <li><code>animate()</code>：進行自定義動畫</li>
+    <div class="code-container"><pre><code>$("button").click(function() {
+  $("div").animate({ width: "300px" }, 1000);
+});</code></pre></div>
   </ul>
-  <div class="code-container"><pre><code>
-// 點擊按鈕後，段落將以淡出效果消失，透明度為 0.5
-$("button").click(function() {
-    $("p").fadeTo("slow", 0.5);
-});
-
-// 點擊按鈕後，段落將以滑動效果隱藏
-$("button").click(function() {
-    $("p").slideUp();
-});
-
-// 自定義動畫：改變元素的寬度
-$("button").click(function() {
-    $("div").animate({ width: "300px" }, 1000);
-});
-  </code></pre></div>
 </div>
 
 <div id="ajax">
   <h3>AJAX</h3>
   <ul>
-    <li>$.ajax():可以發送任何類型的 HTTP 請求（GET、POST、PUT、DELETE 等）</li>
-    <li>$.get():通常用來從伺服器獲取數據</li>
-    <li>$.post():通常用來提交數據到伺服器</li>
-  </ul>
-  <h4>$.ajax()</h4>
-  <div class="code-container"><pre><code>
-$.ajax({
-  url: "server-endpoint",
-  method: "GET", // 也可以是 POST、PUT、DELETE 等
-  data: { key: "value" }, // 發送給伺服器的數據
-  success: function(response) {
-    console.log("成功接收到數據", response);
-  },
-  error: function(error) {
-    console.log("發生錯誤", error);
-  }
-});
-  </code></pre></div>
-  <h4>$.get()</h4>
-  <div class="code-container"><pre><code>
-$.get("server-endpoint", { key: "value" }, function(response) {
-  console.log("GET 請求成功", response);
-});
-  </code></pre></div>
-  <h4>$.post()</h4>
-  <div class="code-container"><pre><code>
-$.post("server-endpoint", { key: "value" }, function(response) {
-  console.log("POST 請求成功", response);
-});
-  </code></pre></div>
+    <li><code>$.ajax()</code>:可以發送任何類型的 HTTP 請求（<code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等）</li>
+    <div class="code-container"><pre><code>$.ajax({
+      url: "server-endpoint",
+      method: "GET", // 也可以是 POST、PUT、DELETE 等
+      data: { key: "value" }, // 發送給伺服器的數據
+      success: function(response) {
+        console.log("成功接收到數據", response);
+      },
+      error: function(error) {
+        console.log("發生錯誤", error);
+      }
+    });</code></pre></div>
+    <li><code>$.get()</code>:通常用來從伺服器獲取數據</li>
+    <div class="code-container"><pre><code>$.get("server-endpoint", { key: "value" }, function(response) {
+      console.log("GET 請求成功", response);
+    });</code></pre></div>
+    <li><code>$.post()</code>:通常用來提交數據到伺服器</li>
+    <div class="code-container"><pre><code>$.post("server-endpoint", { key: "value" }, function(response) {
+      console.log("POST 請求成功", response);
+    });</code></pre></div>
+  </ul>  
 </div>

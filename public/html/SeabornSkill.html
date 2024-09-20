@@ -1,29 +1,20 @@
-<h1>Seaborn 筆記</h1>
-
 <div id="introduction">
   <h3>簡介</h3>
-  <p>
-    Seaborn 是一個基於 Matplotlib 的 Python 資料視覺化庫，它簡化了繪製複雜統計圖表的過程，適合進行數據分析和探索性資料分析 (EDA)。Seaborn 提供了更高階的 API，讓繪製統計圖表變得簡單直觀。這些圖表包括散點圖、箱型圖、熱力圖等，且自動處理數據集中分類變量的分組與著色。
-  </p>
+  <p>Seaborn 是一個基於 Matplotlib 的 Python 資料視覺化庫，它簡化了繪製複雜統計圖表的過程，適合進行數據分析和探索性資料分析 (EDA)。Seaborn 提供了更高階的 API，讓繪製統計圖表變得簡單直觀。這些圖表包括散點圖、箱型圖、熱力圖等，且自動處理數據集中分類變量的分組與著色。</p>
+  
 </div>
 
 <div id="installation">
   <h3>安裝</h3>
-  <p>要使用 Seaborn，您可以通過 pip 命令來安裝它。</p>
-  <div class="code-container"><pre><code>
-# 使用 pip 安裝 Seaborn
-pip install seaborn
-  </code></pre></div>
+  <div class="code-container"><pre><code># 使用 pip 安裝 Seaborn
+pip install seaborn</code></pre></div>
   <p>這將會自動安裝 Seaborn 以及 Matplotlib 等相關依賴。你可以使用 <code>import seaborn as sns</code> 來加載 Seaborn 並開始使用它。</p>
 </div>
 
 <div id="basic-plot">
   <h3>基本繪圖</h3>
-  <p>
-    Seaborn 的基本繪圖功能可以讓我們快速創建統計圖表。以下是使用 Seaborn 繪製散點圖的範例，展示兩個連續變量之間的關係。在這個例子中，我們使用了 <code>tips</code> 數據集，該數據集包含了顧客的消費與小費信息。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>Seaborn 的基本繪圖功能可以讓我們快速創建統計圖表。以下是使用 Seaborn 繪製散點圖的範例，展示兩個連續變量之間的關係。在這個例子中，我們使用了 <code>tips</code> 數據集，該數據集包含了顧客的消費與小費信息。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -34,18 +25,14 @@ sns.scatterplot(x="total_bill", y="tip", data=data)
 plt.xlabel('總帳單')
 plt.ylabel('小費')
 plt.title('總帳單 vs 小費')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>這個範例展示了如何繪製「總帳單」與「小費」之間的關係圖。Seaborn 自動為你處理了許多細節，如標籤、顏色等。</p>
 </div>
 
 <div id="histogram">
   <h3>直方圖</h3>
-  <p>
-    直方圖是一種常用的統計圖表，用於顯示數據的分佈情況。Seaborn 的 <code>histplot</code> 函數使得繪製直方圖變得非常簡單。以下範例使用 Iris 數據集，展示了不同種類花萼長度的分佈。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>直方圖是一種常用的統計圖表，用於顯示數據的分佈情況。Seaborn 的 <code>histplot</code> 函數使得繪製直方圖變得非常簡單。以下範例使用 Iris 數據集，展示了不同種類花萼長度的分佈。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -56,18 +43,14 @@ sns.histplot(data=data, x="sepal_length", hue="species", multiple="stack")
 plt.xlabel('花萼長度')
 plt.ylabel('頻次')
 plt.title('花萼長度的直方圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>這裡使用了 <code>hue</code> 參數來根據「species」列進行著色分組，並使用 <code>multiple="stack"</code> 參數來將不同物種的分佈堆疊起來。</p>
 </div>
 
 <div id="scatter-plot">
   <h3>散點圖</h3>
-  <p>
-    散點圖是用來顯示兩個變量之間的關係。在 Seaborn 中，<code>scatterplot</code> 函數可以非常方便地繪製出散點圖。以下範例展示了花萼長度與花萼寬度之間的關係，並根據物種進行著色。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>散點圖是用來顯示兩個變量之間的關係。在 Seaborn 中，<code>scatterplot</code> 函數可以非常方便地繪製出散點圖。以下範例展示了花萼長度與花萼寬度之間的關係，並根據物種進行著色。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -78,18 +61,14 @@ sns.scatterplot(x="sepal_length", y="sepal_width", hue="species", data=data)
 plt.xlabel('花萼長度')
 plt.ylabel('花萼寬度')
 plt.title('花萼長度 vs 花萼寬度')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>我們使用 <code>hue</code> 參數來根據物種進行顏色區分，讓我們能清楚地看到不同物種之間的差異。</p>
 </div>
 
 <div id="box-plot">
   <h3>箱型圖</h3>
-  <p>
-    箱型圖顯示數據的分佈情況，包括數據的四分位範圍、中位數以及異常值。使用 Seaborn 的 <code>boxplot</code> 函數可以輕鬆繪製箱型圖。以下範例展示了根據星期劃分的消費數據。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>箱型圖顯示數據的分佈情況，包括數據的四分位範圍、中位數以及異常值。使用 Seaborn 的 <code>boxplot</code> 函數可以輕鬆繪製箱型圖。以下範例展示了根據星期劃分的消費數據。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -100,18 +79,14 @@ sns.boxplot(x="day", y="total_bill", data=data)
 plt.xlabel('星期')
 plt.ylabel('總帳單')
 plt.title('各星期的總帳單箱型圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>箱型圖展示了不同星期的總帳單數據分佈。你可以清楚地看到數據的異常值以及數據的範圍。</p>
 </div>
 
 <div id="pair-plot">
   <h3>對角線圖</h3>
-  <p>
-    對角線圖是 Seaborn 提供的一種強大的工具，用於顯示數據集中每對變量之間的關係。<code>pairplot</code> 函數可以自動繪製數據集中所有變量的成對關係圖。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>對角線圖是 Seaborn 提供的一種強大的工具，用於顯示數據集中每對變量之間的關係。<code>pairplot</code> 函數可以自動繪製數據集中所有變量的成對關係圖。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -120,18 +95,14 @@ data = sns.load_dataset("iris")
 # 繪製對角線圖
 sns.pairplot(data, hue="species")
 plt.title('對角線圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>這個圖展示了 Iris 數據集中每個變量之間的關係，並根據不同物種進行著色。它可以快速幫助我們發現變量之間的潛在關聯。</p>
 </div>
 
 <div id="heatmap">
   <h3>熱力圖</h3>
-  <p>
-    熱力圖是一種顏色編碼的矩陣圖，用來展示兩個變量之間的關係。Seaborn 的 <code>heatmap</code> 函數可以幫助我們繪製熱力圖，並提供多種配色選項。以下範例展示了一個隨機數據集的熱力圖。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>熱力圖是一種顏色編碼的矩陣圖，用來展示兩個變量之間的關係。Seaborn 的 <code>heatmap</code> 函數可以幫助我們繪製熱力圖，並提供多種配色選項。以下範例展示了一個隨機數據集的熱力圖。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -141,18 +112,14 @@ data = np.random.rand(10, 12)
 # 繪製熱力圖
 sns.heatmap(data, cmap="YlGnBu", annot=True)
 plt.title('熱力圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>這個熱力圖使用了 <code>YlGnBu</code> 配色方案，並在每個格子中顯示數值。<code>annot=True</code> 參數用來在每個單元格中標註數值。</p>
 </div>
 
 <div id="customization">
   <h3>自定義</h3>
-  <p>
-    Seaborn 提供了豐富的自定義選項來修改圖形的外觀。你可以修改顏色、標記樣式、圖形大小等。以下範例展示了如何自定義散點圖。
-  </p>
-  <div class="code-container"><pre><code>
-import seaborn as sns
+  <p>Seaborn 提供了豐富的自定義選項來修改圖形的外觀。你可以修改顏色、標記樣式、圖形大小等。以下範例展示了如何自定義散點圖。</p>
+  <div class="code-container"><pre><code>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 加載示例數據集
@@ -163,7 +130,6 @@ sns.scatterplot(x="total_bill", y="tip", data=data, color="red", marker="x")
 plt.xlabel('總帳單')
 plt.ylabel('小費')
 plt.title('自定義散點圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>散點圖的顏色設置為紅色，標記設置為「x」符號，並且可以隨意修改圖表標題、軸標籤和圖形樣式。</p>
 </div>

@@ -1,14 +1,12 @@
-<h1>MySQL 筆記</h1>
-
 <div id="basic-concept">
   <h3>基本概念</h3>
   <ul>
-    <li>資料庫(Database):用來存放資料的容器，每個資料庫都包含多個表</li>
-    <li>表(Table):資料以表的形式來儲存，由行和列組成</li>
-    <li>行(Row):表中的每條紀錄</li>
-    <li>列(Column):表中的每個屬性，描述資料的每個特徵</li>
-    <li>主鍵(Primary Key):「唯一」識別表中每一條紀錄的欄位</li>
-    <li>外鍵(Foreign Key):用來建立和維護表之間的「關聯」的欄位。外鍵的值對應於另一個表的主鍵，用來確保數據的一致性和完整性。外鍵約束可以用來防止在主表中刪除或修改有關聯的記錄，從而維持數據的完整性。</li>
+    <li><strong>資料庫(Database)</strong>:用來存放資料的容器，每個資料庫都包含多個表</li>
+    <li><strong>表(Table)</strong>:資料以表的形式來儲存，由行和列組成</li>
+    <li><strong>行(Row)</strong>:表中的每條紀錄</li>
+    <li><strong>列(Column)</strong>:表中的每個屬性，描述資料的每個特徵</li>
+    <li><strong>主鍵(Primary Key)</strong>:「唯一」識別表中每一條紀錄的欄位</li>
+    <li><strong>外鍵(Foreign Key)</strong>:用來建立和維護表之間的「關聯」的欄位。外鍵的值對應於另一個表的主鍵，用來確保數據的一致性和完整性。外鍵約束可以用來防止在主表中刪除或修改有關聯的記錄，從而維持數據的完整性。</li>
   </ul>
 </div>
 
@@ -16,10 +14,10 @@
   <h3>資料類型概述</h3>
   <ul>
     MySQL常見的資料類型包括:
-    <li>整數類型: INT、TINYINT、BIGINT</li>
-    <li>字串類型: VARCHAR、CHAR、TEXT</li>
-    <li>日期時間類型: DATE、DATETIME、TIMESTAMP</li>
-    <li>浮點數類型: FLOAT、DOUBLE</li>
+    <li>整數類型: <code>INT</code>、<code>TINYINT</code>、<code>BIGINT</code></li>
+    <li>字串類型: <code>VARCHAR</code>、<code>CHAR</code>、<code>TEXT</code></li>
+    <li>日期時間類型: <code>DATE</code>、<code>DATETIME</code>、<code>TIMESTAMP</code></li>
+    <li>浮點數類型: <code>FLOAT</code>、<code>DOUBLE</code></li>
   </ul>
 </div>
 
@@ -27,9 +25,7 @@
   <h3>連結</h3>
   <p>在MySQL官方網站下載安裝完成後，可以透過命令行或MySQL連接到MySQL伺服器</p>
   <p>若是透過命令行連結，請打開終端機，並執行以下命令</p>
-  <div class="code-container"><pre><code>
-mysql -u root -p
-  </code></pre></div>
+  <div class="code-container"><pre><code>mysql -u root -p</code></pre></div>
   <ul>
     <li>-u root: 用戶名為 root</li>
     <li>-p: 要求輸入密碼</li>
@@ -38,31 +34,25 @@ mysql -u root -p
 
 <div id="create-database">
   <h3>創建資料庫</h3>
-  <p>使用CREATE DATABASE創建一個名為my_database的資料庫</p>
-  <div class="code-container"><pre><code>
-CREATE DATABASE my_database;
-  </code></pre></div>
+  <p>使用<code>CREATE DATABASE</code>創建一個名為my_database的資料庫</p>
+  <div class="code-container"><pre><code>CREATE DATABASE my_database;</code></pre></div>
 </div>
 
 <div id="use-database">
   <h3>使用資料庫</h3>
-  <p>使用USE來使用已創建的資料庫</p>
-  <div class="code-container"><pre><code>
-USE my_database;
-  </code></pre></div>
+  <p>使用<code>USE</code>來使用已創建的資料庫</p>
+  <div class="code-container"><pre><code>USE my_database;</code></pre></div>
 </div>
 
 <div id="create-table">
   <h3>新增表格</h3>
-  <p>使用CREATE TABLE來新增表格</p>
-  <div class="code-container"><pre><code>
-CREATE TABLE table_name (
+  <p>使用<code>CREATE TABLE</code>來新增表格</p>
+  <div class="code-container"><pre><code>CREATE TABLE table_name (
   -- 創建id、column1、column2三個欄位
   id INT AUTO_INCREMENT PRIMARY KEY, 
   column1 VARCHAR(255) NOT NULL,
   column2 INT
-);
-  </code></pre></div>
+);</code></pre></div>
   <ul>
     <li>INT: 整數類型</li>
     <li>AUTO_INCREMENT: 自動增加欄位值</li>
@@ -73,203 +63,147 @@ CREATE TABLE table_name (
 
 <div id="select">
   <h3>SELECT 語句</h3>
-  <p>使用SELECT來查詢表中的資料</p>
-  <div class="code-container"><pre><code>
-SELECT * FROM table_name;
-  </code></pre></div>
+  <p>使用<code>SELECT</code>來查詢表中的資料</p>
+  <div class="code-container"><pre><code>SELECT * FROM table_name;</code></pre></div>
 </div>
 
 <div id="insert">
   <h3>INSERT INTO</h3>
-  <p>使用INSERT INTO來插入數據</p>
-  <div class="code-container"><pre><code>
-INSERT INTO table_name (column1, column2) VALUES (value1, value2);
-  </code></pre></div>
+  <p>使用<code>INSERT INTO</code>來插入數據</p>
+  <div class="code-container"><pre><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></pre></div>
 </div>
 
 <div id="update">
   <h3>UPDATE 語句</h3>
-  <p>使用UPDATE來更新表中的資料</p>
-  <div class="code-container"><pre><code>
-UPDATE table_name
+  <p>使用<code>UPDATE</code>來更新表中的資料</p>
+  <div class="code-container"><pre><code>UPDATE table_name
 SET column1 = value1, column2 = value2
-WHERE condition;
-  </code></pre></div>
+WHERE condition;</code></pre></div>
 </div>
 
 <div id="delete">
   <h3>DELETE 語句</h3>
-  <p>使用DELETE來刪除資料</p>
-  <div class="code-container"><pre><code>
-DELETE FROM table_name
-WHERE condition;
-  </code></pre></div>
+  <p>使用<code>DELETE</code>來刪除資料</p>
+  <div class="code-container"><pre><code>DELETE FROM table_name
+WHERE condition;</code></pre></div>
 </div>
 
 <div id="joins">
   <h3>JOIN 語句</h3>
-  <p>JOIN 用於聯接兩個或多個表：</p>
-  <div class="code-container"><pre><code>
-SELECT columns
+  <p>使用<code>JOIN</code> 用於聯接兩個或多個表：</p>
+  <div class="code-container"><pre><code>SELECT columns
 FROM table1
-JOIN table2 ON table1.common_field = table2.common_field;
-  </code></pre></div>
+JOIN table2 ON table1.common_field = table2.common_field;</code></pre></div>
 </div>
 
 <div id="alter-table">
   <h3>改變表格</h3>
-  <p>使用ALTER TABLE來修改表格結構</p>
-  <div class="code-container"><pre><code>
-ALTER TABLE table_name
-ADD column_name datatype;
-  </code></pre></div>
+  <p>使用<code>ALTER TABLE</code>來修改表格結構</p>
+  <div class="code-container"><pre><code>ALTER TABLE table_name
+ADD column_name datatype;</code></pre></div>
 </div>
 
 <div id="drop-table">
   <h3>移除表格</h3>
-  <p>使用DROP TABLE來刪除表格</p>
-  <div class="code-container"><pre><code>
-DROP TABLE table_name;
-  </code></pre></div>
+  <p>使用<code>DROP TABLE</code>來刪除表格</p>
+  <div class="code-container"><pre><code>DROP TABLE table_name;</code></pre></div>
 </div>
 
 <div id="filter">
   <h3>查詢條件與過濾</h3>
   <ul>
-    <li>WHERE條件查詢
-      <p>WHERE 子句用於根據條件過濾查詢結果：</p>
-      <pre><code>
-SELECT * FROM users 
-WHERE name = 'John Doe';       
-      </code></pre>
-    </li>
-    <li>多條件查詢
-      <p>可以使用 AND 和 OR 結合多個條件：</p>
-      <pre><code>
-SELECT * FROM users 
+    <li><strong>條件查詢</strong>:<code>WHERE</code> 子句用於根據條件過濾查詢結果</li>
+    <div class="code-container"><pre><code>SELECT * FROM users 
+WHERE name = 'John Doe';</code></pre></div>
+    <li><strong>多條件查詢</strong>:可以使用 <code>AND</code> 和 <code>OR</code> 結合多個條件</li>
+    <div class="code-container"><pre><code>SELECT * FROM users 
 WHERE name = 'John Doe' 
-AND email LIKE '%example.com';
-      </code></pre>
-    </li>
-    <li>範圍查詢
-      <p>BETWEEN 用於範圍查詢，IN 用於多個值的查詢：</p>
-      <pre><code>
-SELECT * FROM users 
+AND email LIKE '%example.com';</code></pre></div>
+    
+    <li><strong>範圍查詢</strong>:<code>BETWEEN</code> 用於範圍查詢，<code>IN</code> 用於多個值的查詢：</li>
+    <div class="code-container"><pre><code>SELECT * FROM users 
 WHERE id BETWEEN 1 AND 10;
 
 SELECT * FROM users 
-WHERE id IN (1, 2, 3);
-      </code></pre>
-    </li>
-    <li>模糊查詢
-      <p>LIKE 用於進行模糊查詢，% 代表任意數量的字符，_ 代表單個字符：</p>
-      <pre><code>
-SELECT * FROM users 
-WHERE email LIKE '%example.com';
-      </code></pre>
-    </li>
+WHERE id IN (1, 2, 3);</code></pre></div>
+    
+    <li><strong>模糊查詢</strong>:<code>LIKE</code> 用於進行模糊查詢，<code>%</code> 代表任意數量的字符，_ 代表單個字符</li>
+    <div class="code-container"><pre><code>SELECT * FROM users 
+WHERE email LIKE '%example.com';</code></pre></div>
   </ul>
 </div>
 
 <div id="aggregate-functions">
   <h3>聚合函數</h3>
-  <p>聚合函數用於計算集合數據的統計信息：</p>
   <ul>
-    <li>COUNT: 計算行數
-      <pre><code>
-SELECT COUNT(*) FROM users;
-      </code></pre>
-    </li>
-    <li>SUM: 計算總和
-      <pre><code>
-SELECT SUM(amount) FROM orders;
-      </code></pre>
-    </li>
-    <li>AVG: 計算平均值
-      <pre><code>
-SELECT AVG(amount) FROM orders;
-      </code></pre>
-    </li>
-    <li>MAX: 查找最大值
-      <pre><code>
-SELECT MAX(amount) FROM orders;
-      </code></pre>
-    </li>
-    <li>MIN: 查找最小值
-      <pre><code>
-SELECT MIN(amount) FROM orders;
-      </code></pre>
-    </li>
+    聚合函數用於計算集合數據的統計信息：
+    <li><strong>COUNT</strong>: 計算行數</li>
+    <div class="code-container"><pre><code>SELECT COUNT(*) FROM users;</code></pre></div>
+    <li><strong>SUM</strong>: 計算總和</li>
+    <div class="code-container"><pre><code>SELECT SUM(amount) FROM orders;</code></pre></div>
+    <li><strong>AVG</strong>: 計算平均值</li>
+    <div class="code-container"><pre><code>SELECT AVG(amount) FROM orders;</code></pre></div>
+    <li><strong>MAX</strong>: 查找最大值</li>
+    <div class="code-container"><pre><code>SELECT MAX(amount) FROM orders;</code></pre></div>
+    <li><strong>MIN</strong>: 查找最小值</li>
+    <div class="code-container"><pre><code>SELECT MIN(amount) FROM orders;</code></pre></div>
   </ul>
 </div>
 
 <div id="group-by">
   <h3>GROUP BY</h3>
   <p>GROUP BY 用於分組查詢，配合聚合函數使用：</p>
-  <div class="code-container"><pre><code>
-SELECT column1, COUNT(*)
+  <div class="code-container"><pre><code>SELECT column1, COUNT(*)
 FROM table_name
-GROUP BY column1;
-  </code></pre></div>
+GROUP BY column1;</code></pre></div>
 </div>
 
 <div id="having">
   <h3>HAVING 子句</h3>
   <p>HAVING 用於過濾分組後的結果，通常與 GROUP BY 一起使用：</p>
-  <div class="code-container"><pre><code>
-SELECT column1, COUNT(*)
+  <div class="code-container"><pre><code>SELECT column1, COUNT(*)
 FROM table_name
 GROUP BY column1
-HAVING COUNT(*) > 5;
-  </code></pre></div>
+HAVING COUNT(*) > 5;</code></pre></div>
 </div>
 
 <div id="order-by">
   <h3>ORDER BY</h3>
   <p>ORDER BY 用於對查詢結果進行排序：</p>
-  <div class="code-container"><pre><code>
-SELECT * FROM table_name
-ORDER BY column1 ASC, column2 DESC;
-  </code></pre></div>
+  <div class="code-container"><pre><code>SELECT * FROM table_name
+ORDER BY column1 ASC, column2 DESC;</code></pre></div>
 </div>
 
 <div id="limit">
   <h3>LIMIT</h3>
   <p>LIMIT 用於限制查詢結果的行數：</p>
-  <div class="code-container"><pre><code>
-SELECT * FROM table_name
-LIMIT 10;
-  </code></pre></div>
+  <div class="code-container"><pre><code>SELECT * FROM table_name
+LIMIT 10;</code></pre></div>
 </div>
 
 <div id="subqueries">
   <h3>子查詢</h3>
   <p>子查詢是嵌套在其他查詢中的查詢：</p>
-  <div class="code-container"><pre><code>
-SELECT * FROM users
-WHERE id IN (SELECT user_id FROM orders WHERE amount > 100);
-  </code></pre></div>
+  <div class="code-container"><pre><code>SELECT * FROM users
+WHERE id IN (SELECT user_id FROM orders WHERE amount > 100);</code></pre></div>
 </div>
 
 <div id="views">
   <h3>視圖</h3>
   <p>視圖是一個虛擬表，用於簡化複雜查詢：</p>
-  <div class="code-container"><pre><code>
-CREATE VIEW view_name AS
+  <div class="code-container"><pre><code>CREATE VIEW view_name AS
 SELECT column1, column2
 FROM table_name
-WHERE condition;
-  </code></pre></div>
+WHERE condition;</code></pre></div>
 </div>
 
 <div id="index">
   <h3>索引</h3>
-  <p>索引是提高查詢效率的重要工具。它能夠加速資料庫的檢索操作。以下是常見的索引操作及其句型和填入部分：</p>
-
   <ul>
+    索引是提高查詢效率的重要工具。它能夠加速資料庫的檢索操作。以下是常見的索引操作及其句型和填入部分：
     <li><strong>創建索引：</strong> 使用 <code>CREATE INDEX</code> 語句來創建索引，並指定表和索引列。
       <ul>
-        <li><strong>句型：</strong> <code>CREATE INDEX index_name ON table_name (column_name);</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CREATE INDEX index_name ON table_name (column_name);</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
           <ul>
             <li><code>index_name</code>: 索引的名稱。</li>
@@ -282,7 +216,7 @@ WHERE condition;
     
     <li><strong>刪除索引：</strong> 使用 <code>DROP INDEX</code> 語句來刪除索引。
       <ul>
-        <li><strong>句型：</strong> <code>DROP INDEX index_name ON table_name;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>DROP INDEX index_name ON table_name;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>
           <ul>
             <li><code>index_name</code>: 要刪除的索引名稱。</li>
@@ -294,7 +228,7 @@ WHERE condition;
     
     <li><strong>查看索引：</strong> 使用 <code>SHOW INDEX</code> 語句來查看表中的索引。
       <ul>
-        <li><strong>句型：</strong> <code>SHOW INDEX FROM table_name;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>SHOW INDEX FROM table_name;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>table_name</code>
           <ul>
             <li><code>table_name</code>: 要查看索引的表名。</li>
@@ -305,7 +239,7 @@ WHERE condition;
     
     <li><strong>添加唯一索引：</strong> 使用 <code>CREATE UNIQUE INDEX</code> 語句來創建唯一索引，確保列中的值唯一。
       <ul>
-        <li><strong>句型：</strong> <code>CREATE UNIQUE INDEX index_name ON table_name (column_name);</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CREATE UNIQUE INDEX index_name ON table_name (column_name);</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
           <ul>
             <li><code>index_name</code>: 索引的名稱。</li>
@@ -321,9 +255,8 @@ WHERE condition;
 
 <div id="transactions">
   <h3>事務</h3>
-  <p>事務（Transaction）用於確保一組操作要麼全部成功，要麼全部失敗，以保持數據的一致性。事務包括開始、提交和轉返操作。</p>
-
   <ul>
+    事務（Transaction）用於確保一組操作要麼全部成功，要麼全部失敗，以保持數據的一致性。事務包括開始、提交和轉返操作。
     <li><strong>開始事務：</strong> 使用 <code>START TRANSACTION</code> 或 <code>BEGIN</code> 語句來開始一個事務。
       <ul>
         <li><strong>句型：</strong> <code>START TRANSACTION;</code> 或 <code>BEGIN;</code></li>
@@ -353,18 +286,15 @@ WHERE condition;
 
 <div id="stored-procedures">
   <h3>儲存過程</h3>
-  <p>儲存過程（Stored Procedure）是預編譯的 SQL 語句集合，可以被多次調用以執行特定操作。</p>
-
   <ul>
+    儲存過程（Stored Procedure）是預編譯的 SQL 語句集合，可以被多次調用以執行特定操作。
     <li><strong>創建儲存過程：</strong> 使用 <code>CREATE PROCEDURE</code> 語句來創建儲存過程。
       <ul>
         <li><strong>句型：</strong> 
-          <code>
-            CREATE PROCEDURE procedure_name (parameters)
+          <div class="code-container"><pre><code>CREATE PROCEDURE procedure_name (parameters)
             BEGIN
               -- SQL statements
-            END;
-          </code>
+            END;</code></pre></div>
         </li>
         <li><strong>填入部分：</strong> <code>procedure_name</code>、<code>parameters</code>、<code>SQL statements</code>
           <ul>
@@ -378,7 +308,7 @@ WHERE condition;
     
     <li><strong>調用儲存過程：</strong> 使用 <code>CALL</code> 語句來調用已創建的儲存過程。
       <ul>
-        <li><strong>句型：</strong> <code>CALL procedure_name(arguments);</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CALL procedure_name(arguments);</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>procedure_name</code>、<code>arguments</code>
           <ul>
             <li><code>procedure_name</code>: 儲存過程的名稱。</li>
@@ -399,21 +329,18 @@ WHERE condition;
 
 <div id="triggers">
   <h3>觸發器</h3>
-  <p>觸發器（Trigger）是與表操作（如插入、更新、刪除）相關聯的自動執行的 SQL 語句集合。</p>
-
   <ul>
+    觸發器（Trigger）是與表操作（如插入、更新、刪除）相關聯的自動執行的 SQL 語句集合。
     <li><strong>創建觸發器：</strong> 使用 <code>CREATE TRIGGER</code> 語句來創建觸發器。
       <ul>
         <li><strong>句型：</strong> 
-          <code>
-            CREATE TRIGGER trigger_name
-            { BEFORE | AFTER } { INSERT | UPDATE | DELETE }
-            ON table_name
-            FOR EACH ROW
-            BEGIN
-              -- SQL statements
-            END;
-          </code>
+          <div class="code-container"><pre><code>CREATE TRIGGER trigger_name
+{ BEFORE | AFTER } { INSERT | UPDATE | DELETE }
+ON table_name
+FOR EACH ROW
+BEGIN
+  -- SQL statements
+END;</code></pre></div>
         </li>
         <li><strong>填入部分：</strong> <code>trigger_name</code>、<code>{ BEFORE | AFTER }</code>、<code>{ INSERT | UPDATE | DELETE }</code>、<code>table_name</code>、<code>SQL statements</code>
           <ul>
@@ -429,14 +356,17 @@ WHERE condition;
     
     <li><strong>修改觸發器：</strong> 使用 <code>ALTER TRIGGER</code> 語句來修改已創建的觸發器（僅限於某些資料庫系統）。
       <ul>
-        <li><strong>句型：</strong> <code>ALTER TRIGGER trigger_name { BEFORE | AFTER } { INSERT | UPDATE | DELETE } ON table_name;</code></li>
+        <li><strong>句型：</strong> 
+        <div class="code-container"><pre><code>ALTER TRIGGER trigger_name 
+{ BEFORE | AFTER } { INSERT | UPDATE | DELETE } ON table_name;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>trigger_name</code>、<code>{ BEFORE | AFTER }</code>、<code>{ INSERT | UPDATE | DELETE }</code>、<code>table_name</code></li>
       </ul>
     </li>
     
     <li><strong>刪除觸發器：</strong> 使用 <code>DROP TRIGGER</code> 語句來刪除觸發器。
       <ul>
-        <li><strong>句型：</strong> <code>DROP TRIGGER trigger_name;</code></li>
+        <li><strong>句型：</strong>
+        <div class="code-container"><pre><code>DROP TRIGGER trigger_name;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>trigger_name</code>
           <ul>
             <li><code>trigger_name</code>: 觸發器的名稱。</li>
@@ -458,8 +388,7 @@ WHERE condition;
 <div id="cursors">
   <h3>游標</h3>
   <p>游標用於逐行處理查詢結果，比如在儲存過程中對查詢結果逐一進行操作：</p>
-  <div class="code-container"><pre><code>
-DELIMITER $$
+  <div class="code-container"><pre><code>DELIMITER $$
 
 CREATE PROCEDURE process_employees()
 BEGIN
@@ -493,9 +422,7 @@ BEGIN
   CLOSE emp_cursor;
 END$$
 
-DELIMITER ;
-    </code></pre></div>
-
+DELIMITER ;</code></pre></div>
   <ol>
     <h4>游標使用步驟：</h4>
     <li><strong>宣告游標：</strong> 使用 <code>DECLARE CURSOR FOR</code> 語句來定義游標，並指定查詢。
@@ -539,12 +466,11 @@ DELIMITER ;
 
 <div id="user-management">
   <h3>使用者管理</h3>
-  <p>MySQL 中的使用者管理包含創建用戶、授權、修改密碼與刪除用戶等操作。以下是這些操作的句型和填入部分：</p>
-
   <ul>
+    MySQL 中的使用者管理包含創建用戶、授權、修改密碼與刪除用戶等操作。以下是這些操作的句型和填入部分：
     <li><strong>創建新用戶：</strong> 使用 <code>CREATE USER</code> 語句來創建新用戶，並指定主機和密碼。
       <ul>
-        <li><strong>句型：</strong> <code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>'username'</code>、<code>'host'</code>、<code>'password'</code>
           <ul>
             <li><code>'username'</code>: 用戶名。</li>
@@ -557,7 +483,7 @@ DELIMITER ;
     
     <li><strong>授權給用戶：</strong> 使用 <code>GRANT ALL PRIVILEGES</code> 語句來授權用戶使用資料庫。
       <ul>
-        <li><strong>句型：</strong> <code>GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'host';</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'host';</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>database_name.*</code>、<code>'username'@'host'</code>
           <ul>
             <li><code>database_name.*</code>: 資料庫名。</li>
@@ -569,7 +495,7 @@ DELIMITER ;
     
     <li><strong>修改用戶密碼：</strong> 使用 <code>ALTER USER</code> 語句來更新用戶的密碼。
       <ul>
-        <li><strong>句型：</strong> <code>ALTER USER 'username'@'host' IDENTIFIED BY 'new_password';</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>ALTER USER 'username'@'host' IDENTIFIED BY 'new_password';</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>'username'</code>、<code>'host'</code>、<code>'new_password'</code>
           <ul>
             <li><code>'username'</code>: 用戶名。</li>
@@ -582,7 +508,7 @@ DELIMITER ;
     
     <li><strong>刪除用戶：</strong> 使用 <code>DROP USER</code> 語句來刪除用戶。
       <ul>
-        <li><strong>句型：</strong> <code>DROP USER 'username'@'host';</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>DROP USER 'username'@'host';</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>'username'@'host'</code>
           <ul>
             <li><code>'username'</code>: 用戶名。</li>
@@ -596,9 +522,8 @@ DELIMITER ;
 
 <div id="backup-and-restore">
   <h3>備份與恢復</h3>
-  <p>MySQL 的備份與恢復操作可以幫助保護數據並在需要時恢復。以下是這些操作的句型和填入部分：</p>
-
   <ul>
+    MySQL 的備份與恢復操作可以幫助保護數據並在需要時恢復。以下是這些操作的句型和填入部分：
     <li><strong>創建數據庫備份：</strong> 使用 <code>mysqldump</code> 命令來創建數據庫的備份。
       <ul>
         <li><strong>句型：</strong> <code>mysqldump -u username -p database_name > backup_file.sql</code></li>
@@ -654,9 +579,8 @@ DELIMITER ;
 
 <div id="security">
   <h3>安全性</h3>
-  <p>在 MySQL 中，維護資料庫的安全性至關重要，包括設置密碼策略、管理用戶權限和使用 SSL 進行加密等操作。以下是這些操作的句型和填入部分：</p>
-
   <ul>
+    在 MySQL 中，維護資料庫的安全性至關重要，包括設置密碼策略、管理用戶權限和使用 SSL 進行加密等操作。以下是這些操作的句型和填入部分：
     <li><strong>設置密碼策略：</strong> 使用 <code>SET PASSWORD</code> 語句來強制實施密碼策略，例如密碼長度和複雜性。
       <ul>
         <li><strong>句型：</strong> <code>SET GLOBAL validate_password.policy = policy_level;</code></li>
@@ -707,12 +631,11 @@ DELIMITER ;
 
 <div id="performance-tuning">
   <h3>性能調優</h3>
-  <p>性能調優在 MySQL 中涉及到多方面的設定和優化措施，以提高資料庫的響應速度和處理效率。以下是一些常見的性能調優操作和建議：</p>
-
   <ul>
+    性能調優在 MySQL 中涉及到多方面的設定和優化措施，以提高資料庫的響應速度和處理效率。以下是一些常見的性能調優操作和建議：
     <li><strong>查詢優化：</strong> 使用索引和合理的查詢語句來提高查詢效率。
       <ul>
-        <li><strong>句型：</strong> <code>CREATE INDEX index_name ON table_name(column_name);</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CREATE INDEX index_name ON table_name(column_name);</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>index_name</code>、<code>table_name</code>、<code>column_name</code>
           <ul>
             <li><code>index_name</code>: 索引的名稱。</li>
@@ -725,7 +648,7 @@ DELIMITER ;
     
     <li><strong>配置緩存：</strong> 調整緩存設定以減少磁碟 I/O 操作，提高性能。
       <ul>
-        <li><strong>句型：</strong> <code>SET GLOBAL key_buffer_size = size;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>SET GLOBAL key_buffer_size = size;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>key_buffer_size</code>、<code>size</code>
           <ul>
             <li><code>key_buffer_size</code>: 緩存區域的名稱。</li>
@@ -737,7 +660,7 @@ DELIMITER ;
     
     <li><strong>數據表設計：</strong> 使用合適的數據表設計以提高查詢效率。
       <ul>
-        <li><strong>句型：</strong> <code>ALTER TABLE table_name ADD INDEX index_name(column_name);</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>ALTER TABLE table_name ADD INDEX index_name(column_name);</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>table_name</code>、<code>index_name</code>、<code>column_name</code>
           <ul>
             <li><code>table_name</code>: 要添加索引的表名。</li>
@@ -750,7 +673,7 @@ DELIMITER ;
     
     <li><strong>查詢緩存：</strong> 啟用和配置查詢緩存以提高重複查詢的性能。
       <ul>
-        <li><strong>句型：</strong> <code>SET GLOBAL query_cache_size = size;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>SET GLOBAL query_cache_size = size;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>query_cache_size</code>、<code>size</code>
           <ul>
             <li><code>query_cache_size</code>: 查詢緩存的大小。</li>
@@ -777,12 +700,15 @@ DELIMITER ;
 
 <div id="replication">
   <h3>複製</h3>
-  <p>複製是一種將數據從一個 MySQL 伺服器複製到另一個伺服器的技術。這對於備份和擴展非常有用。</p>
-
   <ul>
+    複製是一種將數據從一個 MySQL 伺服器複製到另一個伺服器的技術。這對於備份和擴展非常有用。
     <li><strong>設置主伺服器：</strong> 在主伺服器上配置複製設置。
       <ul>
-        <li><strong>句型：</strong> <code>CHANGE MASTER TO MASTER_HOST='host', MASTER_USER='user', MASTER_PASSWORD='password', MASTER_LOG_FILE='logfile', MASTER_LOG_POS=position;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CHANGE MASTER TO MASTER_HOST='host',
+          MASTER_USER='user',
+          MASTER_PASSWORD='password',
+          MASTER_LOG_FILE='logfile',
+          MASTER_LOG_POS=position;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>'host'</code>、<code>'user'</code>、<code>'password'</code>、<code>'logfile'</code>、<code>position</code>
           <ul>
             <li><code>'host'</code>: 主伺服器的主機名或 IP 地址。</li>
@@ -814,12 +740,13 @@ DELIMITER ;
 
 <div id="partitioning">
   <h3>分區</h3>
-  <p>分區是一種將大型表劃分為更小的、管理更方便的部分的技術。這有助於提高查詢效率和管理數據。</p>
-
   <ul>
+    分區是一種將大型表劃分為更小的、管理更方便的部分的技術。這有助於提高查詢效率和管理數據。
     <li><strong>創建分區表：</strong> 使用 <code>PARTITION BY</code> 語句來創建分區。
       <ul>
-        <li><strong>句型：</strong> <code>CREATE TABLE table_name (id INT, name VARCHAR(255)) PARTITION BY RANGE (id) (PARTITION p0 VALUES LESS THAN (1000), PARTITION p1 VALUES LESS THAN (2000));</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>CREATE TABLE table_name (id INT, name VARCHAR(255)) 
+PARTITION BY RANGE (id) (PARTITION p0 VALUES LESS THAN (1000),
+PARTITION p1 VALUES LESS THAN (2000));</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>table_name</code>、<code>id</code>、<code>name</code>、<code>p0</code>、<code>p1</code>
           <ul>
             <li><code>table_name</code>: 表名。</li>
@@ -832,7 +759,7 @@ DELIMITER ;
     
     <li><strong>查看分區信息：</strong> 查看表的分區設置。
       <ul>
-        <li><strong>句型：</strong> <code>SHOW CREATE TABLE table_name;</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>SHOW CREATE TABLE table_name;</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>table_name</code>
           <ul>
             <li><code>table_name</code>: 表名。</li>
@@ -843,7 +770,9 @@ DELIMITER ;
     
     <li><strong>修改分區：</strong> 修改表的分區設置。
       <ul>
-        <li><strong>句型：</strong> <code>ALTER TABLE table_name REORGANIZE PARTITION p0 INTO (PARTITION p1 VALUES LESS THAN (1000), PARTITION p2 VALUES LESS THAN (2000));</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>ALTER TABLE table_name 
+REORGANIZE PARTITION p0 INTO (PARTITION p1 VALUES LESS THAN (1000), 
+PARTITION p2 VALUES LESS THAN (2000));</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>table_name</code>、<code>p0</code>、<code>p1</code>、<code>p2</code>
           <ul>
             <li><code>table_name</code>: 表名。</li>
@@ -859,12 +788,11 @@ DELIMITER ;
 
 <div id="database-migration-upgrade">
   <h3>資料庫遷移和升級</h3>
-  <p>資料庫遷移指的是將資料庫中的數據和結構從一個環境轉移到另一個環境，這通常涉及到數據導出和導入操作。</p>
-
   <ul>
+    資料庫遷移指的是將資料庫中的數據和結構從一個環境轉移到另一個環境，這通常涉及到數據導出和導入操作。
     <li><strong>導出數據：</strong> 使用 <code>mysqldump</code> 工具來導出數據。
       <ul>
-        <li><strong>句型：</strong> <code>mysqldump -u username -p database_name > backup_file.sql</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>mysqldump -u username -p database_name &gt; backup_file.sql</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
           <ul>
             <li><code>username</code>: MySQL 用戶名。</li>
@@ -877,7 +805,7 @@ DELIMITER ;
     
     <li><strong>導入數據：</strong> 使用 <code>mysql</code> 工具來導入數據。
       <ul>
-        <li><strong>句型：</strong> <code>mysql -u username -p database_name < backup_file.sql</code></li>
+        <li><strong>句型：</strong> <div class="code-container"><pre><code>mysql -u username -p database_name &lt; backup_file.sql</code></pre></div></li>
         <li><strong>填入部分：</strong> <code>username</code>、<code>database_name</code>、<code>backup_file.sql</code>
           <ul>
             <li><code>username</code>: MySQL 用戶名。</li>
@@ -888,6 +816,4 @@ DELIMITER ;
       </ul>
     </li>
   </ul>
-
 </div>
-

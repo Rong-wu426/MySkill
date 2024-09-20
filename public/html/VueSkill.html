@@ -1,25 +1,18 @@
-
-<h1>Vue.js 筆記</h1>
-
 <div id="installation">
   <h3>安裝</h3>
-  <div class="code-container"><div class= "code-container"><pre><code>
-&lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;&lt;/script&gt;
-  </code></pre></div></div>
+  <div class="code-container"><div class= "code-container"><pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;&lt;/script&gt;</code></pre></div></div>
 </div>
 
 <div id="basic-usage">
   <h3>創建 Vue 應用</h3>
-  <div class= "code-container"><pre><code>
-new Vue({
+  <div class= "code-container"><pre><code>new Vue({
   el: '#app',  // element
   data: {
   message: 'Hello Vue!'
   }
-});
-  </code></pre></div>
+});</code></pre></div>
   <ul>
-    <li>new Vue(...)：這一段是我們創建一個新的 Vue 應用，告訴它我們要在哪個地方（el: '#app'）使用，並且告訴它有哪些資料（data）要顯示出來。</li>
+    <li><code>new Vue(...)</code>：這一段是我們創建一個新的 Vue 應用，告訴它我們要在哪個地方（<code>el: '#app'</code>）使用，並且告訴它有哪些資料（<code>data</code>）要顯示出來。</li>
   </ul>
 </div>
 
@@ -27,294 +20,281 @@ new Vue({
   <h3>模板語法</h3>
   <ul>
     <li>使用 `{{ }}` 來顯示數據</li>
-    <li>指令如 `v-bind:` 和 `v-model`</li>
-  </ul>
-  <div class= "code-container"><pre><code>
-    &lt;div id="app"&gt; 
-      &lt;!-- 使用 v-bind 綁定圖片一般用法 --&gt;
-      &lt;img v-bind:src="imageSrc" /&gt;
-      &lt;!-- 使用 v-bind 綁定圖片簡寫 --&gt;
-      &lt;img :src="imageSrc" alt="圖片" /&gt;
+    <li>指令如 <code>v-bind</code> 和 <code>v-model</code></li>
+    <div class= "code-container"><pre><code>&lt;div id="app"&gt; 
+  &lt;!-- 使用 v-bind 綁定圖片一般用法 --&gt;
+  &lt;img v-bind:src="imageSrc" /&gt;
+  &lt;!-- 使用 v-bind 綁定圖片簡寫 --&gt;
+  &lt;img :src="imageSrc" alt="圖片" /&gt;
 
-      &lt;p&gt;{{ message }}&lt;/p&gt;
-      &lt;!-- 雙向綁定一個輸入框的值 --&gt;
-      &lt;input v-model="message" /&gt;
-    &lt;/div&gt;
-  </code></pre></div>
-  <p>v-bind 讓 img 的 src 屬性隨 imageSrc 變量變化，而 v-model 實現了 message 變量與輸入框的雙向綁定。</p>
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;!-- 雙向綁定一個輸入框的值 --&gt;
+  &lt;input v-model="message" /&gt;
+&lt;/div&gt;</code></pre></div>
+  <code>v-bind</code> 讓 <code>img</code> 的 <code>src</code> 屬性隨 <code>imageSrc</code> 變量變化，而 <code>v-model</code> 實現了 <code>message</code> 變量與輸入框的雙向綁定。
+  </ul>
 </div>
 
 <div id="list-rendering">
     <h3>列表渲染</h3>
-    <div class= "code-container"><pre><code>
-&lt;div id="app"&gt;
-    &lt;ul&gt;
+    <div class= "code-container"><pre><code>&lt;div id="app"&gt;
+  &lt;ul&gt;
     &lt;li v-for="item in items" :key="item.id"&gt;
         {{ item.text }}
     &lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;/ul&gt;
 &lt;/div&gt;
 data() {
-    return {
-        items: [
-            { id: 1, text: '項目 1' },
-            { id: 2, text: '項目 2' }
-        ]
-    };
-}
-    </code></pre></div>
-    <p>這段代碼會遍歷 items 數組，並為每個元素創建一個 li 列表項。</p>
+  return {
+    items: [
+      { id: 1, text: '項目 1' },
+      { id: 2, text: '項目 2' }
+    ]
+  };
+}</code></pre></div>
+  <p>這段代碼會遍歷 <code>items</code> 數組，並為每個元素創建一個 <code>li</code> 列表項。</p>
 </div>
 
 <div id="conditionals">
-    <h3>條件渲染</h3>
-    <div class= "code-container"><pre><code>
-&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-    &lt;!-- 標題 --&gt;
-    &lt;h1&gt;登入系統&lt;/h1&gt;
+  <h3>條件渲染</h3>
+  <div class= "code-container"><pre><code>&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;
+  &lt;!-- 標題 --&gt;
+  &lt;h1&gt;登入系統&lt;/h1&gt;
 
-    &lt;!-- 使用 v-if、v-else-if、v-else 根據用戶身份渲染不同內容 --&gt;
-    &lt;div v-if=&quot;isLoggedIn &amp;&amp; userRole === 'admin'&quot;&gt;
-        &lt;h2&gt;歡迎管理員，{{ username }}！&lt;/h2&gt;
-        &lt;p&gt;這是管理員專屬的內容。&lt;/p&gt;
-    &lt;/div&gt;
+  &lt;!-- 使用 v-if、v-else-if、v-else 根據用戶身份渲染不同內容 --&gt;
+  &lt;div v-if=&quot;isLoggedIn &amp;&amp; userRole === 'admin'&quot;&gt;
+    &lt;h2&gt;歡迎管理員，{{ username }}！&lt;/h2&gt;
+    &lt;p&gt;這是管理員專屬的內容。&lt;/p&gt;
+  &lt;/div&gt;
 
-    &lt;div v-else-if=&quot;isLoggedIn &amp;&amp; userRole === 'user'&quot;&gt;
-        &lt;h2&gt;歡迎用戶，{{ username }}！&lt;/h2&gt;
-        &lt;p&gt;這是普通用戶的內容。&lt;/p&gt;
-    &lt;/div&gt;
+  &lt;div v-else-if=&quot;isLoggedIn &amp;&amp; userRole === 'user'&quot;&gt;
+    &lt;h2&gt;歡迎用戶，{{ username }}！&lt;/h2&gt;
+    &lt;p&gt;這是普通用戶的內容。&lt;/p&gt;
+  &lt;/div&gt;
 
-    &lt;div v-else&gt;
-        &lt;h2&gt;請登入&lt;/h2&gt;
-        &lt;form @submit.prevent=&quot;login&quot;&gt;
-        &lt;label for=&quot;username&quot;&gt;用戶名:&lt;/label&gt;
-        &lt;input type=&quot;text&quot; v-model=&quot;username&quot; id=&quot;username&quot; required&gt;&lt;br&gt;
+  &lt;div v-else&gt;
+    &lt;h2&gt;請登入&lt;/h2&gt;
+    &lt;form @submit.prevent=&quot;login&quot;&gt;
+    &lt;label for=&quot;username&quot;&gt;用戶名:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;username&quot; id=&quot;username&quot; required&gt;&lt;br&gt;
 
-        &lt;label for=&quot;password&quot;&gt;密碼:&lt;/label&gt;
-        &lt;input type=&quot;password&quot; v-model=&quot;password&quot; id=&quot;password&quot; required&gt;&lt;br&gt;
+    &lt;label for=&quot;password&quot;&gt;密碼:&lt;/label&gt;
+    &lt;input type=&quot;password&quot; v-model=&quot;password&quot; id=&quot;password&quot; required&gt;&lt;br&gt;
 
-        &lt;label for=&quot;role&quot;&gt;角色:&lt;/label&gt;
-        &lt;select v-model=&quot;userRole&quot; id=&quot;role&quot;&gt;
-            &lt;option value=&quot;user&quot;&gt;普通用戶&lt;/option&gt;
-            &lt;option value=&quot;admin&quot;&gt;管理員&lt;/option&gt;
-        &lt;/select&gt;&lt;br&gt;
+    &lt;label for=&quot;role&quot;&gt;角色:&lt;/label&gt;
+    &lt;select v-model=&quot;userRole&quot; id=&quot;role&quot;&gt;
+        &lt;option value=&quot;user&quot;&gt;普通用戶&lt;/option&gt;
+        &lt;option value=&quot;admin&quot;&gt;管理員&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;
 
-        &lt;button type=&quot;submit&quot;&gt;登入&lt;/button&gt;
-        &lt;/form&gt;
-    &lt;/div&gt;
+    &lt;button type=&quot;submit&quot;&gt;登入&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
 
-    &lt;!-- 登出按鈕 --&gt;
-    &lt;div v-if=&quot;isLoggedIn&quot;&gt;
-        &lt;button @click=&quot;logout&quot;&gt;登出&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
+  &lt;!-- 登出按鈕 --&gt;
+  &lt;div v-if=&quot;isLoggedIn&quot;&gt;
+    &lt;button @click=&quot;logout&quot;&gt;登出&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
 
-    &lt;script&gt;
-    new Vue({
-        el: '#app',
-        data: {
-        isLoggedIn: false,  // 用來判斷是否已登入
-        username: '',       // 用戶名
-        password: '',       // 密碼
-        userRole: 'user',   // 用戶角色 (默認為普通用戶)
-        },
-        methods: {
-        login() {
-            // 這裡可以加上驗證邏輯，如檢查用戶名和密碼是否正確
-            if (this.username &amp;&amp; this.password) {
-            this.isLoggedIn = true;
-            alert('登入成功！');
-            } else {
-            alert('請輸入有效的用戶名和密碼！');
-            }
-        },
-        logout() {
-            this.isLoggedIn = false;
-            this.username = '';
-            this.password = '';
-            this.userRole = 'user';
-            alert('已登出！');
+  &lt;script&gt;
+  new Vue({
+    el: '#app',
+    data: {
+      isLoggedIn: false,  // 用來判斷是否已登入
+      username: '',       // 用戶名
+      password: '',       // 密碼
+      userRole: 'user',   // 用戶角色 (默認為普通用戶)
+    },
+    methods: {
+      login() {
+        // 這裡可以加上驗證邏輯，如檢查用戶名和密碼是否正確
+        if (this.username &amp;&amp; this.password) {
+        this.isLoggedIn = true;
+        alert('登入成功！');
+        } else {
+        alert('請輸入有效的用戶名和密碼！');
         }
-        }
-    });
-    &lt;/script&gt;
-&lt;/body&gt;
-    </code></pre></div>
+      },
+      logout() {
+        this.isLoggedIn = false;
+        this.username = '';
+        this.password = '';
+        this.userRole = 'user';
+        alert('已登出！');
+      }
+    }
+  });
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre></div>
 </div>
 
 <div id="event-handling">
     <h3>事件處理</h3>
     <ul>
-        <li>`v-on`指令: 用於監聽 DOM 事件並調用 Vue 實例中的方法。它可以簡寫為@，如<code>@click="handleClick"</code>。</li>
+        <li><code>v-on</code>指令: 用於監聽 DOM 事件並調用 Vue 實例中的方法。它可以簡寫為<code>@</code>，如<code>@click="handleClick"</code>。</li>
         <li>事件處理函數: 在Vue實例的<code>methods</code>選項中定義，當事件發生時會調用這些方法。</li>
     </ul>
-    <div class="code-container"><pre><code>
-&lt;div id="app"&gt;
-&lt;button v-on:click="handleClick"&gt;點擊我&lt;/button&gt;
+    
+    <ul>
+      <div class="code-container"><pre><code>&lt;div id="app"&gt;
+  &lt;button v-on:click="handleClick"&gt;點擊我&lt;/button&gt;
 &lt;/div&gt;
 &lt;script&gt;
 new Vue({
-    el: "#app";
-    methods: {
-        handleClick() {
-            alert("按鈕被點擊了！");
-        }
+  el: "#app";
+  methods: {
+    handleClick() {
+      alert("按鈕被點擊了！");
     }
+  }
 });
-    </code></pre></div>
-    <ul>
-        <li><code>&lt;button v-on:click="handleClick"&gt;點擊我&lt;/button&gt;</code> 是一個按鈕，<code>v-on:click</code> 是 Vue.js 提供的指令，用來監聽 click 事件。事件發生時，調用 handleClick 方法。</li>
+&lt;/script&gt;</code></pre></div>
+      <li><code>&lt;button v-on:click="handleClick"&gt;點擊我&lt;/button&gt;</code> 是一個按鈕
+        <ul><li><code>v-on:click</code> 是 Vue.js 提供的指令，用來監聽 click 事件。事件發生時，調用 <code>handleClick</code> 方法。</li></ul>
+      </li>
     </ul>
     <h4>事件修飾符</h4>
     <ul>
-        <li><code>.stop</code>:阻止事件冒泡</li>
-            <ul>
-                <li>作用:調用<code>event.stopPropagation()</code>，防止事件向上傳播(冒泡)到父元素</li>
-                <li>使用場景:如果有一個嵌套的結構，並且想要阻止子元素的點擊事件影響到父元素的事件處理，可以使用<code>.stop</code></li>
-                <li>解釋:點擊按鈕只會觸發<code>childClick</code>，而不會觸發<code>parentClick</code>方法，因為<code>.stop</code>阻止事件冒泡</li>
-            </ul>
-        <div class="code-container"><pre><code>
-        &lt;div @click="parentClick"&gt;
-            &lt;button @click.stop="childClick"&gt;點擊我&lt;/button&gt;
-        &lt;/div&gt;
-        
-        &lt;script&gt;
-            new Vue({
-                el: '#app',
-                methods: {
-                    parentClick() {
-                        console.log("父元素被點擊了");
-                    },
-                    childClick() {
-                        console.log("子元素被點擊了");
-                    }
-                }
-            });
-        &lt;/script&gt;
-        </code></pre></div>
+      <li><code>.stop</code>:阻止事件冒泡</li>
+        <ul>
+          <li>作用:調用<code>event.stopPropagation()</code>，防止事件向上傳播(冒泡)到父元素</li>
+          <li>使用場景:如果有一個嵌套的結構，並且想要阻止子元素的點擊事件影響到父元素的事件處理，可以使用<code>.stop</code></li>
+          <li>解釋:點擊按鈕只會觸發<code>childClick</code>，而不會觸發<code>parentClick</code>方法，因為<code>.stop</code>阻止事件冒泡</li>
+          <div class="code-container"><pre><code>&lt;div @click="parentClick"&gt;
+  &lt;button @click.stop="childClick"&gt;點擊我&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  new Vue({
+    el: '#app',
+    methods: {
+      parentClick() {
+        console.log("父元素被點擊了");
+      },
+      childClick() {
+        console.log("子元素被點擊了");
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>        
+        </ul>
+                
         <li><code>.prevent</code>:阻止默認行為</li>
         <ul> 
             <li>作用:調用<code>event.preventDefault()</code>，阻止事件的默認行為(如表單提交或連結跳轉)</li>
             <li>使用場景:當需要阻止瀏覽器的默認行為時使用，例如:防止表單提交刷新頁面</li>
             <li>解釋:點擊提交按鈕時，不會刷新頁面， 因為<code>.prevent</code>阻止了表單的默認提交行為</li>
-        </ul>
-        <div class="code-container"><pre><code>
-&lt;form @submit.prevent="handleSubmit"&gt;
-    &lt;input type="text" v-model="inputValue"&gt;
-    &lt;button type="submit"&gt;提交&lt;/button&gt;
+            <div class="code-container"><pre><code>&lt;form @submit.prevent="handleSubmit"&gt;
+  &lt;input type="text" v-model="inputValue"&gt;
+  &lt;button type="submit"&gt;提交&lt;/button&gt;
 &lt;/form&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        data() {
-            return {
-                inputValue: ''
-            };
-        },
-        methods: {
-            handleSubmit() {
-                console.log("表單被提交了，但沒有刷新頁面");
-            }
-        }
-    });
-&lt;/script&gt;
-        </code></pre></div>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        inputValue: ''
+      };
+    },
+    methods: {
+      handleSubmit() {
+        console.log("表單被提交了，但沒有刷新頁面");
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>
+        </ul>
+                
         <li><code>.capture</code>:使用事件捕獲模式</li>
         <ul>
-            <li>作用:事件監聽器會在事件階段被觸發，而不是冒泡階段</li>
-            <li>使用場景:當你需要在事件到達目標元素之前處理事件，可以使用<code>.capture</code></li>
-            <li>解釋:點擊提交按鈕時，<code>handleCapture</code>會先被調用，然後才是<code>handleClick</code>，因為<code>.capture</code>在捕獲階段處理事件</code></li>
-        </ul>
-        <div class="code-container"><pre><code>
-&lt;div @click.capture="handleCapture"&gt;
-    &lt;button @click="handleClick"&gt;點擊我&lt;/button&gt;
+          <li>作用:事件監聽器會在事件階段被觸發，而不是冒泡階段</li>
+          <li>使用場景:當你需要在事件到達目標元素之前處理事件，可以使用<code>.capture</code></li>
+          <li>解釋:點擊提交按鈕時，<code>handleCapture</code>會先被調用，然後才是<code>handleClick</code>，因為<code>.capture</code>在捕獲階段處理事件</code></li>
+          <div class="code-container"><pre><code>&lt;div @click.capture="handleCapture"&gt;
+  &lt;button @click="handleClick"&gt;點擊我&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        methods: {
-            handleCapture() {
-                console.log("事件在捕獲階段被處理");
-            },
-            handleClick() {
-                console.log("事件在冒泡階段被處理");
-            }
-        }
-    });
-&lt;/script&gt;
-        </code></pre></div>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleCapture() {
+        console.log("事件在捕獲階段被處理");
+      },
+      handleClick() {
+        console.log("事件在冒泡階段被處理");
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>
+        </ul>
+                
         <li><code>.once</code>:事件處理程序只會執行一次</li>
         <ul>
-            <li>作用:事件處理程序只會被調用一次，然後會自動移除監聽器</li>
-            <li>使用場景:當只希望事件處理程序執行一次時使用，例如初始化數據</li>
-            <li>解釋:點擊按鈕時，<code>handleClick</code>只會被調用一次，之後按鈕的點擊事件將不再會被觸發這個方法</li>
-        </ul>
-        <div class="code-container"><pre><code>
-&lt;button @click.once="handleClick"&gt;點擊我&lt;/button&gt;
+          <li>作用:事件處理程序只會被調用一次，然後會自動移除監聽器</li>
+          <li>使用場景:當只希望事件處理程序執行一次時使用，例如初始化數據</li>
+          <li>解釋:點擊按鈕時，<code>handleClick</code>只會被調用一次，之後按鈕的點擊事件將不再會被觸發這個方法</li>
+          <div class="code-container"><pre><code>&lt;button @click.once="handleClick"&gt;點擊我&lt;/button&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        methods: {
-            handleClick() {
-                console.log("這個訊息只會顯示一次");
-            }
-        }
-    });
-&lt;/script&gt;
-        </code></pre></div>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleClick() {
+        console.log("這個訊息只會顯示一次");
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>        
+        </ul>
+        
         <li><code>.passive</code>:標記為被動事件監聽器</li>
         <ul>
-            <li>作用:將事件監聽器標記為被動，表示它不會調用<code>event.preventDefault()</code>，允許滾動優化</li>
-            <li>使用場景:當希望優化滾動性能時使用，因為被動事件監聽器不會阻止默認行為</li>
-            <li>解釋:這裡使用<code>.passive</code>可以提升滾動性能，因為它不會調用<code>event.preventDefault()</code></li>
-        </ul>
-        <div class="code-container"><pre><code>
-&lt;div @scroll.passive="handleScroll"&gt;...&lt;/div&gt;
+          <li>作用:將事件監聽器標記為被動，表示它不會調用<code>event.preventDefault()</code>，允許滾動優化</li>
+          <li>使用場景:當希望優化滾動性能時使用，因為被動事件監聽器不會阻止默認行為</li>
+          <li>解釋:這裡使用<code>.passive</code>可以提升滾動性能，因為它不會調用<code>event.preventDefault()</code></li>
+          <div class="code-container"><pre><code>&lt;div @scroll.passive="handleScroll"&gt;...&lt;/div&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        methods: {
-            handleScroll() {
-                console.log("滚动事件被处理");
-            }
-        }
-    });
-&lt;/script&gt;            
-        </code></pre></div>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleScroll() {
+        console.log("滚动事件被处理");
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>     
+        </ul>        
     </ul>
-    
 </div>
 
 <div id="methods">
     <h3>方法</h3>
-    <ul>常見用法:
-        <li>處理用戶交互:方法通常用來處理用戶交互，例如點擊按鈕、提交表單等</li>
-        <div class="code-container"><pre><code>
-&lt;button @click="increment"&gt;增加&lt;/button&gt;
+    <ul>
+      <li>處理用戶交互:方法通常用來處理用戶交互，例如點擊按鈕、提交表單等</li>
+      <div class="code-container"><pre><code>&lt;button @click="increment"&gt;增加&lt;/button&gt;
 &lt;p&gt;計數器: {{ count }}&lt;/p&gt;
 
 &lt;script&gt;
 new Vue({
-    el: '#app',
-    data: {
-        count: 0
-    },
-    methods: {
-        increment() {
-            this.count += 1;
-        }
+  el: '#app',
+  data: {
+    count: 0
+  },
+  methods: {
+    increment() {
+      this.count += 1;
     }
+  }
 });
-&lt;/script&gt;           
-</code></pre></div>
+&lt;/script&gt;</code></pre></div>      
+
         <li>執行計算邏輯:方法可以用來執行一些需要計算的邏輯。例如，根據用戶輸入更新數據</li>
-        <div class="code-container"><pre><code>
-&lt;input v-model="number" @input="calculateSquare" /&gt;
+        <div class="code-container"><pre><code>&lt;input v-model="number" @input="calculateSquare" /&gt;
 &lt;p&gt;平方: {{ square }}&lt;/p&gt;
 
 &lt;script&gt;
@@ -330,11 +310,10 @@ new Vue({
     }
   }
 });
-&lt;/script&gt;
-            </code></pre></div>
+&lt;/script&gt;</code></pre></div>
+            
         <li>調用其他方法:方法可以調用組件內部的其他方法</li>
-        <div class="code-container"><pre><code>
-&lt;button @click="handleClick"&gt;執行操作&lt;/button&gt;
+        <div class="code-container"><pre><code>&lt;button @click="handleClick"&gt;執行操作&lt;/button&gt;
 
 &lt;script&gt;
 new Vue({
@@ -352,11 +331,10 @@ new Vue({
     }
   }
 });
-&lt;/script&gt;
-        </code></pre></div>
+&lt;/script&gt;</code></pre></div>
+        
         <li>使用 <code>this</code> 來訪問組件實例: <code>this</code> 指向 Vue 組件實例，你可以通過 <code>this</code> 訪問數據屬性、其他方法以及計算屬性</li>
-        <div class="code-container"><pre><code>
-&lt;button @click="showMessage"&gt;顯示消息&lt;/button&gt;
+        <div class="code-container"><pre><code>&lt;button @click="showMessage"&gt;顯示消息&lt;/button&gt;
 
 &lt;script&gt;
 new Vue({
@@ -370,135 +348,179 @@ new Vue({
     }
   }
 });
-&lt;/script&gt;
-        </code></pre></div>
+&lt;/script&gt;</code></pre></div>
+    </ul>
 </div>
 
 <div id="computed-properties">
-    <h3>計算屬性</h3>
-    <p><code>computed</code>計算屬性會記住上次的計算結果，只有當依賴的數據發生變化時，才會重新計算。這樣可以讓應用程式更高效</p>
-    <ul>解釋：
-        <li><code>totalPrice</code>：這是計算總價的屬性。它使用了 <code>reduce</code> 方法來計算所有商品的總價格</li>
-        <li>計算屬性類似於變數，但它是基於其他數據計算得出的。在這個例子中，<code>totalPrice</code> 是根據<code>cart</code>  陣列中的<code>price</code>  和<code>quantity</code>  自動計算出來的</li>
-    </ul>
-    <div class="code-container"><pre><code>
-&lt;div id="app"&gt;
+  <h3>計算屬性</h3>
+  
+  <ul><code>computed</code>屬性會記住上次的計算結果，只有當依賴的數據發生變化時，才會重新計算。
+    <br>這樣可以讓應用程式更高效
+    <br>解釋：
+    <li><code>totalPrice</code>：這是計算總價的屬性。它使用了 <code>reduce</code> 方法來計算所有商品的總價格</li>
+    <li>計算屬性類似於變數，但它是基於其他數據計算得出的。在這個例子中，<code>totalPrice</code> 是根據<code>cart</code>  陣列中的<code>price</code>  和<code>quantity</code>  自動計算出來的</li>
+  </ul>
+  <div class="code-container"><pre><code>&lt;div id="app"&gt;
 &lt;ul&gt;
-    &lt;li v-for="item in cart" :key="item.id"&gt;
-    {{ item.name }} - 單價: {{ item.price }} - 數量: {{ item.quantity }}
-    &lt;/li&gt;
+  &lt;li v-for="item in cart" :key="item.id"&gt;
+  {{ item.name }} - 單價: {{ item.price }} - 數量: {{ item.quantity }}
+  &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;總價: {{ totalPrice }}&lt;/p&gt;
+  &lt;p&gt;總價: {{ totalPrice }}&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        data: {
-            cart: [
-            { id: 1, name: '商品 A', price: 100, quantity: 2 },
-            { id: 2, name: '商品 B', price: 150, quantity: 1 },
-            { id: 3, name: '商品 C', price: 200, quantity: 3 }
-            ]
-        },
-        computed: {
-            totalPrice() {
-            return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
-            }
-        }
-    });
-&lt;/script&gt;   
-    </div>
-    </code></pre></div>
+  new Vue({
+    el: '#app',
+    data: {
+      cart: [
+        { id: 1, name: '商品 A', price: 100, quantity: 2 },
+        { id: 2, name: '商品 B', price: 150, quantity: 1 },
+        { id: 3, name: '商品 C', price: 200, quantity: 3 }
+      ]
+    },
+    computed: {
+      totalPrice() {
+        return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      }
+    }
+  });
+&lt;/script&gt;</code></pre></div>
 </div>
 
 <div id="watchers">
     <h3>監視器</h3>
-    <p><code>watch</code>屬性用來監視數據變化</p>
     <ul>
-        <li><code>watch</code>屬性:監視<code>email</code>屬性的變化，每當<code>email的值改變時，watch中定義的回調函數會被調用</code></li>
-        <ul>
-            <li><code>email(newValue)</code>:這個回調函數會接收到新的email值，然後用正則表達式驗證這個電子郵件是否有效</li>
-            <li><code>emailPattern.test(newValue)</code>:使用正則表達式檢查 newValue 是否符合電子郵件格式。如果符合，清除錯誤消息；如果不符合，設置錯誤消息。</li>
-        </ul>
-    </ul>
-    <div class="code-container"><pre><code>
-&lt;div id="app"&gt;
-    &lt;input v-model="email" placeholder="輸入你的電子郵件"&gt;
-    &lt;p v-if="errorMessage"&gt;{{ errorMessage }}&lt;/p&gt;
+      <li><code>watch</code>屬性:監視<code>email</code>屬性的變化，每當<code>email</code>的值改變時，<code>watch</code>中定義的回調函數會被調用</li>
+      <ul>
+          <li><code>email(newValue)</code>:這個回調函數會接收到新的email值，然後用正則表達式驗證這個電子郵件是否有效</li>
+          <li><code>emailPattern.test(newValue)</code>:使用正則表達式檢查 newValue 是否符合電子郵件格式。如果符合，清除錯誤消息；如果不符合，設置錯誤消息。</li>
+      </ul>
+      <div class="code-container"><pre><code>&lt;div id="app"&gt;
+  &lt;input v-model="email" placeholder="輸入你的電子郵件"&gt;
+  &lt;p v-if="errorMessage"&gt;{{ errorMessage }}&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
-    new Vue({
-        el: '#app',
-        data: {
-        email: '',
-        errorMessage: ''
-    },
-    watch: {
-        // 監視 email 屬性的變化
-        email(newValue) {
-            // 簡單的電子郵件格式驗證
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailPattern.test(newValue)) {
-                this.errorMessage = ''; // 有效的電子郵件，清除錯誤消息
-            } else {
-                this.errorMessage = '請輸入有效的電子郵件地址'; // 無效的電子郵件，設置錯誤消息
-            }
-        }
+  new Vue({
+    el: '#app',
+    data: {
+    email: '',
+    errorMessage: ''
+  },
+  watch: {
+    // 監視 email 屬性的變化
+    email(newValue) {
+      // 簡單的電子郵件格式驗證
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailPattern.test(newValue)) {
+        this.errorMessage = ''; // 有效的電子郵件，清除錯誤消息
+      } else {
+        this.errorMessage = '請輸入有效的電子郵件地址'; // 無效的電子郵件，設置錯誤消息
+      }
     }
+  }
 });
-&lt;/script&gt;   
-    </code></pre></div>
-    <ul>
-        <li>深度監視(<code>deep</code>):用於監視嵌套對象或數組的變化</li>
-    </ul>
-    <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
-        nestedData: { a: 1, b: { c: 2 } }
-    },
-    watch: {
-        nestedData: {
-            handler(newValue, oldValue) {
-             console.log('嵌套數據變化:', newValue);
-            },
-            deep: true
-        }
+&lt;/script&gt;</code></pre></div>
+      <li>深度監視(<code>deep</code>):用於監視嵌套對象或數組的變化</li>
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
+    nestedData: { a: 1, b: { c: 2 } }
+  },
+  watch: {
+    nestedData: {
+      handler(newValue, oldValue) {
+        console.log('嵌套數據變化:', newValue);
+      },
+      deep: true
     }
-});        
-    </code></pre></div>
-    <p>在這個例子中，即使 <code>nestedData</code> 中的 <code>b</code> 對象內部的 <code>c</code> 值改變， <code>watch</code> 也會觸發回調函數。這是因為 <code>deep: true</code> 允許 Vue.js 監視 <code>nestedData</code> 內部的所有層級</p>
-    <ul><li>立即觸發(<code>immediate</code>):在監視器創建時立即執行回調函數</li></ul>
-    <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
+  }
+});</code></pre></div>    
+    在這個例子中，即使 <code>nestedData</code> 中的 <code>b</code> 對象內部的 <code>c</code> 值改變， <code>watch</code> 也會觸發回調函數。<br>這是因為 <code>deep: true</code> 允許 Vue.js 監視 <code>nestedData</code> 內部的所有層級
+    <li>立即觸發(<code>immediate</code>):在監視器創建時立即執行回調函數</li>
+    <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
     message: 'Hello, Vue!'
+  },
+  watch: {
+    message: {
+    handler(newValue, oldValue) {
+      console.log('message 改變了:', newValue);
     },
-    watch: {
-        message: {
-        handler(newValue, oldValue) {
-            console.log('message 改變了:', newValue);
-        },
-        immediate: true
-        }
+    immediate: true
     }
-});          
-    </code></pre></div>
-    <p>在這個例子中，即使在 <code>message</code> 的值沒有變化的情況下，監視器也會在 Vue 實例創建時立即執行 <code>handler</code> 函數</p>
+  }
+});</code></pre></div>          
+    在這個例子中，即使在 <code>message</code> 的值沒有變化的情況下，監視器也會在 Vue 實例創建時立即執行 <code>handler</code> 函數
 </div>
 
 <div id="components&props">
     <h3>組件與屬性 (Props)</h3>
     <ol>
         <li>建立一個簡單的「父組件」</li>
-        <p>想像你有一個玩具盒，裡面有很多玩具。這些玩具就是我們的「產品」。父組件就像這個玩具盒，裡面放了所有的玩具（產品）</p>
-        <div class="code-container"><pre><code>
-<!-- 這是父組件的玩具盒 -->
+        想像你有一個玩具盒，裡面有很多玩具。這些玩具就是我們的「產品」。
+        <br>父組件就像這個玩具盒，裡面放了所有的玩具（產品）
+        <div class="code-container"><pre><code>&lt;!-- 這是父組件的玩具盒 --&gt;
 &lt;div id="app"&gt;
-    <!-- 我們會把每個玩具傳給小玩具展示器 -->
+  &lt;!-- 我們會把每個玩具傳給小玩具展示器 --&gt;
+  &lt;toy-item 
+    v-for="toy in toys" 
+    :key="toy.id" 
+    :name="toy.name" 
+    :price="toy.price" 
+    :quantity="toy.quantity"&gt;
+  &lt;/toy-item&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+new Vue({
+    el: '#app',
+    data: {
+      // 這些是玩具盒裡面的玩具
+      toys: [
+        { id: 1, name: '玩具 A', price: 100, quantity: 2 },
+        { id: 2, name: '玩具 B', price: 150, quantity: 1 },
+        { id: 3, name: '玩具 C', price: 200, quantity: 3 }
+      ]
+    }
+});
+&lt;/script&gt;</code></pre></div>
+        <li>建立一個「子組件」</li>
+        子組件就像是一個展示每個玩具的小展示器。它會展示玩具的名字、價格和數量。
+        <br>這個展示器會從玩具盒（父組件）接收每個玩具的資訊
+        <div class="code-container"><pre><code>
+&lt;script&gt;
+  Vue.component('toy-item', {
+    // 小展示器接收來自玩具盒的玩具資料
+    props: ['name', 'price', 'quantity'],
+    template: `
+    &lt;!-- 在小展示器上顯示玩具的名字、價格和數量 --&gt;
+    &lt;div&gt;
+        &lt;h3&gt;{{ name }}&lt;/h3&gt;
+        &lt;p&gt;價格: {{ price }}&lt;/p&gt;
+        &lt;p&gt;數量: {{ quantity }}&lt;/p&gt;
+    &lt;/div&gt;
+      `
+  });
+&lt;/script&gt;</code></pre></div>
+        <li>把資料傳遞給展示器</li>
+        當父組件（玩具盒）裡面的玩具資料準備好了，我們會告訴每個展示器（子組件）要顯示什麼玩具。
+        <br>展示器就會把這些資料放在它的展示架上給我們看
+        <h4>完整的範例</h4>
+        <div class="code-container"><pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Vue Toy Display&lt;/title&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  // 第一步的「父組件」--2
+  &lt;div id="app"&gt;
+    &lt;!-- 我們會把每個玩具傳給小玩具展示器 --&gt;
     &lt;toy-item 
       v-for="toy in toys" 
       :key="toy.id" 
@@ -506,90 +528,36 @@ new Vue({
       :price="toy.price" 
       :quantity="toy.quantity"&gt;
     &lt;/toy-item&gt;
-&lt;/div&gt;
+  &lt;/div&gt;
 
-&lt;script&gt;
-new Vue({
+  // 第二步的「子組件」--3
+  &lt;script&gt;
+  Vue.component('toy-item', {
+    // 小展示器接收來自玩具盒的玩具資料
+    props: ['name', 'price', 'quantity'],
+    template: `
+    &lt;div&gt;
+        &lt;!-- 在小展示器上顯示玩具的名字、價格和數量 --&gt;
+        &lt;h3&gt;{{ name }}&lt;/h3&gt;
+        &lt;p&gt;價格: {{ price }}&lt;/p&gt;
+        &lt;p&gt;數量: {{ quantity }}&lt;/p&gt;
+    &lt;/div&gt;
+    `
+  });
+
+  // 第一步的「父組件」--1
+  new Vue({
     el: '#app',
     data: {
-    // 這些是玩具盒裡面的玩具
-    toys: [
+      // 這些是玩具盒裡面的玩具
+      toys: [
         { id: 1, name: '玩具 A', price: 100, quantity: 2 },
         { id: 2, name: '玩具 B', price: 150, quantity: 1 },
         { id: 3, name: '玩具 C', price: 200, quantity: 3 }
-    ]
+      ]
     }
-});
-&lt;/script&gt;
-        </code></pre></div>
-        <li>建立一個「子組件」</li>
-        <p>子組件就像是一個展示每個玩具的小展示器。它會展示玩具的名字、價格和數量。這個展示器會從玩具盒（父組件）接收每個玩具的資訊</p>
-        <div class="code-container"><pre><code>
-&lt;script&gt;
-    Vue.component('toy-item', {
-        // 小展示器接收來自玩具盒的玩具資料
-        props: ['name', 'price', 'quantity'],
-        template: `<!-- 在小展示器上顯示玩具的名字、價格和數量 -->
-        &lt;div&gt;
-            &lt;h3&gt;{{ name }}&lt;/h3&gt;
-            &lt;p&gt;價格: {{ price }}&lt;/p&gt;
-            &lt;p&gt;數量: {{ quantity }}&lt;/p&gt;
-        &lt;/div&gt;
-         `
-    });
-&lt;/script&gt;             
-        </code></pre></div>
-        <li>把資料傳遞給展示器</li>
-        <p>當父組件（玩具盒）裡面的玩具資料準備好了，我們會告訴每個展示器（子組件）要顯示什麼玩具。展示器就會把這些資料放在它的展示架上給我們看</p>
-        <h4>完整的範例</h4>
-        <div class="code-container"><pre><code>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Vue Toy Display&lt;/title&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    // 第一步的「父組件」--2
-    &lt;div id="app"&gt;
-    <!-- 我們會把每個玩具傳給小玩具展示器 -->
-    &lt;toy-item 
-        v-for="toy in toys" 
-        :key="toy.id" 
-        :name="toy.name" 
-        :price="toy.price" 
-        :quantity="toy.quantity"&gt;
-    &lt;/toy-item&gt;
-    &lt;/div&gt;
-
-    // 第二步的「子組件」--3
-    &lt;script&gt;
-    Vue.component('toy-item', {
-        // 小展示器接收來自玩具盒的玩具資料
-        props: ['name', 'price', 'quantity'],
-        template: `
-        &lt;div&gt;
-            <!-- 在小展示器上顯示玩具的名字、價格和數量 -->
-            &lt;h3&gt;{{ name }}&lt;/h3&gt;
-            &lt;p&gt;價格: {{ price }}&lt;/p&gt;
-            &lt;p&gt;數量: {{ quantity }}&lt;/p&gt;
-        &lt;/div&gt;
-        `
-    });
-
-    // 第一步的「父組件」--1
-    new Vue({
-        el: '#app',
-        data: {
-            // 這些是玩具盒裡面的玩具
-            toys: [
-                { id: 1, name: '玩具 A', price: 100, quantity: 2 },
-                { id: 2, name: '玩具 B', price: 150, quantity: 1 },
-                { id: 3, name: '玩具 C', price: 200, quantity: 3 }
-            ]
-        }
-    });
-    &lt;/script&gt;
+  });
+  &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;                  
         </code></pre></div>
@@ -638,252 +606,222 @@ export default {
 </div>
 
 <div id="vue-router">
-    <h3>Vue Router 教學</h3>
-    <p>Vue Router 就像是一個地圖，它可以讓網頁根據不同的路徑顯示不同的內容。當你點擊不同的連結時，Vue Router 會告訴瀏覽器應該顯示哪個頁面。</p>
-    <ol>
-        <li>如何設定 Vue Router？</li>
-        <p>我們可以先設定路徑和頁面。例如當網址是 `/about` 時，顯示關於我們的頁面。</p>
-        <div class="code-container"><pre><code>
-  const routes = [
-    { path: '/', component: Home },  // 根據路徑顯示對應頁面
-    { path: '/about', component: About }
-  ];
-        </code></pre></div>
-        <p>接下來，我們用 <code>&lt;router-view&gt;&lt;/router-view&gt;</code> 來顯示對應的內容，當你點擊不同的連結時，這裡的內容就會變換。</p>
-        <div class="code-container"><pre><code>
-  &lt;template&gt;
-    &lt;div id="app"&gt;
-      &lt;router-link to="/"&gt;首頁&lt;/router-link&gt;  // 點擊切換頁面
-      &lt;router-link to="/about"&gt;關於我們&lt;/router-link&gt;
-  
-      &lt;router-view&gt;&lt;/router-view&gt;  // 顯示不同內容
-    &lt;/div&gt;
-  &lt;/template&gt;
-        </code></pre></div>
-      
-        <li>動態路由</li>
-        <p>如果我們需要針對不同用戶顯示不同內容，可以使用動態路由。</p>
-        <div class="code-container"><pre><code>
-const routes = [
-    { path: '/user/:id', component: User }  // 根據 ID 顯示不同用戶頁面
-];
-        </code></pre></div>
-    </ol>
-  </div>
+  <h3>Vue Router 教學</h3>
+  <p>Vue Router 就像是一個地圖，它可以讓網頁根據不同的路徑顯示不同的內容。當你點擊不同的連結時，Vue Router 會告訴瀏覽器應該顯示哪個頁面。</p>
+  <ol>
+    <li>如何設定 Vue Router？</li>
+    我們可以先設定路徑和頁面。例如當網址是 <code>/about</code> 時，顯示關於我們的頁面。
+    <div class="code-container"><pre><code>const routes = [
+  { path: '/', component: Home },  // 根據路徑顯示對應頁面
+  { path: '/about', component: About }
+];</code></pre></div>
+    接下來，我們用 <code>&lt;router-view&gt;&lt;/router-view&gt;</code> 來顯示對應的內容，當你點擊不同的連結時，這裡的內容就會變換。
+    <div class="code-container"><pre><code>&lt;template&gt;
+  &lt;div id="app"&gt;
+    &lt;router-link to="/"&gt;首頁&lt;/router-link&gt;  // 點擊切換頁面
+    &lt;router-link to="/about"&gt;關於我們&lt;/router-link&gt;
+
+    &lt;router-view&gt;&lt;/router-view&gt;  // 顯示不同內容
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <li>動態路由</li>
+    如果我們需要針對不同用戶顯示不同內容，可以使用動態路由。
+    <div class="code-container"><pre><code>const routes = [
+  { path: '/user/:id', component: User }  // 根據 ID 顯示不同用戶頁面
+];</code></pre></div>
+  </ol>
+</div>
   
 
 <div id="state-management">
-    <h3>狀態管理</h3>
-    <ol>
-        <li>定義 Vue 實例</li>
-        <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
-        toys: ['小車', '小熊', '積木']
+  <h3>狀態管理</h3>
+  <ol>
+    <li>定義 Vue 實例</li>
+    <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
+    toys: ['小車', '小熊', '積木']
+  },
+  methods: {
+    addToy() {
+      this.toys.push('新玩具');
     },
-    methods: {
-        addToy() {
-            this.toys.push('新玩具');
-        },
-        removeToy() {
-            if (this.toys.length > 0) {
-                this.toys.pop();
-            }
-        }
+    removeToy() {
+      if (this.toys.length > 0) {
+        this.toys.pop();
+      }
     }
-});        
-        </code></pre></div>
-        <ul>
-            <li><code>data</code>：這部分定義了 <code>toys</code>，它是我們的狀態。<code>toys</code> 是一個數組，記錄了玩具箱裡的玩具。這就是狀態管理的核心：<code>data</code> 變量用來儲存和管理應用的狀態。</li>
-            <li><code>methods</code>：這部分定義了 <code>addToy</code> 和 <code>removeToy</code> 方法，這些方法用來改變 <code>toys</code> 的狀態。這些方法操作狀態，也就是在玩具箱裡添加或移除玩具。</li>
-        </ul>
-        <li>渲染和更新狀態</li>
-        <div class="code-container"><pre><code>
-&lt;div id="app"&gt;
-&lt;h1&gt;玩具箱&lt;/h1&gt;
-&lt;p&gt;玩具箱裡的玩具數量: {{ toys }}&lt;/p&gt;
-&lt;button @click="addToy"&gt;添加玩具&lt;/button&gt;
-&lt;button @click="removeToy"&gt;拿出玩具&lt;/button&gt;
-&lt;p v-if="toys.length === 0"&gt;玩具箱裡沒有玩具了！&lt;/p&gt;
-&lt;/div&gt;            
-        </code></pre></div>
-        <ul>
-            <li><code>{{ toys }}</code>：這是 Vue 的模板語法，用來顯示 toys 的內容。當 toys 的狀態改變時，這部分會自動更新顯示最新的狀態。</li>
-            <li><code>@click="addToy"</code> 和 <code>@click="removeToy"</code>：這些是事件處理器，用來響應用戶的點擊操作，並調用相應的方法來修改 toys 的狀態。</li>
-        </ul>
-    </ol>
+  }
+});</code></pre></div>        
+        
+    <ul>
+      <li><code>data</code>：這部分定義了 <code>toys</code>，它是我們的狀態。<code>toys</code> 是一個數組，記錄了玩具箱裡的玩具。這就是狀態管理的核心：<code>data</code> 變量用來儲存和管理應用的狀態。</li>
+      <li><code>methods</code>：這部分定義了 <code>addToy</code> 和 <code>removeToy</code> 方法，這些方法用來改變 <code>toys</code> 的狀態。這些方法操作狀態，也就是在玩具箱裡添加或移除玩具。</li>
+    </ul>
+    <li>渲染和更新狀態</li>
+    <div class="code-container"><pre><code>&lt;div id="app"&gt;
+  &lt;h1&gt;玩具箱&lt;/h1&gt;
+  &lt;p&gt;玩具箱裡的玩具數量: {{ toys }}&lt;/p&gt;
+  &lt;button @click="addToy"&gt;添加玩具&lt;/button&gt;
+  &lt;button @click="removeToy"&gt;拿出玩具&lt;/button&gt;
+  &lt;p v-if="toys.length === 0"&gt;玩具箱裡沒有玩具了！&lt;/p&gt;
+&lt;/div&gt;</code></pre></div>           
+    <ul>
+      <li><code>{{ toys }}</code>：這是 Vue 的模板語法，用來顯示 <code>toys</code> 的內容。當 <code>toys</code> 的狀態改變時，這部分會自動更新顯示最新的狀態。</li>
+      <li><code>@click="addToy"</code> 和 <code>@click="removeToy"</code>：這些是事件處理器，用來響應用戶的點擊操作，並調用相應的方法來修改 <code>toys</code> 的狀態。</li>
+    </ul>
+  </ol>
 </div>
 
 <div id="lifecycle-hooks">
-    <h3>生命週期鉤子</h3>
-    <ol>
-        <li>創建階段</li>
-        <ul>
-            <li><code>beforeCreate</code></li>
-            <p>在這個鉤子中，你可以看到 Vue 實例的數據和事件尚未被設置，因此不能使用 <code>data</code> 或 <code>methods</code>。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    beforeCreate() {
-        console.log('beforeCreate: 實例尚未創建，數據和事件尚未設置');
-    }
-});                  
-            </code></pre></div>
-            <li><code>created</code></li>
-            <p>Vue 實例已經創建完成，數據觀察和事件設置也已經完成，可以進行數據初始化或發起 API 請求。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    },
-    created() {
-        console.log('created: 實例創建完成，數據已設置，現在可以進行數據處理');
-        // 例如發起 API 請求
-        // axios.get('/api/data').then(response => {
-        //   this.message = response.data;
-        // });
-    }
-});                  
-            </code></pre></div>
-        </ul>
-        <li>掛載階段</li>
-        <ul>
-            <li><code>beforeMount</code></li>
-            <p>在 DOM 被替換成實際的 DOM 元素之前，這個鉤子會被調用。此時，你可以進行一些掛載前的準備。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    beforeMount() {
-        console.log('beforeMount: DOM 尚未掛載，可以做一些掛載前的準備');
-    }
-});
-            </code></pre></div>
-            <li><code>mounted</code></li>
-            <p>這個鉤子在 Vue 實例被掛載到 DOM 上後調用，此時可以安全地進行 DOM 操作，例如讀取或修改 DOM。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    mounted() {
-        console.log('mounted: DOM 已經掛載到頁面上，現在可以進行 DOM 操作');
-        // 例如，讀取 DOM 元素的內容
-        // const element = document.getElementById('some-element');
-        // console.log(element.textContent);
-    }
-});
-            </code></pre></div>
-        </ul>
-        <li>更新階段</li>
-        <ul>
-            <li><code>beforeUpdate</code></li>
-            <p>當數據改變時，DOM 更新之前調用這個鉤子。可以在這裡做一些數據更新之前的處理。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    },
-    beforeUpdate() {
-        console.log('beforeUpdate: 數據更改前，DOM 尚未更新');
-    },
-    updated() {
-        console.log('updated: 數據更改後，DOM 已經更新');
-    }
-});
-            </code></pre></div>
-            <li><code>updated</code></li>
-            <p>在 DOM 更新完成後調用此鉤子。此時，DOM 已經根據最新的數據更新完成。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    },
-    updated() {
-        console.log('updated: 數據更新後，DOM 已經更新完成');
-    }
-});
-            </code></pre></div>
-        </ul>
-        <li>銷毀階段</li>
-        <ul>
-            <li>beforeDestroy</li>
-            <p>在實例銷毀之前調用這個鉤子。此時，實例仍然可以訪問數據和事件，但 DOM 元素尚未被銷毀。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    beforeDestroy() {
-        console.log('beforeDestroy: 實例即將銷毀，尚可操作數據和事件');
-        // 例如移除計時器
-        // clearInterval(this.timer);
-    }
-});
-            </code></pre></div>
-            <li>destroyed</li>
-            <p>當實例銷毀完成後調用此鉤子。所有的事件監聽器、子組件和 DOM 元素都已經被銷毀，此時可以進行最終的清理操作。</p>
-            <div class="code-container"><pre><code>
-new Vue({
-    el: '#app',
-    destroyed() {
-        console.log('destroyed: 實例已銷毀，所有資源已釋放');
-    }
-});
-            </code></pre></div>
-        </ul>
-    </ol>
+  <h3>生命週期鉤子</h3>
+  <ol>
+    <li>創建階段</li>
+    <ul>
+      <li><code>beforeCreate</code></li>
+      在這個鉤子中，你可以看到 Vue 實例的數據和事件尚未被設置，因此不能使用 <code>data</code> 或 <code>methods</code>。
+      <div class="code-container"><pre><code>new Vue({
+
+  el: '#app',
+  beforeCreate() {
+    console.log('beforeCreate: 實例尚未創建，數據和事件尚未設置');
+  }
+});</code></pre></div>                  
+      <li><code>created</code></li>
+      Vue 實例已經創建完成，數據觀察和事件設置也已經完成，可以進行數據初始化或發起 API 請求。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  },
+  created() {
+    console.log('created: 實例創建完成，數據已設置，現在可以進行數據處理');
+    // 例如發起 API 請求
+    axios.get('/api/data').then(response => {
+      this.message = response.data;
+    });
+  }
+});</code></pre></div>                 
+    </ul>
+    <li>掛載階段</li>
+    <ul>
+      <li><code>beforeMount</code></li>
+      在 DOM 被替換成實際的 DOM 元素之前，這個鉤子會被調用。此時，你可以進行一些掛載前的準備。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  beforeMount() {
+    console.log('beforeMount: DOM 尚未掛載，可以做一些掛載前的準備');
+  }
+});</code></pre></div>
+      <li><code>mounted</code></li>
+      這個鉤子在 Vue 實例被掛載到 DOM 上後調用，此時可以安全地進行 DOM 操作，例如讀取或修改 DOM。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  mounted() {
+    console.log('mounted: DOM 已經掛載到頁面上，現在可以進行 DOM 操作');
+    // 例如，讀取 DOM 元素的內容
+    const element = document.getElementById('some-element');
+    console.log(element.textContent);
+  }
+});</code></pre></div>
+    </ul>
+    <li>更新階段</li>
+    <ul>
+      <li><code>beforeUpdate</code></li>
+      當數據改變時，DOM 更新之前調用這個鉤子。可以在這裡做一些數據更新之前的處理。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate: 數據更改前，DOM 尚未更新');
+  },
+  updated() {
+    console.log('updated: 數據更改後，DOM 已經更新');
+  }
+});</code></pre></div>
+      <li><code>updated</code></li>
+      在 DOM 更新完成後調用此鉤子。此時，DOM 已經根據最新的數據更新完成。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  },
+  updated() {
+    console.log('updated: 數據更新後，DOM 已經更新完成');
+  }
+});</code></pre></div>
+    </ul>
+    <li>銷毀階段</li>
+    <ul>
+      <li>beforeDestroy</li>
+      在實例銷毀之前調用這個鉤子。此時，實例仍然可以訪問數據和事件，但 DOM 元素尚未被銷毀。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  beforeDestroy() {
+    console.log('beforeDestroy: 實例即將銷毀，尚可操作數據和事件');
+    // 例如移除計時器
+    // clearInterval(this.timer);
+  }
+});</code></pre></div>
+      
+      <li>destroyed</li>
+      當實例銷毀完成後調用此鉤子。所有的事件監聽器、子組件和 DOM 元素都已經被銷毀，此時可以進行最終的清理操作。
+      <div class="code-container"><pre><code>new Vue({
+  el: '#app',
+  destroyed() {
+    console.log('destroyed: 實例已銷毀，所有資源已釋放');
+  }
+});</code></pre></div>
+    </ul>
+  </ol>
 </div>
 
 <div id="custom-directives">
-    <h3>自定義指令</h3>
-    <ul>
-        自定義指令的鉤子函數
-        <li><code>bind</code>:當指令第一次綁定到元素時執行</li>
-        <li><code>inserted</code>:當元素插入到頁面中時執行。此時元素已經存在於頁面中</li>
-        <li><code>updated</code>:當綁定的值發生變化時會調用。例如:每次點擊按鈕時修改顏色後，<code>update</code>會執行並變更背景顏色</li>
-        <li><code>unbind</code>:當指令從元素解綁時執行。例如:在頁面上刪除或隱藏元素時會觸發</li>
-    </ul>
-    <ol>
-        <li>創建和使用自定義指令</li>
-        <p><code>Vue.directive</code>用於創建自定義指令可以用來做很多事，比如在頁面加載時自動獲得焦點</p>
-        <div class= "code-container"><pre><code>
-Vue.directive('focus', {
-    // 此為inserted鉤子函數
-    inserted: function (el) {
-        // 讓元素自動獲得焦點
-        el.focus(); 
-    }
-});
-        </code></pre></div>
-        <p>在以上的代碼中，創建一個名為focus的指令。inserted是一個鉤子函數，它在元素插入到頁面上時自動運行</p>
-        <li>使用自定義指令</li>
-        <div class="code-container"><pre><code>
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;input v-focus /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-        </code></pre></div>
-        <p>如果要使用時，需要在元素上加上<code>v-</code>前綴，然後加上定義的指令名稱</p>
-        <li>更複雜的自定義指令</li>
-        <p>自定義指令還可以接受參數，讓他根據不同的值做不同的事</p>
-        <div class="code-container"><pre><code>
-Vue.directive('color', {
-    // 此為bind鉤子函數
-    bind: function (el, binding) {
-        // 根據傳入的顏色值改變元素背景顏色
-        el.style.backgroundColor = binding.value;
-    }
+  <h3>自定義指令</h3>
+  <ul>
+    自定義指令的鉤子函數
+    <li><code>bind</code>:當指令第一次綁定到元素時執行</li>
+    <li><code>inserted</code>:當元素插入到頁面中時執行。此時元素已經存在於頁面中</li>
+    <li><code>updated</code>:當綁定的值發生變化時會調用。例如:每次點擊按鈕時修改顏色後，<code>update</code>會執行並變更背景顏色</li>
+    <li><code>unbind</code>:當指令從元素解綁時執行。例如:在頁面上刪除或隱藏元素時會觸發</li>
+  </ul>
+  <ol>
+    <li>創建和使用自定義指令</li>
+    <code>Vue.directive</code>用於創建自定義指令可以用來做很多事，比如在頁面加載時自動獲得焦點
+    <div class= "code-container"><pre><code>Vue.directive('focus', {
+  // 此為inserted鉤子函數
+  inserted: function (el) {
+    // 讓元素自動獲得焦點
+    el.focus(); 
+  }
+});</code></pre></div>
+    在以上的代碼中，創建一個名為<code>focus</code>的指令。<code>inserted</code>是一個鉤子函數，它在元素插入到頁面上時自動運行
+    <li>使用自定義指令</li>
+    <div class="code-container"><pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;input v-focus /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    如果要使用時，需要在元素上加上<code>v-</code>前綴，然後加上定義的指令名稱
+    <li>更複雜的自定義指令</li>
+    <p>自定義指令還可以接受參數，讓他根據不同的值做不同的事</p>
+    <div class="code-container"><pre><code>Vue.directive('color', {
+  // 此為bind鉤子函數
+  bind: function (el, binding) {
+    // 根據傳入的顏色值改變元素背景顏色
+    el.style.backgroundColor = binding.value;
+  }
 })
 
 &lt;template&gt;
-    &lt;div&gt;
-        &lt;p v-color"yellow"&gt;這個段落的背景色是黃色&lt;/p&gt;
-        &lt;p v-color"lightblue"&gt;這個段落的背景色是淺藍色&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;    
-        </code></pre></div>
-    </ol>
+  &lt;div&gt;
+    &lt;p v-color"yellow"&gt;這個段落的背景色是黃色&lt;/p&gt;
+    &lt;p v-color"lightblue"&gt;這個段落的背景色是淺藍色&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+  </ol>
 </div>
 
 

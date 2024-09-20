@@ -2,9 +2,7 @@
   <div id="app">
     <router-view />
     <footer>
-      <p>
-        &copy; 吳佳蓉. 版權所有
-      </p>
+      &copy; 吳佳蓉. 版權所有
     </footer>
   </div>
 </template>
@@ -24,21 +22,14 @@
 footer {
   width: 100%;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  top: 0;
+  right: 20px;
+  display: block; 
+  padding: 0;
+  margin: 0 auto;
   font-size: 1rem;
   color: #000000;
-}
-
-p {
-  margin: 0; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center;
+  text-align: right;
 }
 
 </style>

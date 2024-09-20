@@ -53,7 +53,10 @@ export default {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const htmlContent = await response.text();
+        let htmlContent = await response.text();
+
+        htmlContent = `<h1>${this.skillName} 筆記</h1>\n` + htmlContent;
+
         this.htmlContent = htmlContent;
 
         // 更新側邊欄的技能在網頁中是否有對應到的id的可見性
@@ -73,7 +76,7 @@ export default {
         console.error('Error loading HTML:', error);
         this.htmlContent = '<p>技能内容未找到</p>';
       }
-    },
+    }, 
     // 透過側邊欄自動跳轉到對應的內容
     scrollToId(id) {
       const element = document.getElementById(id);

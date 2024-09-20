@@ -1,26 +1,18 @@
-
-<h1>Matplotlib 筆記</h1>
-
 <div id="introduction">
   <h3>簡介</h3>
-  <p>
-    Matplotlib 是一個 Python的資料可視化庫，可以用來產生各種靜態、動態和互動式圖表。
-  </p>
+  <p>Matplotlib 是一個 Python的資料可視化庫，可以用來產生各種靜態、動態和互動式圖表。</p>
 </div>
 
 <div id="installation">
   <h3>安裝</h3>
-  <div class="code-container"><pre><code>
-# 使用 pip 安裝 Matplotlib
-pip install matplotlib
-    </code></pre></div>
-  </div>
+  <div class="code-container"><pre><code># 使用 pip 安裝 Matplotlib
+pip install matplotlib</code></pre></div>
+</div>
 
 <div id="line-plot">
   <h3>折線圖</h3>
-  <p>使用plt.plot() 方法來創建折線圖</p>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <p>使用<code>plt.plot()</code> 方法來創建折線圖</p>
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 繪製基本圖形
 plt.plot([1, 2, 3, 4], [10, 20, 25, 30])
@@ -28,15 +20,13 @@ plt.xlabel('X 軸') # 添加x標籤
 plt.ylabel('Y 軸') # 添加y標籤
 plt.title('基本圖形') # 添加標題
 plt.legend()  # 添加圖例
-plt.show()   # 顯示圖表
-    </code></pre></div>
+plt.show()   # 顯示圖表</code></pre></div>
 </div>
 
 <div id="scatter-plot">
   <h3>散點圖</h3>
-  <p>使用plt.scatter() 方法來創建散點圖</p>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <p>使用<code>plt.scatter()</code> 方法來創建散點圖</p>
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 繪製散點圖
 x = [1, 2, 3, 4]
@@ -46,11 +36,9 @@ plt.scatter(x, y, color='red', marker='x')
 plt.xlabel('X 軸')
 plt.ylabel('Y 軸')
 plt.title('散點圖')
-plt.show()
-    </code></pre></div>
+plt.show()</code></pre></div>
     <h4>自定義點的大小和顏色</h4>
-    <div class="code-container"><pre><code>
-sizes = [20, 50, 80, 200, 500, 100, 300, 400, 700, 900]
+    <div class="code-container"><pre><code>sizes = [20, 50, 80, 200, 500, 100, 300, 400, 700, 900]
 colors = np.random.rand(10)  # 隨機顏色
 
 plt.scatter(x, y, s=sizes, c=colors, alpha=0.5, cmap='viridis')  # 使用 colormap
@@ -60,15 +48,13 @@ plt.xlabel('X Values')
 plt.ylabel('Y Values')
 plt.colorbar()  # 添加色條
 
-plt.show()
-    </code></pre></div>
+plt.show()</code></pre></div>
 </div>
 
 <div id="histogram">
   <h3>直方圖</h3>
-  <p>使用 plt.hist() 來創建直方圖</p>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <p>使用<code>plt.hist()</code> 來創建直方圖</p>
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 繪製直方圖
 data = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
@@ -77,27 +63,23 @@ plt.hist(data, bins=4, color='blue', edgecolor='black')
 plt.xlabel('數值')
 plt.ylabel('頻次')
 plt.title('直方圖')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <h4>水平柱狀圖</h4>
-  <p>創建一個水平的柱狀圖，可以使用 plt.barh()：</p>
-  <div class="code-container"><pre><code>
-# 繪製水平柱狀圖
+  <p>創建一個水平的柱狀圖，可以使用<code>plt.barh()</code> ：</p>
+  <div class="code-container"><pre><code># 繪製水平柱狀圖
 plt.barh(categories, values, color='skyblue')
 
 plt.title('Horizontal Bar Chart')
 plt.xlabel('Values')
 plt.ylabel('Categories')
 
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
 </div>
 
 <div id="piechart">
   <h3>圓餅圖</h3>
-  <p>使用 plt.pie() 可以繪製餅圖</p>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <p>使用<code>plt.pie()</code> 可以繪製餅圖</p>
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 準備數據
 labels = ['A', 'B', 'C', 'D']
@@ -113,15 +95,12 @@ plt.axis('equal')
 
 # 顯示圖表
 plt.title('Pie Chart Example')
-plt.show()
-
-  </code></pre></div>
+plt.show()</code></pre></div>
 </div>
 
 <div id="customization">
   <h3>自定義</h3>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 繪製自訂圖形
 x = [1, 2, 3, 4]
@@ -132,29 +111,25 @@ plt.xlabel('X 軸')
 plt.ylabel('Y 軸')
 plt.title('自定義圖形')
 plt.grid(True, linestyle='-.')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
 </div>
 
 <div id="matplotlib-adjust-style">
   <h3>調整圖表風格</h3>
-  <p>使用 plt.style.use() 來應用不同的風格：</p>
-  <div class="code-container"><pre><code>
-plt.style.use('ggplot')  # 使用 ggplot 風格
+  <p>使用<code>plt.style.use()</code> 來應用不同的風格：</p>
+  <div class="code-container"><pre><code>plt.style.use('ggplot')  # 使用 ggplot 風格
 
 # 繪製示例圖表
 plt.plot(x, y)
 plt.title('Styled Plot')
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
   <p>常見的風格包括 ggplot、seaborn、bmh、dark_background 等</p>
 </div>
 
 <div id="subplots">
   <h3>子圖</h3>
-  <p>使用 plt.subplots() 來創建多個子圖：</p>
-  <div class="code-container"><pre><code>
-import matplotlib.pyplot as plt
+  <p>使用<code>plt.subplots()</code> 來創建多個子圖：</p>
+  <div class="code-container"><pre><code>import matplotlib.pyplot as plt
 
 # 建立2行2列的子圖
 fig, axs = plt.subplots(2, 2, figsize=(10, 8)) # figsize 用於設置圖的尺寸
@@ -177,15 +152,12 @@ axs[1, 1].set_title('子圖 4')
 
 # 使用 tight_layout()會自動調整子圖的布局
 plt.tight_layout() 
-plt.show()
-  </code></pre></div>
+plt.show()</code></pre></div>
 </div>
 
 <div id="savfig">
   <h3>儲存圖像</h3>
-  <p>使用 plt.savefig() 來儲存圖表：</p>
-  <div class="code-container"><pre><code>
-plt.plot(x, y1)
-plt.savefig('plot.png')  # 儲存為 PNG 文件
-  </code></pre></div>
+  <p>使用<code>plt.savefig()</code> 來儲存圖表：</p>
+  <div class="code-container"><pre><code>plt.plot(x, y1)
+plt.savefig('plot.png')  # 儲存為 PNG 文件</code></pre></div>
 </div>
